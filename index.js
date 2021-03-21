@@ -12,7 +12,7 @@ var app = express();
 var path = require('path');
 
 // Define listen port
-var port = 10000;
+var port = process.env.PORT || 10000;
 
 // Declare endpoints
 
