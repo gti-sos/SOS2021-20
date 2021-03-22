@@ -34,7 +34,11 @@ app.get("/info/greenhousegasemissions-stats", (request, response) => {
     )
 });
 
-
+// Information about the project renewablepowercapacities-stats
+app.get("/info/renewablepowercapacities-stats", (request, response) => {
+    response.send("<html><body><div><h3>Info:</h3><p>Esta fuente de datos proporciona la información relativa a la cantidad en MegaVatios generados por energias renovables en diferentes paises de la unión europea entre los años 2014 y 2018. </p><table border='1'><thead><tr><th>country</th><th>year</th><th>solar production in megawatts</th><th>hydraulic production in megawatts</th><th>wind power production in megawatts</th></tr></thead><tbody><tr><td>Germany</td><td>2018</td><td>14586736</td><td>16799700</td><td>15060000</td></tr><tr><td>Belgium</td><td>2018</td><td>4.000,000</td><td>1.417,500</td><td>3.267,900</td></tr><tr><td>Bulgaria</td><td>2018</td><td>1.032,679</td><td>3.379,000</td><td>698,920</td></tr><tr><td>Czechia</td><td>2018</td><td>2.075,072</td><td>2.264,019</td><td>316,200</td></tr><tr><td>Denmark</td><td>2018</td><td>998000</td><td>7153</td><td>6.115,008</td></tr><tr><td>Estonia</td><td>2018</td><td>31,900</td><td>7,300</td><td>310,000</td></tr></tbody></table></div></body></html>"
+    )
+});
 
 
 // Run the application on the defined port
