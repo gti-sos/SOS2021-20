@@ -15,7 +15,79 @@ var path = require('path');
 // Define listen port
 var port = process.env.PORT || 10000;
 
+
+
+//=============================================================================================================================
+
 // Define endpoints
+
+//DATOS JESÚS
+var loadInitialData = [
+	{
+	"country": "spain",
+	"year": 2014,
+	"carbon-dioxide": 268.71585,
+	"methane": 1.51641,
+    "nitrous-oxide": 0.06049
+	},
+	{
+	"country": "belgium",
+	"year": 2015,
+	"carbon-dioxide": 105.3731,
+	"methane": 0.32512,
+    "nitrous-oxide": 0.02038
+	}
+	
+];
+
+//5.2 Ruta /api/v1/YYYYYY/loadInitialData que al hacer un GET cree 2 o más recursos
+app.get(BASE_API_PATH+"/greenhousegasemissions-stats/loadInitialData", (req,res)=>{
+	res.send(JSON.stringify(loadInitialData,null,2));
+});
+
+
+//6.1 GET a la lista de recursos (p.e. “/api/v1/stats”)
+app.get(BASE_API_PATH+"/stats", (req,res)=>{
+	res.send(JSON.stringify(loadInitialData,null,2));
+});
+
+
+//6.2 POST a la lista de recursos (p.e. “/api/v1/stats”)
+app.post(BASE_API_PATH+"/stats", (req,res)=>{
+	var newStat = req.body;
+	console.log('new stat to be added:' +JSON.stringify(newStat,null,2));
+	loadInitialData.push(newStat);
+	res.sendStatus(201);
+});
+
+//6.3 GET a un recurso (p.e. “/api/v1/stats/sevilla/2013”)
+app.get(BASE_API_PATH+"/stats/:country/:year", (req,res)=>{
+	var countryLabel = req.params.country;
+	var yearLabel = req.params.year;
+	var filtered = _.where(loadInitialData, {country: "spain" , year: 2014});
+	res.send(JSON.stringify(filtered,null,2)); //'Helo GET:/stats/spain/2014'+ countryLabel + yearLabel
+});
+
+//6.4 DELETE a un recurso (p.e. “/api/v1/stats/sevilla/2013”)
+app.delete(BASE_API_PATH+"/stats/:country/:year", (req,res)=>{
+	var yearLabel = req.params.year;
+	loadInitialData.delete(yearLabel);
+	res.send('eliminado');
+});
+
+//6.5 DELETE a un recurso (p.e. “/api/v1/stats/sevilla/2013”)
+app.delete(BASE_API_PATH+'/stats/spain/', (req,res)=>{
+	res.send('Delete method')
+	
+
+});
+
+//=============================================================================================================================
+
+
+
+
+
 
 // Returns the index page
 app.get("/", (request, response) => {
