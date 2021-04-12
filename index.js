@@ -53,13 +53,14 @@ app.get("/info/renewablepowercapacities-stats", (request, response) => {
 
 
 
-// INDIVIDUAL API ENDPOINTS
+//                         INDIVIDUAL API ENDPOINTS                                  //
+//###################################################################################//
 
-//JORGE MARÍN CORDERO (foundsresearchsources-stats)
+// Student: Jorge Marín Cordero 
+// Resource: foundsresearchsources-stats
 
 var JMC_ENDPOINT = "/foundsresearchsources-stats";
 var jmcData = [];
-
 
 //GET /api/v1/loadInitialData"
 app.get(BASE_API_PATH + JMC_ENDPOINT + "/loadInitialData", (req, res) => {
@@ -83,8 +84,9 @@ app.get(BASE_API_PATH + JMC_ENDPOINT + "/loadInitialData", (req, res) => {
 
         }
     ];
-    jmcData.push(jmcInitialData);
-    console.log(JSON.stringify(jmcData, null, 2));
+    for (var item in jmcInitialData) {
+        jmcData.push(jmcInitialData[item]);
+    }
     res.status(200).send("Data created sucessfully!!");
 });
 
@@ -110,8 +112,6 @@ app.get(BASE_API_PATH + JMC_ENDPOINT + "/:country/:year", (req, res) => {
     });
     res.status(200).send(JSON.stringify(requestedData, null, 2));
 });
-
-
 
 //DELETE /api/v1/foundsresearchsources-stats/country/year
 app.delete(BASE_API_PATH + JMC_ENDPOINT + "/:country/:year", (req, res) => {
@@ -153,22 +153,21 @@ app.put(BASE_API_PATH + JMC_ENDPOINT + "/:country/:year", function (req, res) {
 
 //POST /api/v1/foundsresearchsources-stats/country/year (NOT ALLOWED)
 app.post(BASE_API_PATH + JMC_ENDPOINT + "/:country/:year", function (req, res) {
-    res.status(405).send("Not allowed method");
+    res.status(405).send("Method not allowed!!");
 });
 
 //PUT /api/v1/foundsresearchsources-stats(NOT ALLOWED)
 app.put(BASE_API_PATH + JMC_ENDPOINT, function (req, res) {
-    res.status(405).send("Not allowed method");
+    res.status(405).send("Method not allowed!!");
 });
-
-
 
 //DELETE /api/v1/foundsresearchsources-stats
 app.delete(BASE_API_PATH + JMC_ENDPOINT, (req, res) => {
     datosJson = [];
-    res.status(200).send("Data delete successfully!!");
+    res.status(200).send("Data deleted successfully!!");
 });
 
+//###################################################################################//
 
 //ALVARO CARO JIMÉNEZ
 
