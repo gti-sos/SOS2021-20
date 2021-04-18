@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "/api/v1/foundsresearchsources-stats",
+			"name": "/api/v1/foundsresearchsources-stats/loadInitialData",
 			"event": [
 				{
 					"listen": "test",
@@ -15,9 +15,43 @@
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
-							"pm.test(\"Your test name\", function () {",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/loadInitialData",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"foundsresearchsources-stats",
+						"loadInitialData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/foundsresearchsources-stats (GET)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Two countries loaded by loadInitialData\", function () {",
 							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.value).to.eql(100);",
+							"    pm.expect(jsonData.length).to.eql(2);",
 							"});"
 						],
 						"type": "text/javascript"
@@ -36,6 +70,190 @@
 						"api",
 						"v1",
 						"foundsresearchsources-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/foundsresearchsources-stats (POST)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"country\": \"Italy\",\n            \"year\": 2015,\n            \"percentage-of-government-funding\": 22.5,\n            \"percentage-of-private-financing\": 58.6,\n            \"percentage-of-non-profit-funding\": 0.4\n\n\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"foundsresearchsources-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/foundsresearchsources-stats/resource/year (GET)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/Denmark/2015",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"foundsresearchsources-stats",
+						"Denmark",
+						"2015"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/foundsresearchsources-stats/resource/year (PUT)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"country\": \"Italy\",\n            \"year\": 2015,\n            \"percentage-of-government-funding\": 40.5,\n            \"percentage-of-private-financing\": 5.6,\n            \"percentage-of-non-profit-funding\": 3.4\n\n\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/Italy/2015",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"foundsresearchsources-stats",
+						"Italy",
+						"2015"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/foundsresearchsources-stats (DEL)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"foundsresearchsources-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/foundsresearchsources-stats/resource/year (DEL)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/Denmark/2015",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"foundsresearchsources-stats",
+						"Denmark",
+						"2015"
 					]
 				}
 			},
