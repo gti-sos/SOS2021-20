@@ -117,6 +117,47 @@
 			"response": []
 		},
 		{
+			"name": "/api/v1/foundsresearchsources-stats (PUT)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"country\": \"Italy\",\n            \"year\": 2015,\n            \"percentage-of-government-funding\": 22.5,\n            \"percentage-of-private-financing\": 58.6,\n            \"percentage-of-non-profit-funding\": 0.4\n\n\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"foundsresearchsources-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "/api/v1/foundsresearchsources-stats/resource/year (GET)",
 			"event": [
 				{
@@ -171,6 +212,49 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\n            \"country\": \"Italy\",\n            \"year\": 2015,\n            \"percentage-of-government-funding\": 40.5,\n            \"percentage-of-private-financing\": 5.6,\n            \"percentage-of-non-profit-funding\": 3.4\n\n\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/Italy/2015",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"foundsresearchsources-stats",
+						"Italy",
+						"2015"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/foundsresearchsources-stats Italy/2015 (POST)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"country\": \"Italy\",\n            \"year\": 2015,\n            \"percentage-of-government-funding\": 22.5,\n            \"percentage-of-private-financing\": 58.6,\n            \"percentage-of-non-profit-funding\": 0.4\n\n\n        }",
 					"options": {
 						"raw": {
 							"language": "json"
