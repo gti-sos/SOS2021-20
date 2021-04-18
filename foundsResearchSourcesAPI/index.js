@@ -107,7 +107,7 @@ module.exports.init = (app) => {
 
     //DELETE /api/v1/foundsresearchsources-stats
     app.delete(BASE_API_PATH + JMC_ENDPOINT, (req, res) => {
-        datosJson = [];
+        jmcData = [];
         res.status(200).send("Data deleted successfully!!");
     });
 };
