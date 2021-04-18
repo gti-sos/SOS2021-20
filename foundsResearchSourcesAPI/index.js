@@ -49,7 +49,7 @@ module.exports.init = (app) => {
     });
 
     //GET /api/v1/foundsresearchsources-stats
-    //GET /api/v1/foundsresearchsources-stats?country=COUNTRY&year=YEAR
+    //GET /api/v1/foundsresearchsources-stats?country=COUNTRY&year=YEAR&percentage_of_government_funding=PERC..
     app.get(BASE_API_PATH + JMC_ENDPOINT, (req, res) => {
         let query = {};
         let offset = 0;
