@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "e531e837-acaa-40e1-99f5-f5cd423c5d19",
-		"name": "SOS2021-20-foundsresearchsources",
+		"name": "SOS2021-20-foundsresearchsources-stats",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -110,7 +110,7 @@
 			"response": []
 		},
 		{
-			"name": "/api/v1/foundsresearchsources-stats?limit=1offset=2 (Pagination GET)",
+			"name": "/api/v1/foundsresearchsources-stats?limit=1&offset=2 (Pagination GET)",
 			"event": [
 				{
 					"listen": "test",
@@ -132,7 +132,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats?limit=1offset=2",
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats?limit=1&offset=2",
 					"host": [
 						"{{HOST}}"
 					],
@@ -144,7 +144,11 @@
 					"query": [
 						{
 							"key": "limit",
-							"value": "1offset=2"
+							"value": "1"
+						},
+						{
+							"key": "offset",
+							"value": "2"
 						}
 					]
 				}
