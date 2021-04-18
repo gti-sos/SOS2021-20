@@ -9,8 +9,6 @@ var bodyParser = require("body-parser");
 
 //Allow to parse the response body and get the JSON
 app.use(bodyParser.json());
-//permite parsear todo lo json que llega para que sean objetos
-// y poder cogerlo del body
 
 // Path instantiation
 var path = require('path');
@@ -18,11 +16,8 @@ var path = require('path');
 // Define listen port
 var port = process.env.PORT || 10000;
 
-
 //Define API endpoint
 var BASE_API_PATH = "/api/v1";
-
-
 
 // Run the application on the defined port
 app.listen(port, () => {
