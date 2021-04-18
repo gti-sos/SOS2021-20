@@ -10,4 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm install
+      - run: npm start &
       - run: npx newman tests/integration-foundsresearchsources.json
+      npx newman run tests/integration-foundsresearchsources.json
