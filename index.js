@@ -55,117 +55,11 @@ app.get("/info/renewablepowercapacities-stats", (request, response) => {
 
 //                         INDIVIDUAL API ENDPOINTS                                  //
 //###################################################################################//
-
 // Student: Jorge Marín Cordero 
 // Resource: foundsresearchsources-stats
 
-var JMC_ENDPOINT = "/foundsresearchsources-stats";
-var jmcData = [];
-
-//GET /api/v1/loadInitialData"
-app.get(BASE_API_PATH + JMC_ENDPOINT + "/loadInitialData", (req, res) => {
-    var jmcInitialData = [
-        {
-            "country": "Belgium",
-            "year": 2015,
-            "percentage-of-government-funding": 22.5,
-            "percentage-of-private-financing": 58.6,
-            "percentage-of-non-profit-funding": 0.4,
-
-
-        },
-        {
-            "country": "Denmark",
-            "year": 2015,
-            "percentage-of-government-funding": 30.2,
-            "percentage-of-private-financing": 59.1,
-            "percentage-of-non-profit-funding": 4.4,
-
-
-        }
-    ];
-    for (var item in jmcInitialData) {
-        jmcData.push(jmcInitialData[item]);
-    }
-    res.status(200).send("Data created sucessfully!!");
-});
-
-//GET /api/v1/foundsresearchsources-stats
-app.get(BASE_API_PATH + JMC_ENDPOINT, (req, res) => {
-    res.status(200).send(JSON.stringify(jmcData, null, 2));
-
-});
-
-//POST /api/v1/foundsresearchsources-stats
-app.post(BASE_API_PATH + JMC_ENDPOINT, (req, res) => {
-    var newResource = req.body;
-    jmcData.push(newResource);
-    console.log("New resource added: " + JSON.stringify(newResource, null, 2));
-    res.sendStatus(201);
-});
-
-//GET /api/v1/foundsresearchsources-stats/country/year
-app.get(BASE_API_PATH + JMC_ENDPOINT + "/:country/:year", (req, res) => {
-
-    var requestedData = jmcData.filter(function (inputObj) {
-        return inputObj.country == String(req.params.country) && inputObj.year == String(req.params.year);
-    });
-    res.status(200).send(JSON.stringify(requestedData, null, 2));
-});
-
-//DELETE /api/v1/foundsresearchsources-stats/country/year
-app.delete(BASE_API_PATH + JMC_ENDPOINT + "/:country/:year", (req, res) => {
-    var country = req.params.country;
-    var year = parseInt(req.params.year);
-
-    for (var i = 0; i < jmcData.length; i++) {
-        if (jmcData[i]["country"] === country && jmcData[i]["year"] === year) {
-            jmcData.splice(i, 1);
-            return res.status(200).send("Resource deleted sucessfully!!");
-
-        }
-    }
-
-    return res.sendStatus(404);
-});
-
-//PUT /api/v1/foundsresearchsources-stats/country/year
-app.put(BASE_API_PATH + JMC_ENDPOINT + "/:country/:year", function (req, res) {
-
-    var switchBreak = false;
-    for (var x in jmcData) {
-
-        if (jmcData[x].country == String(req.params.country) && jmcData[x].year == String(req.params.year)) {
-
-            var inputData = req.body;
-            jmcData[x] = inputData;
-            switchBreak = true;
-            break;
-        }
-    }
-
-    if (!switchBreak) {
-        res.status(404).send("¡Resource not found!");
-    } else {
-        res.status(200).send("¡Resource updated successfully");
-    }
-});
-
-//POST /api/v1/foundsresearchsources-stats/country/year (NOT ALLOWED)
-app.post(BASE_API_PATH + JMC_ENDPOINT + "/:country/:year", function (req, res) {
-    res.status(405).send("Method not allowed!!");
-});
-
-//PUT /api/v1/foundsresearchsources-stats(NOT ALLOWED)
-app.put(BASE_API_PATH + JMC_ENDPOINT, function (req, res) {
-    res.status(405).send("Method not allowed!!");
-});
-
-//DELETE /api/v1/foundsresearchsources-stats
-app.delete(BASE_API_PATH + JMC_ENDPOINT, (req, res) => {
-    datosJson = [];
-    res.status(200).send("Data deleted successfully!!");
-});
+var foundsResearchSourcesAPI = require("./foundsResearchSourcesAPI");
+foundsResearchSourcesAPI.init(app);
 
 //###################################################################################//
 
@@ -316,141 +210,141 @@ app.delete(BASE_API_PATH + "/renewablepowercapacities-stats", (req, res) => {
 
 //JESÚS GUERRA ADAME
 //5.1 GET /api/v1/YYYY
-app.get(BASE_API_PATH+"/greenhousegasemissions-stats",(req,res)=>{
-	
-	res.send(JSON.stringify(jgaData,null,2));//OBJECTO //PASO OBJETO A JSON (JSON.stringbyfi) el null
-	
+app.get(BASE_API_PATH + "/greenhousegasemissions-stats", (req, res) => {
+
+    res.send(JSON.stringify(jgaData, null, 2));//OBJECTO //PASO OBJETO A JSON (JSON.stringbyfi) el null
+
 });
 
 
 var jgaData = [];
 
 //5.2 GET /api/v1/yyyy/loadInitialData
-app.get(BASE_API_PATH+"/greenhousegasemissions-stats/loadInitialData",(req,res)=>{
-	
-	var jga_initialData = [
+app.get(BASE_API_PATH + "/greenhousegasemissions-stats/loadInitialData", (req, res) => {
 
-	//PRIMER OBJETO
-	{
-	"country": "spain",
-	"year": 2014,
-	"carbon-dioxide": 268.71585,
-	"methane": 1.51641,
-    "nitrous-oxide": 0.06049
-	},//SEGUNDO OBJETO
-	{
-	"country": "belgium",
-	"year": 2015,
-	"carbon-dioxide": 105.3731,
-	"methane": 0.32512,
-    "nitrous-oxide": 0.02038
-	}
-	
-];
-	
-	for (var item in jga_initialData) {
+    var jga_initialData = [
+
+        //PRIMER OBJETO
+        {
+            "country": "spain",
+            "year": 2014,
+            "carbon-dioxide": 268.71585,
+            "methane": 1.51641,
+            "nitrous-oxide": 0.06049
+        },//SEGUNDO OBJETO
+        {
+            "country": "belgium",
+            "year": 2015,
+            "carbon-dioxide": 105.3731,
+            "methane": 0.32512,
+            "nitrous-oxide": 0.02038
+        }
+
+    ];
+
+    for (var item in jga_initialData) {
         jgaData.push(jga_initialData[item]);
     }
-    
+
     res.status(200).send("Data created sucessfully!!");
 
-	
 
-	//Lanzamos el código 200 indicando que se han cargado los datos iniciales de forma satisfactoria
-	//(Lo indicamos con el 200 por consola, y con un pequeño html para el usuario de forma gráfica)
 
-	
+    //Lanzamos el código 200 indicando que se han cargado los datos iniciales de forma satisfactoria
+    //(Lo indicamos con el 200 por consola, y con un pequeño html para el usuario de forma gráfica)
+
+
 });
 
 //6.1 GET /API/V1/greenhousegasemissions-stats
-   //REALIZADO EN EL 5.1
+//REALIZADO EN EL 5.1
 
 //6.2 POST /API/V1/greenhousegasemissions-stats
-app.post(BASE_API_PATH+"/greenhousegasemissions-stats",(req,res)=>{
-	
-	var nuevoDato = req.body; //guardo en nuevoDato un objeto que esta en param
-						     //para ver el contenido del objeto se hace JSON.stringify(nombreObjeto)
-	console.log(`nuevo contacto creado ${JSON.stringify(nuevoDato,null,2)}`);
-	
-	res.sendStatus(201);
-	
-	jgaData.push(nuevoDato);
-	
+app.post(BASE_API_PATH + "/greenhousegasemissions-stats", (req, res) => {
+
+    var nuevoDato = req.body; //guardo en nuevoDato un objeto que esta en param
+    //para ver el contenido del objeto se hace JSON.stringify(nombreObjeto)
+    console.log(`nuevo contacto creado ${JSON.stringify(nuevoDato, null, 2)}`);
+
+    res.sendStatus(201);
+
+    jgaData.push(nuevoDato);
+
 });
 
 
 //6.3 GET /api/v1/greenhousegasemissions-stats/country/year
-app.get(BASE_API_PATH+"/greenhousegasemissions-stats/:country/:year", (req,res)=>{ //Cuando llamen a /api/v1/education_expenditures/(pais)	
-	var datos = jgaData.filter(function(valorRecibido){ 
-		return valorRecibido.country==String(req.params.country) && valorRecibido.year==String(req.params.year);
-	});
-	
-	//Respondemos a la petición enviando el recurso, filtrado, y en JSON
-	res.status(200).send(JSON.stringify(datos,null,2));
+app.get(BASE_API_PATH + "/greenhousegasemissions-stats/:country/:year", (req, res) => { //Cuando llamen a /api/v1/education_expenditures/(pais)	
+    var datos = jgaData.filter(function (valorRecibido) {
+        return valorRecibido.country == String(req.params.country) && valorRecibido.year == String(req.params.year);
+    });
+
+    //Respondemos a la petición enviando el recurso, filtrado, y en JSON
+    res.status(200).send(JSON.stringify(datos, null, 2));
 });
 
 //6.4 DELETE ../country/year
 app.delete(BASE_API_PATH + "/greenhousegasemissions-stats/:country/:year", (req, res) => {
-  var country = req.params.country;
-  var year = parseInt(req.params.year);
+    var country = req.params.country;
+    var year = parseInt(req.params.year);
 
-  for (var i = 0; i < jgaData.length; i++) {
-    if (jgaData[i]["country"] === country && jgaData[i]["year"] === year) {
-      jgaData.splice(i, 1);
-      console.log("Recurso eliminado");
-	  return res.sendStatus(200);
-		
+    for (var i = 0; i < jgaData.length; i++) {
+        if (jgaData[i]["country"] === country && jgaData[i]["year"] === year) {
+            jgaData.splice(i, 1);
+            console.log("Recurso eliminado");
+            return res.sendStatus(200);
+
+        }
     }
-  }
 
-  return res.sendStatus(404);
+    return res.sendStatus(404);
 });
 
 
 //6.5 PUT ../sevilla/2013 actualizar ese registro
-app.put(BASE_API_PATH+"/greenhousegasemissions-stats/:country/:year", function(req,res) { 
+app.put(BASE_API_PATH + "/greenhousegasemissions-stats/:country/:year", function (req, res) {
 
-	var sw = false;
-	for(var x in jgaData){
-		
-		if(jgaData[x].country == String(req.params.country) && jgaData[x].year == String(req.params.year)){
-				
-				var data = req.body;
-				jgaData[x] = data;
-				sw=true;
-				break;
-		}
-	}
-	
-	if(!sw){
-		res.status(404).send("Recurso no encontrado");
-			 console.log("Recurso no actualizado");
-	}else{
-	res.status(200).send("Recurso actualizado");
-			 console.log("Recurso actualizado");
-	}
+    var sw = false;
+    for (var x in jgaData) {
+
+        if (jgaData[x].country == String(req.params.country) && jgaData[x].year == String(req.params.year)) {
+
+            var data = req.body;
+            jgaData[x] = data;
+            sw = true;
+            break;
+        }
+    }
+
+    if (!sw) {
+        res.status(404).send("Recurso no encontrado");
+        console.log("Recurso no actualizado");
+    } else {
+        res.status(200).send("Recurso actualizado");
+        console.log("Recurso actualizado");
+    }
 });
 
 
 //6.6 POST /sevilla/2013 error met no permitido
-app.post(BASE_API_PATH+"/greenhousegasemissions-stats/:country/:year", function(req, res) { 
+app.post(BASE_API_PATH + "/greenhousegasemissions-stats/:country/:year", function (req, res) {
 
-	res.status(405).send("El metodo NO esta permitido para esta operacion"); 
-	 console.log("El metodo NO esta permitido para esta operacion");
+    res.status(405).send("El metodo NO esta permitido para esta operacion");
+    console.log("El metodo NO esta permitido para esta operacion");
 });
 
 //6.7 POST /sevilla error met no permitido
-app.put(BASE_API_PATH+"/greenhousegasemissions-stats", function(req, res) { 
+app.put(BASE_API_PATH + "/greenhousegasemissions-stats", function (req, res) {
 
-	res.status(405).send("El metodo NO esta permitido para esta operacion"); 
-	 console.log("El metodo NO esta permitido para esta operacion");
+    res.status(405).send("El metodo NO esta permitido para esta operacion");
+    console.log("El metodo NO esta permitido para esta operacion");
 });
 
 //
 
 //6.8 DELETE /api/v1/stats borra todo los recursos
-app.delete(BASE_API_PATH+"/greenhousegasemissions-stats", (req,res)=>{
-	jgaData = []; 
-	res.status(200).send("datos del recurso eliminados");
-	console.log("datos del recurso eliminados");
+app.delete(BASE_API_PATH + "/greenhousegasemissions-stats", (req, res) => {
+    jgaData = [];
+    res.status(200).send("datos del recurso eliminados");
+    console.log("datos del recurso eliminados");
 });
