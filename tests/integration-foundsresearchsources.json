@@ -132,7 +132,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats?limit=1&offset=2",
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats?limit=1&offset=1",
 					"host": [
 						"{{HOST}}"
 					],
@@ -148,7 +148,7 @@
 						},
 						{
 							"key": "offset",
-							"value": "2"
+							"value": "1"
 						}
 					]
 				}
