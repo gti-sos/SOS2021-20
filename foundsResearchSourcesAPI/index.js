@@ -159,7 +159,6 @@ module.exports.init = (app) => {
                     });
                     res.status(200).send(JSON.stringify(resourceToSend, null, 2));
                 } else {
-                    console.log("Entra");
                     res.sendStatus(404);
                 }
             }
