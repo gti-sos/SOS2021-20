@@ -1,9 +1,5 @@
 ## SOS2021-20
 <html>
-<title>
-  SOS2021-20
-</title>
-
 <body>
   <h4>
     Team:
