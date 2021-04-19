@@ -30,7 +30,35 @@ var jmcInitialData = [
         "percentage_of_non_profit_funding": 4.4,
 
 
+    },
+    {
+        "country": "Germany",
+        "year": 2015,
+        "percentage_of_government_funding": 27.9,
+        "percentage_of_private_financing": 65.7,
+        "percentage_of_non_profit_funding": 0.3,
+
+
+    },
+    {
+        "country": "Ireland",
+        "year": 2015,
+        "percentage_of_government_funding": 26.1,
+        "percentage_of_private_financing": 48.7,
+        "percentage_of_non_profit_funding": 06,
+
+
+    },
+    {
+        "country": "Greece",
+        "year": 2015,
+        "percentage_of_government_funding": 53.1,
+        "percentage_of_private_financing": 31.4,
+        "percentage_of_non_profit_funding": 0.4,
+
+
     }
+
 ];
 
 foundsResearchSourcesDB.insert(jmcInitialData);
