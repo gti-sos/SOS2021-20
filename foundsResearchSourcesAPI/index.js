@@ -2,6 +2,20 @@
 // Student: Jorge Marín Cordero 
 // Resource: foundsresearchsources-stats
 
+///////////////////////////////////////////////// Logs Handler ////////////////////////////////////////////////////////    
+var fs = require('fs');
+var util = require('util');
+var logFile = fs.createWriteStream('./foundsResearchSourcesAPI/foundsresearchsources_API.log', { flags: 'w' });
+var logStdout = process.stdout;
+
+console.log = function () {
+    logFile.write(util.format.apply(null, arguments) + '\n');
+    logStdout.write(util.format.apply(null, arguments) + '\n');
+}
+
+console.error = console.log;
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 //Define API endpoint
 var BASE_API_PATH = "/api/v1";
 var JMC_ENDPOINT = "/foundsresearchsources-stats";
@@ -33,8 +47,6 @@ var jmcInitialData = [
     }
 ];
 
-foundsResearchSourcesDB.insert(jmcInitialData);
-
 module.exports.init = (app) => {
 
     //GET /api/v1/foundsresearchsources-stats/loadInitialData"
@@ -43,7 +55,7 @@ module.exports.init = (app) => {
         if (foundsResearchSourcesDB.getAllData().length == 0) {
 
             foundsResearchSourcesDB.insert(jmcInitialData);
-
+            console.log("Dataset loaded sucessfully!!")
             res.status(200).send("Data created sucessfully!!");
 
         } else {
@@ -111,10 +123,8 @@ module.exports.init = (app) => {
         var newResource = req.body;
 
         foundsResearchSourcesDB.find({
-            country: newResource.country, year: newResource.year,
-            percentage_of_government_funding: newResource.percentage_of_government_funding,
-            percentage_of_private_financing: newResource.percentage_of_private_financing,
-            percentage_of_non_profit_funding: newResource.percentage_of_non_profit_funding
+            country: newResource.country,
+            year: newResource.year
         }, (err, resource) => {
 
             if (err) {
@@ -132,7 +142,7 @@ module.exports.init = (app) => {
 
                 } else {
 
-                    console.log("The resource exist on database");
+                    console.log("The resource:" + JSON.stringify(newResource, null, 2) + "/nExist on database");
                     res.sendStatus(409);
                 }
 
