@@ -94,7 +94,8 @@ module.exports.init = (app) => {
                         }
                     });
 
-                    res.status(200).send(JSON.stringify(resourcesToSend, null, 2));
+                    // res.status(200).send(JSON.stringify(resourcesToSend, null, 2));
+                    res.status(200).send(resourcesToSend);
                 } else {
                     res.sendStatus(404);
                 }
@@ -158,7 +159,8 @@ module.exports.init = (app) => {
                             percentage_of_non_profit_funding: r.percentage_of_non_profit_funding
                         }
                     });
-                    res.status(200).send(JSON.stringify(resourceToSend, null, 2));
+                    // res.status(200).send(JSON.stringify(resourceToSend, null, 2));
+                    res.status(200).send(resourceToSend);
                 } else {
                     res.sendStatus(404);
                 }
