@@ -33,6 +33,7 @@ var jmcInitialData = [
     }
 ];
 
+foundsResearchSourcesDB.insert(jmcInitialData);
 
 module.exports.init = (app) => {
 
