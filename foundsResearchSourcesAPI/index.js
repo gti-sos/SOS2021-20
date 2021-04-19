@@ -2,20 +2,6 @@
 // Student: Jorge Marín Cordero 
 // Resource: foundsresearchsources-stats
 
-///////////////////////////////////////////////// Logs Handler ////////////////////////////////////////////////////////    
-var fs = require('fs');
-var util = require('util');
-var logFile = fs.createWriteStream('./foundsResearchSourcesAPI/foundsresearchsources_API.log', { flags: 'w' });
-var logStdout = process.stdout;
-
-console.log = function () {
-    logFile.write(util.format.apply(null, arguments) + '\n');
-    logStdout.write(util.format.apply(null, arguments) + '\n');
-}
-
-console.error = console.log;
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 //Define API endpoint
 var BASE_API_PATH = "/api/v1";
 var JMC_ENDPOINT = "/foundsresearchsources-stats";
