@@ -40,9 +40,13 @@ module.exports.init = (app) => {
     app.get(BASE_API_PATH + JMC_ENDPOINT + "/loadInitialData", (req, res) => {
 
         if (foundsResearchSourcesDB.getAllData().length == 0) {
+
             foundsResearchSourcesDB.insert(jmcInitialData);
+
             res.status(200).send("Data created sucessfully!!");
+
         } else {
+
             res.sendStatus(409);
         }
 
@@ -78,17 +82,24 @@ module.exports.init = (app) => {
                 console.error(DATABASE_ERR_MSSG + err);
                 res.sendStatus(500);
             } else {
-                var resourcesToSend = resources.map((r) => {
-                    return {
-                        country: r.country,
-                        year: r.year,
-                        percentage_of_government_funding: r.percentage_of_government_funding,
-                        percentage_of_private_financing: r.percentage_of_private_financing,
-                        percentage_of_non_profit_funding: r.percentage_of_non_profit_funding
-                    }
-                });
+                if (resources.length != 0) {
+                    var resourcesToSend = resources.map((r) => {
+                        return {
+                            country: r.country,
+                            year: r.year,
+                            percentage_of_government_funding: r.percentage_of_government_funding,
+                            percentage_of_private_financing: r.percentage_of_private_financing,
+                            percentage_of_non_profit_funding: r.percentage_of_non_profit_funding
+                        }
+                    });
+
+                    res.status(200).send(JSON.stringify(resourcesToSend, null, 2));
+                } else {
+                    res.sendStatus(404);
+                }
+
             }
-            res.status(200).send(JSON.stringify(resourcesToSend, null, 2));
+
         });
     });
 
@@ -134,18 +145,23 @@ module.exports.init = (app) => {
             if (err) {
                 console.error(DATABASE_ERR_MSSG + err);
                 res.sendStatus(500);
-            } else {
 
-                var resourceToSend = resource.map((r) => {
-                    return {
-                        country: r.country,
-                        year: r.year,
-                        percentage_of_government_funding: r.percentage_of_government_funding,
-                        percentage_of_private_financing: r.percentage_of_private_financing,
-                        percentage_of_non_profit_funding: r.percentage_of_non_profit_funding
-                    }
-                });
-                res.status(200).send(JSON.stringify(resourceToSend, null, 2));
+            } else {
+                if (resource.length != 0) {
+                    var resourceToSend = resource.map((r) => {
+                        return {
+                            country: r.country,
+                            year: r.year,
+                            percentage_of_government_funding: r.percentage_of_government_funding,
+                            percentage_of_private_financing: r.percentage_of_private_financing,
+                            percentage_of_non_profit_funding: r.percentage_of_non_profit_funding
+                        }
+                    });
+                    res.status(200).send(JSON.stringify(resourceToSend, null, 2));
+                } else {
+                    console.log("Entra");
+                    res.sendStatus(404);
+                }
             }
         });
 
