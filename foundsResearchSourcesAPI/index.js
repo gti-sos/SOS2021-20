@@ -33,6 +33,8 @@ var jmcInitialData = [
     }
 ];
 
+foundsResearchSourcesDB.insert(jmcInitialData);
+
 module.exports.init = (app) => {
 
     //GET /api/v1/foundsresearchsources-stats/loadInitialData"
@@ -123,12 +125,12 @@ module.exports.init = (app) => {
                 if (resource.length == 0) {
 
                     foundsResearchSourcesDB.insert(newResource);
-                    console.log("New resource added: " + JSON.stringify(newResource, null, 2));
+                    console.log("New resource added:\n" + JSON.stringify(newResource, null, 2));
                     res.sendStatus(201);
 
                 } else {
 
-                    console.log("The resource:" + JSON.stringify(newResource, null, 2) + "/nExist on database");
+                    console.log("The resource:\n" + JSON.stringify(newResource, null, 2) + "\nExist on database");
                     res.sendStatus(409);
                 }
 
