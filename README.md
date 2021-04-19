@@ -8,7 +8,7 @@
 - **Repository**: [gti-sos/SOS2021-20](https://github.com/gti-sos/SOS2021-20)
 - **URL**: [http://sos2021-20.herokuapp.com](http://sos2021-20.herokuapp.com)
 -  **APIs**:
-    - [https://sos2021-00.herokuapp.com/api/v1/foundsresearchsources-stats](https://sos2021-00.herokuapp.com/api/v1/foundsresearchsources-stats) (developed by [Jorge Marin
+    - [https://sos2021-20.herokuapp.com/api/v1/foundsresearchsources-stats](https://sos2021-20.herokuapp.com/api/v1/foundsresearchsources-stats) (developed by [Jorge Marin
         Cordero](https://github.com/JorgeMarinC))
     - [https://sos2021-20.herokuapp.com/api/v1/greenhousegasemissions-stats](https://sos2021-20.herokuapp.com/api/v1/greenhousegasemissions-stats) (developed by [Jesús Guerra
         Adame](https://github.com/jesgueada))
