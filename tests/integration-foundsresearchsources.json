@@ -86,9 +86,9 @@
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
-							"pm.test(\"Two countries loaded by loadInitialData\", function () {",
+							"pm.test(\"Five countries loaded by loadInitialData\", function () {",
 							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.length).to.eql(2);",
+							"    pm.expect(jsonData.length).to.eql(5);",
 							"});"
 						],
 						"type": "text/javascript"
@@ -109,7 +109,7 @@
 						"foundsresearchsources-stats"
 					]
 				},
-				"description": "Returns all the data from foundsresearchsources-stats.\nValidation test must return:\n\n- Status code 200.\n- Two objects of the dataset loaded for testing."
+				"description": "Returns all the data from foundsresearchsources-stats.\nValidation test must return:\n\n- Status code 200.\n- Five objects of the dataset loaded for testing."
 			},
 			"response": []
 		},
@@ -572,9 +572,9 @@
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
-							"pm.test(\"Returned array length is 2\", function () {",
+							"pm.test(\"Returned array length is 5\", function () {",
 							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.length).to.eql(2);",
+							"    pm.expect(jsonData.length).to.eql(5);",
 							"});"
 						],
 						"type": "text/javascript"
@@ -601,7 +601,58 @@
 						}
 					]
 				},
-				"description": "Allows you to filter data by all the parameters contianed in the dataset, in this example we are filtering by year but you can set all the parameters you want.\nValidation test must return:\n\n- Status code 200.\n- Two objects of the dataset loaded for testing."
+				"description": "Allows you to filter data by all the parameters contianed in the dataset, in this example we are filtering by year but you can set all the parameters you want.\nValidation test must return:\n\n- Status code 200.\n- Five objects of the dataset loaded for testing."
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/foundsresearchsources-stats?year=2015&limit=3&offset=1 (Parametrized search & Pagination)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Returned array length is 3\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.eql(3);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats?year=2015&limit=3&offset=1",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"foundsresearchsources-stats"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2015"
+						},
+						{
+							"key": "limit",
+							"value": "3"
+						},
+						{
+							"key": "offset",
+							"value": "1"
+						}
+					]
+				},
+				"description": "Allows you to paginate data.\nValidation test must return:\n\n- Status code 200.\n- Three objects of the dataset loaded for testing."
 			},
 			"response": []
 		},
