@@ -7,41 +7,6 @@
 	},
 	"item": [
 		{
-			"name": "/api/v1/foundsresearchsources-stats/loadInitialData",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/loadInitialData",
-					"host": [
-						"{{HOST}}"
-					],
-					"path": [
-						"api",
-						"v1",
-						"foundsresearchsources-stats",
-						"loadInitialData"
-					]
-				},
-				"description": "This endpoint allows you to load the initial dataset on the DB.\nValidation test must return:\n\n- Status code 200."
-			},
-			"response": []
-		},
-		{
 			"name": "/api/v1/foundsresearchsources-stats/loadInitialData (CONFLICT)",
 			"event": [
 				{
@@ -710,6 +675,41 @@
 					]
 				},
 				"description": "Drops all the information contained on database.\nValidation test must return:\n\n- Status code 200."
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/foundsresearchsources-stats/loadInitialData",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/loadInitialData",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"foundsresearchsources-stats",
+						"loadInitialData"
+					]
+				},
+				"description": "This endpoint allows you to load the initial dataset on the DB.\nValidation test must return:\n\n- Status code 200."
 			},
 			"response": []
 		}
