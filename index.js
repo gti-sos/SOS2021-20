@@ -343,3 +343,12 @@ app.delete(BASE_API_PATH + "/greenhousegasemissions-stats", (req, res) => {
     res.status(200).send("datos del recurso eliminados");
     console.log("datos del recurso eliminados");
 });
+
+
+
+//###################################################################################//
+
+// Manage bad requests
+app.all('*', function (req, res) {
+    res.sendStatus(400);
+});
