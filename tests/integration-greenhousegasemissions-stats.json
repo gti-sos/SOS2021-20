@@ -398,6 +398,11 @@
 				}
 			},
 			"response": []
-		}
+		}],
+		"variable": [
+			{
+				"key": "HOST",
+				"value": "localhost:10000"
+			}
 	]
 }
