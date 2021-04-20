@@ -21,8 +21,6 @@ var foundsResearchSourcesSchema = {
     "percentage_of_government_funding": Number,
     "percentage_of_private_financing": Number,
     "percentage_of_non_profit_funding": Number
-
-
 };
 
 //Initial data for foundsresearchsources-stats
@@ -87,7 +85,7 @@ module.exports.init = (app) => {
 
             foundsResearchSourcesDB.insert(jmcInitialData);
             console.log("Dataset loaded sucessfully!!")
-            res.status(200).send("Data created sucessfully!!");
+            res.status(200).send("Data Loaded Successfully");
 
         } else {
 
@@ -137,13 +135,12 @@ module.exports.init = (app) => {
                         }
                     });
 
-                    // res.status(200).send(JSON.stringify(resourcesToSend, null, 2));
-                    if(resourcesToSend.length==1){
-                        res.status(200).send(resourcesToSend[0]);  
-                    }else{
+                    if (resourcesToSend.length == 1) {
+                        res.status(200).send(resourcesToSend[0]);
+                    } else {
                         res.status(200).send(resourcesToSend);
                     }
-                    
+
                 } else {
                     res.sendStatus(404);
                 }
@@ -206,13 +203,13 @@ module.exports.init = (app) => {
                             percentage_of_non_profit_funding: r.percentage_of_non_profit_funding
                         }
                     });
-                    // res.status(200).send(JSON.stringify(resourceToSend, null, 2));
-                    if(resourceToSend.length==1){
-                        res.status(200).send(resourceToSend[0]);  
-                    }else{
+
+                    if (resourceToSend.length == 1) {
+                        res.status(200).send(resourceToSend[0]);
+                    } else {
                         res.status(200).send(resourceToSend);
                     }
-                    
+
                 } else {
                     res.sendStatus(404);
                 }
@@ -234,7 +231,7 @@ module.exports.init = (app) => {
                     res.sendStatus(404);
                 } else {
                     console.log("Removed " + numRemoved + " registers from database");
-                    res.status(200).send("Data deleted successfully!!");
+                    res.status(200).send("Data Deleted Successfully");
                 }
             }
         });
@@ -268,9 +265,9 @@ module.exports.init = (app) => {
                     res.sendStatus(500);
                 } else {
                     if (updateResource.length == 0) {
-                        res.status(404).send("¡Resource not found!");
+                        res.sendStatus(404);
                     } else {
-                        res.status(200).send("¡Resource updated successfully!");
+                        res.status(200).send("Resource Updated Successfully");
                     }
                 }
 
@@ -280,12 +277,12 @@ module.exports.init = (app) => {
 
     //POST /api/v1/foundsresearchsources-stats/country/year (NOT ALLOWED)
     app.post(BASE_API_PATH + JMC_ENDPOINT + "/:country/:year", function (req, res) {
-        res.status(405).send("Method not allowed!!");
+        res.sendStatus(405);
     });
 
     //PUT /api/v1/foundsresearchsources-stats(NOT ALLOWED)
     app.put(BASE_API_PATH + JMC_ENDPOINT, function (req, res) {
-        res.status(405).send("Method not allowed!!");
+        res.sendStatus(405);
     });
 
     //DELETE /api/v1/foundsresearchsources-stats
@@ -300,7 +297,7 @@ module.exports.init = (app) => {
                     res.sendStatus(404);
                 } else {
                     console.log("Removed " + numRemoved + " registers from database");
-                    res.status(200).send("Data deleted successfully!!");
+                    res.status(200).send("Data Deleted Successfully");
                 }
             }
         });

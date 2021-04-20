@@ -19,7 +19,12 @@
 							"pm.test(\"Response time is less than 200ms\", function () {",
 							"    pm.expect(pm.response.responseTime).to.be.below(200);",
 							"});",
-							""
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Conflict\");",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -57,7 +62,12 @@
 							"pm.test(\"Response time is less than 200ms\", function () {",
 							"    pm.expect(pm.response.responseTime).to.be.below(200);",
 							"});",
-							""
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Bad Request\");",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -95,6 +105,12 @@
 							"pm.test(\"Five countries loaded by loadInitialData\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(jsonData.length).to.eql(5);",
+							"});",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
 							"});"
 						],
 						"type": "text/javascript"
@@ -131,6 +147,15 @@
 							"});",
 							"pm.test(\"Response time is less than 200ms\", function () {",
 							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Created\");",
 							"});"
 						],
 						"type": "text/javascript"
@@ -176,6 +201,12 @@
 							"});",
 							"pm.test(\"Response time is less than 200ms\", function () {",
 							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Conflict\");",
 							"});"
 						],
 						"type": "text/javascript"
@@ -221,6 +252,13 @@
 							"});",
 							"pm.test(\"Response time is less than 200ms\", function () {",
 							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"pm.test(\"Test malformed json request\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.status).to.eql(\"bad_request\");",
 							"});"
 						],
 						"type": "text/javascript"
@@ -266,6 +304,12 @@
 							"});",
 							"pm.test(\"Response time is less than 200ms\", function () {",
 							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Method Not Allowed\");",
 							"});"
 						],
 						"type": "text/javascript"
@@ -311,6 +355,12 @@
 							"});",
 							"pm.test(\"Response time is less than 200ms\", function () {",
 							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"pm.test(\"Data deleted succesfully\", function () {",
+							"    pm.response.to.have.body(\"Data Deleted Successfully\");",
 							"});"
 						],
 						"type": "text/javascript"
@@ -349,6 +399,12 @@
 							"});",
 							"pm.test(\"Response time is less than 200ms\", function () {",
 							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"pm.test(\"Resource not found\", function () {",
+							"    pm.response.to.have.body(\"Not Found\");",
 							"});"
 						],
 						"type": "text/javascript"
@@ -387,6 +443,12 @@
 							"});",
 							"pm.test(\"Response time is less than 200ms\", function () {",
 							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"pm.test(\"Resource not found\", function () {",
+							"    pm.response.to.have.body(\"Not Found\");",
 							"});"
 						],
 						"type": "text/javascript"
@@ -425,6 +487,18 @@
 							"});",
 							"pm.test(\"Response time is less than 200ms\", function () {",
 							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"pm.test(\"¿Is the correct resource?\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.country).to.eql(\"denmark\");",
+							"    pm.expect(jsonData.year).to.eql(2015);",
+							"    pm.expect(jsonData.percentage_of_government_funding).to.eql(30.2);",
+							"    pm.expect(jsonData.percentage_of_private_financing).to.eql(59.1);",
+							"    pm.expect(jsonData.percentage_of_non_profit_funding).to.eql(4.4);",
+							"",
 							"});"
 						],
 						"type": "text/javascript"
@@ -463,6 +537,12 @@
 							"});",
 							"pm.test(\"Response time is less than 200ms\", function () {",
 							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"pm.test(\"Resource Updated Successfully\", function () {",
+							"    pm.response.to.have.body(\"Resource Updated Successfully\");",
 							"});"
 						],
 						"type": "text/javascript"
@@ -510,6 +590,13 @@
 							"});",
 							"pm.test(\"Response time is less than 200ms\", function () {",
 							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"pm.test(\"Test malformed json request\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.status).to.eql(\"bad_request\");",
 							"});"
 						],
 						"type": "text/javascript"
@@ -558,6 +645,12 @@
 							"",
 							"pm.test(\"Response time is less than 200ms\", function () {",
 							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"pm.test(\"Body is correct, Method Not Allowed\", function () {",
+							"    pm.response.to.have.body(\"Method Not Allowed\");",
 							"});"
 						],
 						"type": "text/javascript"
@@ -605,6 +698,9 @@
 							"});",
 							"pm.test(\"Response time is less than 200ms\", function () {",
 							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
 							"});"
 						],
 						"type": "text/javascript"
@@ -651,6 +747,18 @@
 							"});",
 							"pm.test(\"Response time is less than 200ms\", function () {",
 							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"pm.test(\"¿Is the correct resource?\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.country).to.eql(\"belgium\");",
+							"    pm.expect(jsonData.year).to.eql(2015);",
+							"    pm.expect(jsonData.percentage_of_government_funding).to.eql(22.5);",
+							"    pm.expect(jsonData.percentage_of_private_financing).to.eql(58.6);",
+							"    pm.expect(jsonData.percentage_of_non_profit_funding).to.eql(0.4);",
+							"",
 							"});"
 						],
 						"type": "text/javascript"
@@ -694,6 +802,9 @@
 							"pm.test(\"Returned array length is 5\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(jsonData.length).to.eql(5);",
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
 							"});"
 						],
 						"type": "text/javascript"
@@ -733,6 +844,9 @@
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
 							"});",
 							"pm.test(\"Returned array length is 3\", function () {",
 							"    var jsonData = pm.response.json();",
@@ -787,6 +901,18 @@
 							"});",
 							"pm.test(\"Response time is less than 200ms\", function () {",
 							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"pm.test(\"¿Is the correct resource?\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.country).to.eql(\"belgium\");",
+							"    pm.expect(jsonData.year).to.eql(2015);",
+							"    pm.expect(jsonData.percentage_of_government_funding).to.eql(22.5);",
+							"    pm.expect(jsonData.percentage_of_private_financing).to.eql(58.6);",
+							"    pm.expect(jsonData.percentage_of_non_profit_funding).to.eql(0.4);",
+							"",
 							"});"
 						],
 						"type": "text/javascript"
@@ -829,7 +955,14 @@
 							"});",
 							"pm.test(\"Response time is less than 200ms\", function () {",
 							"    pm.expect(pm.response.responseTime).to.be.below(200);",
-							"});"
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"pm.test(\"Resource not found\", function () {",
+							"    pm.response.to.have.body(\"Not Found\");",
+							"});",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -870,7 +1003,14 @@
 							"});",
 							"pm.test(\"Response time is less than 200ms\", function () {",
 							"    pm.expect(pm.response.responseTime).to.be.below(200);",
-							"});"
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"pm.test(\"Data Deleted Successfully\", function () {",
+							"    pm.response.to.have.body(\"Data Deleted Successfully\");",
+							"});",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -906,6 +1046,12 @@
 							"});",
 							"pm.test(\"Response time is less than 200ms\", function () {",
 							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"pm.test(\"Data Loaded Sucessfully\", function () {",
+							"    pm.response.to.have.body(\"Data Loaded Successfully\");",
 							"});",
 							""
 						],

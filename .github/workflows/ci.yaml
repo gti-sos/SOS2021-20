@@ -11,9 +11,6 @@ jobs:
       - uses: actions/checkout@v2
       - run: npm install
       - run: npm start &
-      - run: npx newman run tests/integration-foundsresearchsources.json
+      - run: npx newman run tests/integration-foundsresearchsources-stats.json
       - run: npx newman run tests/integration-renewablepowercapacities-stats.json
       - run: npx newman run tests/integration-greenhousegasemissions-stats.json
-      
-      
-      

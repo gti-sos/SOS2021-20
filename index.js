@@ -1,7 +1,7 @@
 // Create constructor function
 var express = require("express");
 
-// Create application with required modules
+// Create service with required modules
 var app = express();
 
 // Instantiate parser for JSON
@@ -10,16 +10,10 @@ var bodyParser = require("body-parser");
 //Allow to parse the response body and get the JSON
 app.use(bodyParser.json());
 
-// Path instantiation
-var path = require('path');
-
 // Define listen port
 var port = process.env.PORT || 10000;
 
-//Define API endpoint
-var BASE_API_PATH = "/api/v1";
-
-// Run the application on the defined port
+// Run the service on the defined port
 app.listen(port, () => {
     console.log("Server Up and listening on port " + port);
 });
@@ -49,34 +43,32 @@ app.get("/info/renewablepowercapacities-stats", (request, response) => {
 
 
 //                         INDIVIDUAL API ENDPOINTS                                  //
-//###################################################################################//
+// ################################################################################# //
 // Student: Jorge Marín Cordero 
 // Resource: foundsresearchsources-stats
 
 var foundsResearchSourcesAPI = require("./foundsResearchSourcesAPI");
 foundsResearchSourcesAPI.init(app);
 
-//###################################################################################//
+// ################################################################################# //
+// Student: Álvaro Caro Jiménez  
+// Resource: renewablepowercapacities-stats
 
-//ALVARO CARO JIMÉNEZ
 var renewablepowercapacities = require("./renewablepowercapacitiesAPI");
 renewablepowercapacities.init(app);
 
-
-
-
-//###################################################################################//
-
+// ################################################################################# //
 // Student: Jesús Guerra Adame  
-// Resource: // Resource: greenhousegasemissions-stats
+// Resource: greenhousegasemissions-stats
 
 var greenhouseGasEmissionsAPI = require("./greenhouseGasEmissionsAPI");
 greenhouseGasEmissionsAPI.init(app);
 
+// ################################################################################# //
 
-//###################################################################################//
 
-// Manage bad requests
+
+// Manage all the malformed url requests
 app.all('*', function (req, res) {
     res.sendStatus(400);
 });
