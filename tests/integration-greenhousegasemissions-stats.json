@@ -6,39 +6,6 @@
 	},
 	"item": [
 		{
-			"name": "greenhousegasemissions-stats",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://{{HOST}}/api/v1/greenhousegasemissions-stats",
-					"protocol": "http",
-					"host": [
-						"{{HOST}}"
-					],
-					"path": [
-						"api",
-						"v1",
-						"greenhousegasemissions-stats"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "loadInitialData",
 			"event": [
 				{
@@ -57,8 +24,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://{{HOST}}/api/v1/greenhousegasemissions-stats/loadInitialData",
-					"protocol": "http",
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats/loadInitialData",
 					"host": [
 						"{{HOST}}"
 					],
@@ -95,8 +61,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://{{HOST}}/api/v1/greenhousegasemissions-stats",
-					"protocol": "http",
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats",
 					"host": [
 						"{{HOST}}"
 					],
@@ -137,8 +102,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://{{HOST}}/api/v1/greenhousegasemissions-stats",
-					"protocol": "http",
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats",
 					"host": [
 						"{{HOST}}"
 					],
@@ -174,8 +138,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://{{HOST}}/api/v1/greenhousegasemissions-stats",
-					"protocol": "http",
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats",
 					"host": [
 						"{{HOST}}"
 					],
@@ -207,8 +170,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://{{HOST}}/api/v1/greenhousegasemissions-stats/italy/2016",
-					"protocol": "http",
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats/italy/2016",
 					"host": [
 						"{{HOST}}"
 					],
@@ -242,8 +204,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://{{HOST}}/api/v1/greenhousegasemissions-stats/italy/2016",
-					"protocol": "http",
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats/italy/2016",
 					"host": [
 						"{{HOST}}"
 					],
@@ -278,8 +239,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://{{HOST}}/api/v1/greenhousegasemissions-stats/italy/2016",
-					"protocol": "http",
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats/italy/2016",
 					"host": [
 						"{{HOST}}"
 					],
@@ -313,8 +273,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "http://{{HOST}}/api/v1/greenhousegasemissions-stats/spain/2014",
-					"protocol": "http",
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats/spain/2014",
 					"host": [
 						"{{HOST}}"
 					],
@@ -352,8 +311,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{HOST}}/api/v1/greenhousegasemissions-stats",
-					"protocol": "http",
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats",
 					"host": [
 						"{{HOST}}"
 					],
@@ -385,8 +343,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://{{HOST}}/api/v1/greenhousegasemissions-stats",
-					"protocol": "http",
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats",
 					"host": [
 						"{{HOST}}"
 					],
@@ -398,11 +355,13 @@
 				}
 			},
 			"response": []
-		}],
-		"variable": [
-			{
-				"key": "HOST",
-				"value": "localhost:10000"
-			}
+		}
+	],
+	"variable": [
+		{
+			"key": "HOST",
+			"value": "http://localhost:10000"
+		}
+
 	]
 }
