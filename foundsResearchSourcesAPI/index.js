@@ -28,7 +28,7 @@ var foundsResearchSourcesSchema = {
 //Initial data for foundsresearchsources-stats
 var jmcInitialData = [
     {
-        "country": "Belgium",
+        "country": "belgium",
         "year": 2015,
         "percentage_of_government_funding": 22.5,
         "percentage_of_private_financing": 58.6,
@@ -37,7 +37,7 @@ var jmcInitialData = [
 
     },
     {
-        "country": "Denmark",
+        "country": "denmark",
         "year": 2015,
         "percentage_of_government_funding": 30.2,
         "percentage_of_private_financing": 59.1,
@@ -46,7 +46,7 @@ var jmcInitialData = [
 
     },
     {
-        "country": "Germany",
+        "country": "germany",
         "year": 2015,
         "percentage_of_government_funding": 27.9,
         "percentage_of_private_financing": 65.7,
@@ -55,7 +55,7 @@ var jmcInitialData = [
 
     },
     {
-        "country": "Ireland",
+        "country": "ireland",
         "year": 2015,
         "percentage_of_government_funding": 26.1,
         "percentage_of_private_financing": 48.7,
@@ -64,7 +64,7 @@ var jmcInitialData = [
 
     },
     {
-        "country": "Greece",
+        "country": "greece",
         "year": 2015,
         "percentage_of_government_funding": 53.1,
         "percentage_of_private_financing": 31.4,
