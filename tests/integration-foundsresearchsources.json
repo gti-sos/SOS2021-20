@@ -142,7 +142,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n            \"country\": \"Italy\",\n            \"year\": 2015,\n            \"percentage_of_government_funding\": 22.5,\n            \"percentage_of_private_financing\": 58.6,\n            \"percentage_of_non_profit_funding\": 0.4\n\n\n        }",
+					"raw": "{\n            \"country\": \"italy\",\n            \"year\": 2015,\n            \"percentage_of_government_funding\": 22.5,\n            \"percentage_of_private_financing\": 58.6,\n            \"percentage_of_non_profit_funding\": 0.4\n\n\n        }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -187,7 +187,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n            \"country\": \"Italy\",\n            \"year\": 2015,\n            \"percentage_of_government_funding\": 22.5,\n            \"percentage_of_private_financing\": 58.6,\n            \"percentage_of_non_profit_funding\": 0.4\n\n\n        }",
+					"raw": "{\n            \"country\": \"italy\",\n            \"year\": 2015,\n            \"percentage_of_government_funding\": 22.5,\n            \"percentage_of_private_financing\": 58.6,\n            \"percentage_of_non_profit_funding\": 0.4\n\n\n        }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -321,7 +321,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/Italy/2015",
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/italy/2015",
 					"host": [
 						"{{HOST}}"
 					],
@@ -329,7 +329,7 @@
 						"api",
 						"v1",
 						"foundsresearchsources-stats",
-						"Italy",
+						"italy",
 						"2015"
 					]
 				},
@@ -359,7 +359,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/Italy/2015",
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/italy/2015",
 					"host": [
 						"{{HOST}}"
 					],
@@ -367,7 +367,7 @@
 						"api",
 						"v1",
 						"foundsresearchsources-stats",
-						"Italy",
+						"italy",
 						"2015"
 					]
 				},
@@ -397,7 +397,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/Denmark/2014",
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/denmark/2014",
 					"host": [
 						"{{HOST}}"
 					],
@@ -405,7 +405,7 @@
 						"api",
 						"v1",
 						"foundsresearchsources-stats",
-						"Denmark",
+						"denmark",
 						"2014"
 					]
 				},
@@ -435,7 +435,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/Denmark/2015",
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/denmark/2015",
 					"host": [
 						"{{HOST}}"
 					],
@@ -443,7 +443,7 @@
 						"api",
 						"v1",
 						"foundsresearchsources-stats",
-						"Denmark",
+						"denmark",
 						"2015"
 					]
 				},
@@ -482,7 +482,7 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/Denmark/2015",
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/denmark/2015",
 					"host": [
 						"{{HOST}}"
 					],
@@ -490,7 +490,7 @@
 						"api",
 						"v1",
 						"foundsresearchsources-stats",
-						"Denmark",
+						"denmark",
 						"2015"
 					]
 				},
@@ -529,7 +529,7 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/Denmark/2015",
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/denmark/2015",
 					"host": [
 						"{{HOST}}"
 					],
@@ -537,7 +537,7 @@
 						"api",
 						"v1",
 						"foundsresearchsources-stats",
-						"Denmark",
+						"denmark",
 						"2015"
 					]
 				},
@@ -577,7 +577,7 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/Italy/2015",
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/italy/2015",
 					"host": [
 						"{{HOST}}"
 					],
@@ -585,7 +585,7 @@
 						"api",
 						"v1",
 						"foundsresearchsources-stats",
-						"Italy",
+						"italy",
 						"2015"
 					]
 				},
@@ -661,7 +661,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats?country=Belgium",
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats?country=belgium",
 					"host": [
 						"{{HOST}}"
 					],
@@ -673,7 +673,7 @@
 					"query": [
 						{
 							"key": "country",
-							"value": "Belgium"
+							"value": "belgium"
 						}
 					]
 				},
