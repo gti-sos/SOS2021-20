@@ -110,7 +110,7 @@ module.exports.init = (app) => {
                     return {
                         country: r.country,
                         year: r.year,
-                        carbon_dioxide: r.carbon-dioxide,
+                        carbon_dioxide: r.carbon_dioxide,
                         methane: r.methane,
                         nitrous_oxide: r.nitrous-oxide
                     }
