@@ -25,7 +25,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://{{local}}:{{puerto}}{{rutaApi}}/loadInitialData",
+					"raw": "{{local}}:{{puerto}}{{rutaApi}}/loadInitialData",
 					"protocol": "http",
 					"host": [
 						"{{local}}"
@@ -61,7 +61,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://{{local}}:{{puerto}}{{rutaApi}}",
+					"raw": "{{local}}:{{puerto}}{{rutaApi}}",
 					"protocol": "http",
 					"host": [
 						"{{local}}"
@@ -467,6 +467,20 @@
 				}
 			},
 			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "local",
+			"value": "localhost"
+		},
+		{
+			"key": "puerto",
+			"value":"10000"
+		},
+		{
+			"key": "rutaApi",
+			"value": "/api/v1/renewablepowercapacities-stats"	
 		}
 	]
 }
