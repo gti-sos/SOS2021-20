@@ -138,7 +138,12 @@ module.exports.init = (app) => {
                     });
 
                     // res.status(200).send(JSON.stringify(resourcesToSend, null, 2));
-                    res.status(200).send(resourcesToSend);
+                    if(resourcesToSend.length==1){
+                        res.status(200).send(resourcesToSend[0]);  
+                    }else{
+                        res.status(200).send(resourcesToSend);
+                    }
+                    
                 } else {
                     res.sendStatus(404);
                 }
@@ -202,7 +207,12 @@ module.exports.init = (app) => {
                         }
                     });
                     // res.status(200).send(JSON.stringify(resourceToSend, null, 2));
-                    res.status(200).send(resourceToSend);
+                    if(resourceToSend.length==1){
+                        res.status(200).send(resourceToSend[0]);  
+                    }else{
+                        res.status(200).send(resourceToSend);
+                    }
+                    
                 } else {
                     res.sendStatus(404);
                 }
