@@ -106,6 +106,7 @@ module.exports.init = (app) => {
                 console.error(DATABASE_ERR_MSSG + err);
                 res.sendStatus(500);
             } else {
+                if(resource.length !=0){
                 var resourcesToSend = resources.map((r) => {
                     return {
                         country: r.country,
@@ -115,8 +116,17 @@ module.exports.init = (app) => {
                         nitrous_oxide: r.nitrous_oxide
                     }
                 });
+                    if(resourceToSend==1){
+                    res.status(200).send(resourcesToSend[0]);
+                    }else{
+                    res.status(200).send(resourcesToSend);
+                    }
+
+                }else{
+                res.sendStatus(404);
+                }
             }
-            res.status(200).send(JSON.stringify(resourcesToSend, null, 2));
+           
         });
     });
 
