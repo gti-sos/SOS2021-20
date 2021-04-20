@@ -1,4 +1,3 @@
-
 // Student: Jorge Marín Cordero 
 // Resource: foundsresearchsources-stats
 
@@ -10,6 +9,21 @@ var JMC_ENDPOINT = "/foundsresearchsources-stats";
 var Datastore = require("nedb");
 var foundsResearchSourcesDB = new Datastore();
 var DATABASE_ERR_MSSG = "Database error in foundsresearchsources-stats API:\n";
+
+//Instantiate paperwork for JSON validation
+var paperwork = require("paperwork");
+
+//Define validation schema
+var foundsResearchSourcesSchema = {
+
+    "country": String,
+    "year": Number,
+    "percentage_of_government_funding": Number,
+    "percentage_of_private_financing": Number,
+    "percentage_of_non_profit_funding": Number
+
+
+};
 
 //Initial data for foundsresearchsources-stats
 var jmcInitialData = [
@@ -63,10 +77,11 @@ var jmcInitialData = [
 
 foundsResearchSourcesDB.insert(jmcInitialData);
 
+
 module.exports.init = (app) => {
 
     //GET /api/v1/foundsresearchsources-stats/loadInitialData"
-    app.get(BASE_API_PATH + JMC_ENDPOINT + "/loadInitialData", (req, res) => {
+    app.get(BASE_API_PATH + JMC_ENDPOINT + "/loadInitialData", function (req, res) {
 
         if (foundsResearchSourcesDB.getAllData().length == 0) {
 
@@ -83,7 +98,7 @@ module.exports.init = (app) => {
 
     //GET /api/v1/foundsresearchsources-stats
     //GET /api/v1/foundsresearchsources-stats?country=COUNTRY&year=YEAR&percentage_of_government_funding=PERC..
-    app.get(BASE_API_PATH + JMC_ENDPOINT, (req, res) => {
+    app.get(BASE_API_PATH + JMC_ENDPOINT, function (req, res) {
         let query = {};
         let offset = 0;
         let limit = Number.MAX_SAFE_INTEGER;
@@ -106,13 +121,13 @@ module.exports.init = (app) => {
         if (req.query.percentage_of_private_financing) query["percentage_of_private_financing"] = parseFloat(req.query.percentage_of_private_financing);
         if (req.query.percentage_of_non_profit_funding) query["percentage_of_non_profit_funding"] = parseFloat(req.query.percentage_of_non_profit_funding);
 
-        foundsResearchSourcesDB.find(query).sort({ country: 1, year: -1 }).skip(offset).limit(limit).exec((err, resources) => {
+        foundsResearchSourcesDB.find(query).sort({ country: 1, year: -1 }).skip(offset).limit(limit).exec(function (err, resources) {
             if (err) {
                 console.error(DATABASE_ERR_MSSG + err);
                 res.sendStatus(500);
             } else {
                 if (resources.length != 0) {
-                    var resourcesToSend = resources.map((r) => {
+                    var resourcesToSend = resources.map(function (r) {
                         return {
                             country: r.country,
                             year: r.year,
@@ -135,13 +150,14 @@ module.exports.init = (app) => {
 
 
     //POST /api/v1/foundsresearchsources-stats
-    app.post(BASE_API_PATH + JMC_ENDPOINT, (req, res) => {
+    app.post(BASE_API_PATH + JMC_ENDPOINT, paperwork.accept(foundsResearchSourcesSchema), function (req, res) {
+
         var newResource = req.body;
 
         foundsResearchSourcesDB.find({
             country: newResource.country,
             year: newResource.year
-        }, (err, resource) => {
+        }, function (err, resource) {
 
             if (err) {
 
@@ -168,15 +184,15 @@ module.exports.init = (app) => {
     });
 
     //GET /api/v1/foundsresearchsources-stats/country/year
-    app.get(BASE_API_PATH + JMC_ENDPOINT + "/:country/:year", (req, res) => {
-        foundsResearchSourcesDB.find({ country: req.params.country, year: parseInt(req.params.year) }, (err, resource) => {
+    app.get(BASE_API_PATH + JMC_ENDPOINT + "/:country/:year", function (req, res) {
+        foundsResearchSourcesDB.find({ country: req.params.country, year: parseInt(req.params.year) }, function (err, resource) {
             if (err) {
                 console.error(DATABASE_ERR_MSSG + err);
                 res.sendStatus(500);
 
             } else {
                 if (resource.length != 0) {
-                    var resourceToSend = resource.map((r) => {
+                    var resourceToSend = resource.map(function (r) {
                         return {
                             country: r.country,
                             year: r.year,
@@ -196,7 +212,7 @@ module.exports.init = (app) => {
     });
 
     //DELETE /api/v1/foundsresearchsources-stats/country/year
-    app.delete(BASE_API_PATH + JMC_ENDPOINT + "/:country/:year", (req, res) => {
+    app.delete(BASE_API_PATH + JMC_ENDPOINT + "/:country/:year", function (req, res) {
         var country = req.params.country;
         var year = parseInt(req.params.year);
         foundsResearchSourcesDB.remove({ country: country, year: year }, {}, function (err, numRemoved) {
@@ -217,7 +233,7 @@ module.exports.init = (app) => {
     });
 
     //PUT /api/v1/foundsresearchsources-stats/country/year
-    app.put(BASE_API_PATH + JMC_ENDPOINT + "/:country/:year", function (req, res) {
+    app.put(BASE_API_PATH + JMC_ENDPOINT + "/:country/:year", paperwork.accept(foundsResearchSourcesSchema), function (req, res) {
 
         var country = req.params.country;
         var year = parseInt(req.params.year);
@@ -236,7 +252,7 @@ module.exports.init = (app) => {
                     percentage_of_non_profit_funding: dataToUpdate.percentage_of_non_profit_funding
                 }
             }
-            , {}, (err, updateResource) => {
+            , {}, function (err, updateResource) {
                 if (err) {
                     console.error("ERROR updating resource: " + err);
                     res.sendStatus(500);
