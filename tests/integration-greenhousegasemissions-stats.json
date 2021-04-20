@@ -24,12 +24,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:10000/api/v1/greenhousegasemissions-stats",
+					"raw": "http://{{HOST}}/api/v1/greenhousegasemissions-stats",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{HOST}}"
 					],
-					"port": "10000",
 					"path": [
 						"api",
 						"v1",
@@ -58,11 +57,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:10000/api/v1/greenhousegasemissions-stats/loadInitialData",
+					"raw": "http://{{HOST}}/api/v1/greenhousegasemissions-stats/loadInitialData",
+					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{HOST}}"
 					],
-					"port": "10000",
 					"path": [
 						"api",
 						"v1",
@@ -83,9 +82,9 @@
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							"pm.test(\"There are two data\", function () {\r",
+							"pm.test(\"There are four data\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.length).to.eql(2);\r",
+							"    pm.expect(jsonData.length).to.eql(4);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -96,12 +95,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://sos2021-20.herokuapp.com/api/v1/greenhousegasemissions-stats",
-					"protocol": "https",
+					"raw": "http://{{HOST}}/api/v1/greenhousegasemissions-stats",
+					"protocol": "http",
 					"host": [
-						"sos2021-20",
-						"herokuapp",
-						"com"
+						"{{HOST}}"
 					],
 					"path": [
 						"api",
@@ -140,11 +137,11 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:10000/api/v1/greenhousegasemissions-stats",
+					"raw": "http://{{HOST}}/api/v1/greenhousegasemissions-stats",
+					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{HOST}}"
 					],
-					"port": "10000",
 					"path": [
 						"api",
 						"v1",
@@ -164,9 +161,9 @@
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							"pm.test(\"There are three data\", function () {\r",
+							"pm.test(\"There are five data\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.length).to.eql(3);\r",
+							"    pm.expect(jsonData.length).to.eql(5);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -177,11 +174,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:10000/api/v1/greenhousegasemissions-stats",
+					"raw": "http://{{HOST}}/api/v1/greenhousegasemissions-stats",
+					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{HOST}}"
 					],
-					"port": "10000",
 					"path": [
 						"api",
 						"v1",
@@ -210,17 +207,17 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:10000/api/v1/greenhousegasemissions-stats/spain/2014",
+					"raw": "http://{{HOST}}/api/v1/greenhousegasemissions-stats/italy/2016",
+					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{HOST}}"
 					],
-					"port": "10000",
 					"path": [
 						"api",
 						"v1",
 						"greenhousegasemissions-stats",
-						"spain",
-						"2014"
+						"italy",
+						"2016"
 					]
 				}
 			},
@@ -245,11 +242,11 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "localhost:10000/api/v1/greenhousegasemissions-stats/italy/2016",
+					"raw": "http://{{HOST}}/api/v1/greenhousegasemissions-stats/italy/2016",
+					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{HOST}}"
 					],
-					"port": "10000",
 					"path": [
 						"api",
 						"v1",
@@ -262,7 +259,7 @@
 			"response": []
 		},
 		{
-			"name": "year/country Copy",
+			"name": "country/year Copy",
 			"event": [
 				{
 					"listen": "test",
@@ -270,7 +267,8 @@
 						"exec": [
 							"pm.test(\"Status code is 404\", function () {\r",
 							"    pm.response.to.have.status(404);\r",
-							"});"
+							"});\r",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -280,11 +278,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:10000/api/v1/greenhousegasemissions-stats/italy/2016",
+					"raw": "http://{{HOST}}/api/v1/greenhousegasemissions-stats/italy/2016",
+					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{HOST}}"
 					],
-					"port": "10000",
 					"path": [
 						"api",
 						"v1",
@@ -315,11 +313,11 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "localhost:10000/api/v1/greenhousegasemissions-stats/spain/2014",
+					"raw": "http://{{HOST}}/api/v1/greenhousegasemissions-stats/spain/2014",
+					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{HOST}}"
 					],
-					"port": "10000",
 					"path": [
 						"api",
 						"v1",
@@ -354,11 +352,11 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:10000/api/v1/greenhousegasemissions-stats",
+					"raw": "http://{{HOST}}/api/v1/greenhousegasemissions-stats",
+					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{HOST}}"
 					],
-					"port": "10000",
 					"path": [
 						"api",
 						"v1",
@@ -387,49 +385,15 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "localhost:10000/api/v1/greenhousegasemissions-stats",
+					"raw": "http://{{HOST}}/api/v1/greenhousegasemissions-stats",
+					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{HOST}}"
 					],
-					"port": "10000",
 					"path": [
 						"api",
 						"v1",
 						"greenhousegasemissions-stats"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "loadInitialData Copy",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:10000/api/v1/greenhousegasemissions-stats/loadInitialData",
-					"host": [
-						"localhost"
-					],
-					"port": "10000",
-					"path": [
-						"api",
-						"v1",
-						"greenhousegasemissions-stats",
-						"loadInitialData"
 					]
 				}
 			},

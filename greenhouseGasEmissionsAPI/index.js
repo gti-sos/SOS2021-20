@@ -164,17 +164,25 @@ module.exports.init = (app) => {
                 console.error(DATABASE_ERR_MSSG + err);
                 res.sendStatus(500);
             } else {
-
+                if (resource.length != 0){
                 var resourceToSend = resource.map((r) => {
                     return {
                         country: r.country,
                         year: r.year,
-                        carbon_dioxide: newResource.carbon_dioxide,
-                        methane: newResource.methane,
-                        nitrous_oxide: newResource.nitrous_oxide
+                        carbon_dioxide: r.carbon_dioxide,
+                        methane: r.methane,
+                        nitrous_oxide: r.nitrous_oxide
                     }
                 });
-                res.status(200).send(JSON.stringify(resourceToSend, null, 2));
+                if (resourceToSend.length==1){
+                    res.status(200).send(resourceToSend[0]);
+                }else{
+                    res.status(200).send(resourceToSend);
+                }
+
+                }else{
+                    res.sendStatus(404);
+                }
             }
         });
 
@@ -189,7 +197,7 @@ module.exports.init = (app) => {
                 console.log(DATABASE_ERR_MSSG + err);
                 res.sendStatus(500);
             } else {
-                if (numRemoved == 0) {
+                if (numRemoved.length == 0) {
                     res.sendStatus(404);
                 } else {
                     console.log("Removed " + numRemoved + " registers from database");
