@@ -423,9 +423,8 @@
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
-							"pm.test(\"One country returned\", function () {",
-							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.length).to.eql(1);",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
 							"});"
 						],
 						"type": "text/javascript"
@@ -448,7 +447,7 @@
 						"2015"
 					]
 				},
-				"description": "Allows you to retrieve data for an especific country on an especific year.\n\nValidation test must return:\n\n- Status code 200.\n- One object of the dataset loaded for testing."
+				"description": "Allows you to retrieve data for an especific country on an especific year.\n\nValidation test must return:\n\n- Status code 200."
 			},
 			"response": []
 		},
@@ -604,9 +603,8 @@
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
-							"pm.test(\"Returned array length is 1\", function () {",
-							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.length).to.eql(1);",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
 							"});"
 						],
 						"type": "text/javascript"
@@ -637,7 +635,7 @@
 						}
 					]
 				},
-				"description": "Allows you to paginate data.\nValidation test must return:\n\n- Status code 200.\n- One object of the dataset loaded for testing."
+				"description": "Allows you to paginate data.\nValidation test must return:\n\n- Status code 200."
 			},
 			"response": []
 		},
@@ -651,9 +649,8 @@
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
-							"pm.test(\"Returned array length is 1\", function () {",
-							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.length).to.eql(1);",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
 							"});"
 						],
 						"type": "text/javascript"
@@ -680,7 +677,7 @@
 						}
 					]
 				},
-				"description": "Allows you to filter data by all the parameters contianed in the dataset, in this example we are filtering by country but you can set all the parameters you want.\nValidation test must return:\n\n- Status code 200.\n- One object of the dataset loaded for testing."
+				"description": "Allows you to filter data by all the parameters contianed in the dataset, in this example we are filtering by country but you can set all the parameters you want.\nValidation test must return:\n\n- Status code 200."
 			},
 			"response": []
 		},
@@ -788,9 +785,8 @@
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
-							"pm.test(\"Returned array length is 1\", function () {",
-							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.length).to.eql(1);",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
 							"});"
 						],
 						"type": "text/javascript"
@@ -817,7 +813,7 @@
 						}
 					]
 				},
-				"description": "Allows you to filter data by all the parameters contianed in the dataset, in this example we are filtering by percentage_of_government_funding but you can set all the parameters you want.\nValidation test must return:\n\n- Status code 200.\n- One object of the dataset loaded for testing."
+				"description": "Allows you to filter data by all the parameters contianed in the dataset, in this example we are filtering by percentage_of_government_funding but you can set all the parameters you want.\nValidation test must return:\n\n- Status code 200."
 			},
 			"response": []
 		},
