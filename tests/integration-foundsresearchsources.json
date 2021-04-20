@@ -1,234 +1,823 @@
 {
 	"info": {
-		"_postman_id": "0c9a4df0-299b-4d92-90e8-36b72364b0bf",
-		"name": "Api Ree",
+		"_postman_id": "e531e837-acaa-40e1-99f5-f5cd423c5d19",
+		"name": "SOS2021-20-foundsresearchsources-stats",
+		"description": "This api brings information about the provenance of the founds for research in the different countries of the European Union.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "PVPC REE",
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {
-					"host": true,
-					"user-agent": true,
-					"accept": true
-				}
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json; application/vnd.esios-api-v1+json",
-						"type": "text"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "Host",
-						"value": "api.esios.ree.es",
-						"type": "text"
-					},
-					{
-						"key": "Authorization",
-						"value": "Token token=\"309f4b3500670181befbb13ebf420459c50fbaf9be22adccb9f9860e20a3d6ae\"",
-						"type": "text"
-					},
-					{
-						"key": "Cookie",
-						"value": "",
-						"type": "text"
+			"name": "/api/v1/foundsresearchsources-stats/loadInitialData (CONFLICT)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 409, the data is loaded\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
 					}
-				],
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
 				"url": {
-					"raw": "http://api.esios.ree.es/archives/70/download_json?locale=es&date=06-01-2021",
-					"protocol": "http",
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/loadInitialData",
 					"host": [
-						"api",
-						"esios",
-						"ree",
-						"es"
+						"{{HOST}}"
 					],
 					"path": [
-						"archives",
-						"70",
-						"download_json"
-					],
-					"query": [
-						{
-							"key": "locale",
-							"value": "es"
-						},
-						{
-							"key": "date",
-							"value": "06-01-2021"
-						}
+						"api",
+						"v1",
+						"foundsresearchsources-stats",
+						"loadInitialData"
 					]
-				}
+				},
+				"description": "Testing conflict when trying to load the dataset twice, its loaded by default when the service starts.\nValidation test must return:\n\n- Status code 409."
 			},
 			"response": []
 		},
 		{
-			"name": "LIsta de archivos tipo json",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Token token=\"309f4b3500670181befbb13ebf420459c50fbaf9be22adccb9f9860e20a3d6ae\"",
-						"type": "text"
+			"name": "/api/v1/foundsresearchsources-stats (BAD REQUEST)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
 					}
-				],
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
 				"url": {
-					"raw": "http://api.esios.ree.es/archives_json",
-					"protocol": "http",
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/llsdjfls",
 					"host": [
-						"api",
-						"esios",
-						"ree",
-						"es"
+						"{{HOST}}"
 					],
 					"path": [
-						"archives_json"
+						"api",
+						"v1",
+						"foundsresearchsources-stats",
+						"llsdjfls"
 					]
-				}
+				},
+				"description": "Testing bad request to a random url.\nValidation test must return:\n\n- Status code 400."
 			},
 			"response": []
 		},
 		{
-			"name": "Energia mensual por comunidades",
+			"name": "/api/v1/foundsresearchsources-stats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Five countries loaded by loadInitialData\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.eql(5);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
-				"auth": {
-					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "Token token=\"309f4b3500670181befbb13ebf420459c50fbaf9be22adccb9f9860e20a3d6ae\"",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization",
-							"type": "string"
-						}
-					]
-				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://api.esios.ree.es/archives/168/download_json?locale=es&date=01-11-2019",
-					"protocol": "http",
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats",
 					"host": [
-						"api",
-						"esios",
-						"ree",
-						"es"
+						"{{HOST}}"
 					],
 					"path": [
-						"archives",
-						"168",
-						"download_json"
+						"api",
+						"v1",
+						"foundsresearchsources-stats"
+					]
+				},
+				"description": "Returns all the data from foundsresearchsources-stats.\nValidation test must return:\n\n- Status code 200.\n- Five objects of the dataset loaded for testing."
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/foundsresearchsources-stats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"country\": \"Italy\",\n            \"year\": 2015,\n            \"percentage_of_government_funding\": 22.5,\n            \"percentage_of_private_financing\": 58.6,\n            \"percentage_of_non_profit_funding\": 0.4\n\n\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"foundsresearchsources-stats"
+					]
+				},
+				"description": "Allows you to insert a new object on database.\nValidation test must return:\n\n- Status code 201."
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/foundsresearchsources-stats (CONFLICT)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 409\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"country\": \"Italy\",\n            \"year\": 2015,\n            \"percentage_of_government_funding\": 22.5,\n            \"percentage_of_private_financing\": 58.6,\n            \"percentage_of_non_profit_funding\": 0.4\n\n\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"foundsresearchsources-stats"
+					]
+				},
+				"description": "Allows you to insert a new object on database.\nValidation test must return:\n\n- Status code 409."
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/foundsresearchsources-stats (BAD REQUEST)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"country\": 34,\n            \"year\": \"2015\",\n            \"percentage_of_government_funding\": \"22.5\",\n            \"percentage_of_private_financing\": \"58.6\",\n            \"percentage_of_non_profit_funding\": \"0.4\"\n\n\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"foundsresearchsources-stats"
+					]
+				},
+				"description": "Allows you to insert a new object on database.\nValidation test must return:\n\n- Status code 400."
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/foundsresearchsources-stats (NOT ALLOWED)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Method not allowed: Status code is 405\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"country\": \"Italy\",\n            \"year\": 2015,\n            \"percentage_of_government_funding\": 30.5,\n            \"percentage_of_private_financing\": 8.6,\n            \"percentage_of_non-profit_funding\": 9.4\n\n\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"foundsresearchsources-stats"
+					]
+				},
+				"description": "Validation test must return:\n\n- Status code 405."
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/foundsresearchsources-stats/resource/year",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/Italy/2015",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"foundsresearchsources-stats",
+						"Italy",
+						"2015"
+					]
+				},
+				"description": "Validation test must return:\n\n- Status code 200."
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/foundsresearchsources-stats/resource/year (NOT FOUND)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Not found: Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/Italy/2015",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"foundsresearchsources-stats",
+						"Italy",
+						"2015"
+					]
+				},
+				"description": "Validation test must return:\n\n- Status code 404."
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/foundsresearchsources-stats/resource/year (NOT FOUND)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/Denmark/2014",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"foundsresearchsources-stats",
+						"Denmark",
+						"2014"
+					]
+				},
+				"description": "Allows you to retrieve data for an especific country on an especific year.\n\nValidation test must return:\n\n- Status code 404."
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/foundsresearchsources-stats/resource/year",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"One country returned\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.eql(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/Denmark/2015",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"foundsresearchsources-stats",
+						"Denmark",
+						"2015"
+					]
+				},
+				"description": "Allows you to retrieve data for an especific country on an especific year.\n\nValidation test must return:\n\n- Status code 200.\n- One object of the dataset loaded for testing."
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/foundsresearchsources-stats/resource/year",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"country\": \"Denmark\",\n        \"year\": 2015,\n        \"percentage_of_government_funding\": 99.2,\n        \"percentage_of_private_financing\": 0.1,\n        \"percentage_of_non_profit_funding\": 0.4\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/Denmark/2015",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"foundsresearchsources-stats",
+						"Denmark",
+						"2015"
+					]
+				},
+				"description": "Update resource by country and year.\nValidation test must return:\n\n- Status code 200."
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/foundsresearchsources-stats/resource/year (BAD REQUEST)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"country\": \"Denmark\",\n        \"year\": \"2015\",\n        \"percentage_of_government_funding\": \"99.2\",\n        \"percentage_of_private_financing\": \"0.1\",\n        \"percentage_of_non_profit_funding\": \"0.4\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/Denmark/2015",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"foundsresearchsources-stats",
+						"Denmark",
+						"2015"
+					]
+				},
+				"description": "Update resource by country and year.\nValidation test must return:\n\n- Status code 400."
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/foundsresearchsources-stats/resource/year (NOT ALLOWED)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Method not allowed: Status code is 405\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"country\": \"Italy\",\n        \"year\": 2015,\n        \"percentage_of_government_funding\": 70.2,\n        \"percentage_of_private_financing\": 9.1,\n        \"percentage_of_non-profit_funding\": 4.4\n\n\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/Italy/2015",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"foundsresearchsources-stats",
+						"Italy",
+						"2015"
+					]
+				},
+				"description": "Validation test must return:\n\n- Status code 405."
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/foundsresearchsources-stats?limit=1&offset=2 (Pagination)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Returned array length is 1\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.eql(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats?limit=1&offset=1",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"foundsresearchsources-stats"
 					],
 					"query": [
 						{
-							"key": "locale",
-							"value": "es"
+							"key": "limit",
+							"value": "1"
 						},
 						{
-							"key": "date",
-							"value": "01-11-2019"
+							"key": "offset",
+							"value": "1"
 						}
 					]
-				}
+				},
+				"description": "Allows you to paginate data.\nValidation test must return:\n\n- Status code 200.\n- One object of the dataset loaded for testing."
 			},
 			"response": []
 		},
 		{
-			"name": "Participantes de REE",
+			"name": "/api/v1/foundsresearchsources-stats?country=Belgium (Parametrized search 1)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Returned array length is 1\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.eql(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
-				"auth": {
-					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "Token token=\"309f4b3500670181befbb13ebf420459c50fbaf9be22adccb9f9860e20a3d6ae\"",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization",
-							"type": "string"
-						}
-					]
-				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://api.esios.ree.es/archives/111/download_json?locale=es",
-					"protocol": "http",
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats?country=Belgium",
 					"host": [
-						"api",
-						"esios",
-						"ree",
-						"es"
+						"{{HOST}}"
 					],
 					"path": [
-						"archives",
-						"111",
-						"download_json"
+						"api",
+						"v1",
+						"foundsresearchsources-stats"
 					],
 					"query": [
 						{
-							"key": "locale",
-							"value": "es"
+							"key": "country",
+							"value": "Belgium"
 						}
 					]
 				},
-				"description": "Generadoras disribuidoras brokers (todos los agentes de la red con sus identificadores)"
+				"description": "Allows you to filter data by all the parameters contianed in the dataset, in this example we are filtering by country but you can set all the parameters you want.\nValidation test must return:\n\n- Status code 200.\n- One object of the dataset loaded for testing."
 			},
 			"response": []
 		},
 		{
-			"name": "ParticipantesSubasta",
+			"name": "/api/v1/foundsresearchsources-stats?year=2015 (Parametrized search 2)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Returned array length is 5\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.eql(5);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
-				"auth": {
-					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "Token token=\"309f4b3500670181befbb13ebf420459c50fbaf9be22adccb9f9860e20a3d6ae\"",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization",
-							"type": "string"
-						}
-					]
-				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://api.esios.ree.es/archives/84/download_json?locale=es",
-					"protocol": "http",
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats?year=2015",
 					"host": [
-						"api",
-						"esios",
-						"ree",
-						"es"
+						"{{HOST}}"
 					],
 					"path": [
-						"archives",
-						"84",
-						"download_json"
+						"api",
+						"v1",
+						"foundsresearchsources-stats"
 					],
 					"query": [
 						{
-							"key": "locale",
-							"value": "es"
+							"key": "year",
+							"value": "2015"
+						}
+					]
+				},
+				"description": "Allows you to filter data by all the parameters contianed in the dataset, in this example we are filtering by year but you can set all the parameters you want.\nValidation test must return:\n\n- Status code 200.\n- Five objects of the dataset loaded for testing."
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/foundsresearchsources-stats?year=2015&limit=3&offset=1 (Parametrized search & Pagination)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Returned array length is 3\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.eql(3);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats?year=2015&limit=3&offset=1",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"foundsresearchsources-stats"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2015"
+						},
+						{
+							"key": "limit",
+							"value": "3"
+						},
+						{
+							"key": "offset",
+							"value": "1"
+						}
+					]
+				},
+				"description": "Allows you to paginate data.\nValidation test must return:\n\n- Status code 200.\n- Three objects of the dataset loaded for testing."
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/foundsresearchsources-stats?percentage_of_government_funding=22.5 (Parametrized search 3)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Returned array length is 1\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.eql(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats?percentage_of_government_funding=22.5",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"foundsresearchsources-stats"
+					],
+					"query": [
+						{
+							"key": "percentage_of_government_funding",
+							"value": "22.5"
+						}
+					]
+				},
+				"description": "Allows you to filter data by all the parameters contianed in the dataset, in this example we are filtering by percentage_of_government_funding but you can set all the parameters you want.\nValidation test must return:\n\n- Status code 200.\n- One object of the dataset loaded for testing."
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/foundsresearchsources-stats?percentage_of_government_funding=100 (Parametrized search NOT FOUND)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats?percentage_of_government_funding=100",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"foundsresearchsources-stats"
+					],
+					"query": [
+						{
+							"key": "percentage_of_government_funding",
+							"value": "100"
 						}
 					]
 				}
@@ -236,15 +825,78 @@
 			"response": []
 		},
 		{
-			"name": "/bin/sh -c watch '/lifebit/main.py' &>/dev/null & python3 app.py",
+			"name": "/api/v1/foundsresearchsources-stats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"foundsresearchsources-stats"
+					]
+				},
+				"description": "Drops all the information contained on database.\nValidation test must return:\n\n- Status code 200."
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/foundsresearchsources-stats/loadInitialData",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
-				}
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/loadInitialData",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"foundsresearchsources-stats",
+						"loadInitialData"
+					]
+				},
+				"description": "This endpoint allows you to load the initial dataset on the DB.\nValidation test must return:\n\n- Status code 200."
 			},
 			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "HOST",
+			"value": "localhost:10000"
 		}
 	]
 }
