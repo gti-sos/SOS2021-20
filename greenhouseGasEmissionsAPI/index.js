@@ -20,7 +20,7 @@ var greenhouseGasEmissionsSchema = {
     "year": Number,
     "carbon_dioxide": Number,
     "methane": Number,
-    "methane": Number
+    "nitrous_oxide": Number
 
 
 };
@@ -110,9 +110,9 @@ module.exports.init = (app) => {
                     return {
                         country: r.country,
                         year: r.year,
-                        carbon_dioxide: r.carbon-dioxide,
+                        carbon_dioxide: r.carbon_dioxide,
                         methane: r.methane,
-                        nitrous_oxide: r.nitrous-oxide
+                        nitrous_oxide: r.nitrous_oxide
                     }
                 });
             }
