@@ -1,0 +1,472 @@
+{
+	"info": {
+		"_postman_id": "1f486889-3cd2-40ac-9447-5f01c75f1bdb",
+		"name": "API renewablepowercapacities",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CARGAR DATOS",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\",function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{local}}:{{puerto}}{{rutaApi}}/loadInitialData",
+					"protocol": "http",
+					"host": [
+						"{{local}}"
+					],
+					"port": "{{puerto}}{{rutaApi}}",
+					"path": [
+						"loadInitialData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /renewablepowercapacities-stats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\",function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"cargado dos o mas datos\", function(){\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(2);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{local}}:{{puerto}}{{rutaApi}}",
+					"protocol": "http",
+					"host": [
+						"{{local}}"
+					],
+					"port": "{{puerto}}{{rutaApi}}"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET VERDATOS ACTUALIZADOS",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\",function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{local}}:{{puerto}}{{rutaApi}}",
+					"protocol": "http",
+					"host": [
+						"{{local}}"
+					],
+					"port": "{{puerto}}{{rutaApi}}"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD DATO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\",function(){\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"country\": \"italy\",\r\n    \"year\": 2018,\r\n    \"solar_production_in_megawatts\": 22586736,\r\n    \"hydraulic_production_in_megawatts\": 78799700,\r\n    \"wind_power_production_in_megawatts\": 45060000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{local}}:{{puerto}}/api/v1/renewablepowercapacities-stats",
+					"protocol": "http",
+					"host": [
+						"{{local}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"api",
+						"v1",
+						"renewablepowercapacities-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET VERDATOS AÑADIDOS",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\",function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{local}}:{{puerto}}{{rutaApi}}",
+					"protocol": "http",
+					"host": [
+						"{{local}}"
+					],
+					"port": "{{puerto}}{{rutaApi}}"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ACTUALIZAR PAIS/ANO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\",function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"country\": \"belgium\",\r\n    \"year\": 2018,\r\n    \"solar_production_in_megawatts\": 63586736,\r\n    \"hydraulic_production_in_megawatts\": 22799700,\r\n    \"wind_power_production_in_megawatts\": 12060000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{local}}:{{puerto}}{{rutaApi}}/germany/2018",
+					"protocol": "http",
+					"host": [
+						"{{local}}"
+					],
+					"port": "{{puerto}}{{rutaApi}}",
+					"path": [
+						"germany",
+						"2018"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET PAIS ANO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\",function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{local}}:{{puerto}}{{rutaApi}}/germany/2018",
+					"protocol": "http",
+					"host": [
+						"{{local}}"
+					],
+					"port": "{{puerto}}{{rutaApi}}",
+					"path": [
+						"germany",
+						"2018"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PAGINACION",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\",function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{local}}:{{puerto}}{{rutaApi}}?limit=1",
+					"protocol": "http",
+					"host": [
+						"{{local}}"
+					],
+					"port": "{{puerto}}{{rutaApi}}",
+					"query": [
+						{
+							"key": "limit",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BORRAR PAIS/ANO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\",function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{local}}:{{puerto}}{{rutaApi}}/italy/2018",
+					"protocol": "http",
+					"host": [
+						"{{local}}"
+					],
+					"port": "{{puerto}}{{rutaApi}}",
+					"path": [
+						"italy",
+						"2018"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET VERDATOS ACTUALIZADOS",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\",function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{local}}:{{puerto}}{{rutaApi}}",
+					"protocol": "http",
+					"host": [
+						"{{local}}"
+					],
+					"port": "{{puerto}}{{rutaApi}}"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ERROR BUSCAR PAIS",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\",function(){\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{local}}:{{puerto}}{{rutaApi}}/paisNoexiste/2018",
+					"protocol": "http",
+					"host": [
+						"{{local}}"
+					],
+					"port": "{{puerto}}{{rutaApi}}",
+					"path": [
+						"paisNoexiste",
+						"2018"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR - POST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 405\",function(){\r",
+							"    pm.response.to.have.status(405);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://{{local}}:{{puerto}}{{rutaApi}}/belgium/2018",
+					"protocol": "http",
+					"host": [
+						"{{local}}"
+					],
+					"port": "{{puerto}}{{rutaApi}}",
+					"path": [
+						"belgium",
+						"2018"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR - PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 405\",function(){\r",
+							"    pm.response.to.have.status(405);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://{{local}}:{{puerto}}{{rutaApi}}",
+					"protocol": "http",
+					"host": [
+						"{{local}}"
+					],
+					"port": "{{puerto}}{{rutaApi}}"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BORRAR TODO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\",function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{local}}:{{puerto}}{{rutaApi}}",
+					"protocol": "http",
+					"host": [
+						"{{local}}"
+					],
+					"port": "{{puerto}}{{rutaApi}}"
+				}
+			},
+			"response": []
+		}
+	]
+}

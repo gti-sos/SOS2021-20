@@ -77,17 +77,28 @@ module.exports.init = (app) => {
                 console.error(DATABASE_ERR_MSSG + err);
                 res.sendStatus(500);
             } else {
-                var resourcesToSend = resources.map((r) => {
+                if (resources.length != 0) {
+                    var resourcesToSend = resources.map((r) => {
                     return {
                         country: r.country,
                         year: r.year,
                         solar_production_in_megawatts: r.solar_production_in_megawatts,
                         hydraulic_production_in_megawatts: r.hydraulic_production_in_megawatts,
                         wind_power_production_in_megawatts: r.wind_power_production_in_megawatts
+                        }
+                    });
+           
+                    if(resourcesToSend.length==1){
+                        res.status(200).send(resourcesToSend[0]);  
+                    }else{
+                        res.status(200).send(resourcesToSend);
                     }
-                });
-            }
-            res.status(200).send(JSON.stringify(resourcesToSend, null, 2));
+                } else {
+                    res.sendStatus(404);
+                }
+             }
+
+           
         });
     });
 
@@ -112,9 +123,16 @@ module.exports.init = (app) => {
 
                 if (resource.length == 0) {
 
-                    renewablepowercapacitiesDB.insert(newResource);
-                    console.log("New resource added: " + JSON.stringify(newResource, null, 2));
-                    res.sendStatus(201);
+                    if(!newResource.country || !newResource.solar_production_in_megawatts || !newResource.hydraulic_production_in_megawatts || !newResource.wind_power_production_in_megawatts){
+
+                        res.sendStatus(400);
+
+                    }else{
+                        renewablepowercapacitiesDB.insert(newResource);
+                        console.log("New resource added: " + JSON.stringify(newResource, null, 2));
+                        res.sendStatus(201);
+                    }
+                    
 
                 } else {
 
@@ -134,17 +152,25 @@ module.exports.init = (app) => {
                 console.error(DATABASE_ERR_MSSG + err);
                 res.sendStatus(500);
             } else {
-
-                var resourceToSend = resource.map((r) => {
-                    return {
-                        country: r.country,
-                        year: r.year,
-                        solar_production_in_megawatts: r.solar_production_in_megawatts,
-                        hydraulic_production_in_megawatts: r.hydraulic_production_in_megawatts,
-                        wind_power_production_in_megawatts: r.wind_power_production_in_megawatts
-                    }
-                });
-                res.status(200).send(JSON.stringify(resourceToSend, null, 2));
+                if (resource.length != 0) {
+                        var resourceToSend = resource.map((r) => {
+                            return {
+                                country: r.country,
+                                year: r.year,
+                                solar_production_in_megawatts: r.solar_production_in_megawatts,
+                                hydraulic_production_in_megawatts: r.hydraulic_production_in_megawatts,
+                                wind_power_production_in_megawatts: r.wind_power_production_in_megawatts
+                            }
+                        });
+               // res.status(200).send(JSON.stringify(resourcesToSend[0], null, 2));
+               if(resourceToSend.length==1){
+                    res.status(200).send(resourceToSend[0]);  
+                }else{
+                    res.status(200).send(resourceToSend);
+                }
+                } else {
+                    res.sendStatus(404);
+                }
             }
         });
 
