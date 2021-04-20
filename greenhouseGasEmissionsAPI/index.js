@@ -65,7 +65,7 @@ var jga_initialData = [
 module.exports.init = (app) => {
 
     //GET /api/v1/greenhousegasemissions-stats/loadInitialData"
-    app.get(BASE_API_PATH + "greenhousegasemissions-stats/loadInitialData", (req, res) => {
+    app.get(BASE_API_PATH + "/greenhousegasemissions-stats/loadInitialData", (req, res) => {
 
         if (greenhousegasemissionsDB.getAllData().length == 0) {
             greenhousegasemissionsDB.insert(jga_initialData);
@@ -78,7 +78,7 @@ module.exports.init = (app) => {
 
     //GET /api/v1/greenhousegasemissions-stats
     //GET /api/v1/greenhousegasemissions-stats?country=COUNTRY&year=YEAR&carbon-dioxide=CARBON-..
-    app.get(BASE_API_PATH + "greenhousegasemissions-stats", (req, res) => {
+    app.get(BASE_API_PATH + "/greenhousegasemissions-stats", (req, res) => {
         let query = {};
         let offset = 0;
         let limit = Number.MAX_SAFE_INTEGER;
@@ -122,7 +122,7 @@ module.exports.init = (app) => {
 
 
     //POST /api/v1/greenhousegasemissions-stats
-    app.post(BASE_API_PATH +"greenhousegasemissions-stats", (req, res) => {
+    app.post(BASE_API_PATH +"/greenhousegasemissions-stats", (req, res) => {
         var newResource = req.body;
 
         greenhousegasemissionsDB.find({
@@ -158,7 +158,7 @@ module.exports.init = (app) => {
     });
 
     //GET /api/v1/greenhousegasemissions-stats/country/year
-    app.get(BASE_API_PATH + "greenhousegasemissions-stats/:country/:year", (req, res) => {
+    app.get(BASE_API_PATH + "/greenhousegasemissions-stats/:country/:year", (req, res) => {
         greenhousegasemissionsDB.find({ country: req.params.country, year: parseInt(req.params.year) }, (err, resource) => {
             if (err) {
                 console.error(DATABASE_ERR_MSSG + err);
@@ -181,7 +181,7 @@ module.exports.init = (app) => {
     });
 
     //DELETE /api/v1/greenhousegasemissions-stats/country/year
-    app.delete(BASE_API_PATH + "greenhousegasemissions-stats/:country/:year", (req, res) => {
+    app.delete(BASE_API_PATH + "/greenhousegasemissions-stats/:country/:year", (req, res) => {
         var country = req.params.country;
         var year = parseInt(req.params.year);
         greenhousegasemissionsDB.remove({ country: country, year: year }, {}, function (err, numRemoved) {
@@ -202,7 +202,7 @@ module.exports.init = (app) => {
     });
 
     //PUT /api/v1/greenhousegasemissions-stats/country/year
-    app.put(BASE_API_PATH + "greenhousegasemissions-stats/:country/:year", function (req, res) {
+    app.put(BASE_API_PATH + "/greenhousegasemissions-stats/:country/:year", function (req, res) {
 
         var country = req.params.country;
         var year = parseInt(req.params.year);
@@ -238,17 +238,17 @@ module.exports.init = (app) => {
 
 
     //POST /api/v1/greenhousegasemissions-stats/country/year (NOT ALLOWED)
-    app.post(BASE_API_PATH + "greenhousegasemissions-stats/:country/:year", function (req, res) {
+    app.post(BASE_API_PATH + "/greenhousegasemissions-stats/:country/:year", function (req, res) {
         res.status(405).send("Method not allowed!!");
     });
 
     //PUT /api/v1/greenhousegasemissions-stats(NOT ALLOWED)
-    app.put(BASE_API_PATH + "greenhousegasemissions-stats", function (req, res) {
+    app.put(BASE_API_PATH + "/greenhousegasemissions-stats", function (req, res) {
         res.status(405).send("Method not allowed!!");
     });
 
     //DELETE /api/v1/greenhousegasemissions-stats
-    app.delete(BASE_API_PATH + "greenhousegasemissions-stats", (req, res) => {
+    app.delete(BASE_API_PATH + "/greenhousegasemissions-stats", (req, res) => {
 
         greenhousegasemissionsDB.remove({}, { multi: true }, function (err, numRemoved) {
             if (err) {
