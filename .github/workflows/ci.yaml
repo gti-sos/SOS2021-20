@@ -12,4 +12,4 @@ jobs:
       - run: npm install
       - run: npm start &
       - run: npx newman run tests/integration-foundsresearchsources.json
-      - run: npx newman run integration-greenhousegasemissions-stats.json
+      - run: npx newman run tests/integration-greenhousegasemissions-stats.json
