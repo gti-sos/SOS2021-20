@@ -31,11 +31,11 @@
     <Table bordered responsive> 
         <thead>
         <tr>
-            <td>country</td>
-            <td>year</td>
-            <td>percentage_of_government_funding</td>
-            <td>percentage_of_private_financing</td>
-            <td>percentage_of_non_profit_funding</td>
+            <td>País</td>
+            <td>Año</td>
+            <td>Porcentaje financiación estatal</td>
+            <td>Porcentaje financiación privado</td>
+            <td>Porcentaje financiación ongs</td>
         </tr>
     </thead>
     <tbody>
