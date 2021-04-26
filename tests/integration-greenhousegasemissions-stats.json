@@ -6,14 +6,14 @@
 	},
 	"item": [
 		{
-			"name": "loadInitialData",
+			"name": "loadInitialData(409)",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
+							"pm.test(\"Status code is 409\", function () {\r",
+							"    pm.response.to.have.status(409);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -33,6 +33,40 @@
 						"v1",
 						"greenhousegasemissions-stats",
 						"loadInitialData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "greenhousegasemissions-stats(400)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Bad request, status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats/loadInitialData/ccyy",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"greenhousegasemissions-stats",
+						"loadInitialData",
+						"ccyy"
 					]
 				}
 			},
@@ -95,6 +129,88 @@
 				"body": {
 					"mode": "raw",
 					"raw": "        {\r\n        \"country\": \"italy\",\r\n\t\"year\": 2016,\r\n\t\"carbon-dioxide\": 268.71585,\r\n\t\"methane\": 1.51641,\r\n    \"nitrous-oxide\": 0.06049\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"greenhousegasemissions-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "new data(409)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 409 \", function () {\r",
+							"    pm.response.to.have.status(409);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "        {\r\n        \"country\": \"italy\",\r\n\t\"year\": 2016,\r\n\t\"carbon-dioxide\": 268.71585,\r\n\t\"methane\": 1.51641,\r\n    \"nitrous-oxide\": 0.06049\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"greenhousegasemissions-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "new data(400)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400 \", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "        {\r\n        \"country\": italy,\r\n\t\"year\": 2018,\r\n\t\"carbon-dioxide\": 268.71585,\r\n\t\"methane\": 1.51641,\r\n    \"nitrous-oxide\": 0.06049\r\n        }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -186,7 +302,7 @@
 			"response": []
 		},
 		{
-			"name": "country/year",
+			"name": "country/year(200)",
 			"event": [
 				{
 					"listen": "test",
@@ -194,6 +310,40 @@
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats/italy/2016",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"greenhousegasemissions-stats",
+						"italy",
+						"2016"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "country/year(404)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -356,12 +506,5 @@
 			},
 			"response": []
 		}
-	],
-	"variable": [
-		{
-			"key": "HOST",
-			"value": "http://localhost:10000"
-		}
-
 	]
 }
