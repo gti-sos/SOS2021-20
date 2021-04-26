@@ -5,6 +5,7 @@
 	import NotFoundPage from "./NotFoundPage.svelte";
 	import FoundsResearchSourcesStats from "./FoundsResearchSourcesStats.svelte";
 	import GreenhouseGasEmissions from "./GreenhouseGasEmissions.svelte";
+	import RenewablePowerCapacities from "./RenewablePowerCapacities.svelte";
 	
 	import {Navbar,NavbarBrand,Nav,NavItem,NavLink} from 'sveltestrap';
 	
@@ -12,6 +13,7 @@
 		"/": HomePage,
 		"/foundsresearchsources-stats": FoundsResearchSourcesStats,
 		"/greenhousegasemissions-stats": GreenhouseGasEmissions,
+		"/renewablepowercapacities-stats": RenewablePowerCapacities,
 		"*": NotFoundPage,
 		
 	};
@@ -31,6 +33,9 @@
               </NavItem>
 			  <NavItem  >
                 <NavLink href="/#/greenhousegasemissions-stats">Emisiones de gases de efecto invernadero</NavLink>
+              </NavItem>
+			  <NavItem  >
+                <NavLink href="/#/renewablepowercapacities-stats">Capacidad de producción de energia renovable </NavLink>
               </NavItem>
             </Nav>
         </Navbar>

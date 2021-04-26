@@ -52,7 +52,7 @@
         <ul>
             <li>Api link: <a href="#/foundsresearchsources-stats">/foundsresearchsources-stats</a>
                 (Developed by: Jorge Marín Cordero)</li>
-            <li>Api link: <a href="#/">/renewablepowercapacities-stats</a>
+            <li>Api link: <a href="#/renewablepowercapacities-stats">/renewablepowercapacities-stats</a>
                 (Developed by: Álvaro Caro Jiménez)</li>
             <li>Api link: <a href="#/greenhousegasemissions-stats">/greenhousegasemissions-stats</a>
                 (Developed by: Jesús Guerra Adame)</li>
