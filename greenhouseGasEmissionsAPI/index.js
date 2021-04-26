@@ -60,6 +60,7 @@ var jga_initialData = [
     
 
 ];
+greenhousegasemissionsDB.insert(jga_initialData);
 
 
 module.exports.init = (app) => {
@@ -69,7 +70,8 @@ module.exports.init = (app) => {
 
         if (greenhousegasemissionsDB.getAllData().length == 0) {
             greenhousegasemissionsDB.insert(jga_initialData);
-            res.status(200).send("Data created sucessfully!!");
+            console.log("Dataset loaded sucessfully!!");
+            res.status(200).send("Data loaded sucessfully!!");
         } else {
             res.sendStatus(409);
         }

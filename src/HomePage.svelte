@@ -54,7 +54,7 @@
                 (Developed by: Jorge Marín Cordero)</li>
             <li>Api link: <a href="#/">/renewablepowercapacities-stats</a>
                 (Developed by: Álvaro Caro Jiménez)</li>
-            <li>Api link: <a href="#/">/greenhousegasemissions-stats</a>
+            <li>Api link: <a href="#/greenhousegasemissions-stats">/greenhousegasemissions-stats</a>
                 (Developed by: Jesús Guerra Adame)</li>
         </ul>
 

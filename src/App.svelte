@@ -4,12 +4,14 @@
 	import HomePage from "./HomePage.svelte";
 	import NotFoundPage from "./NotFoundPage.svelte";
 	import FoundsResearchSourcesStats from "./FoundsResearchSourcesStats.svelte";
+	import GreenhouseGasEmissions from "./GreenhouseGasEmissions.svelte";
 	
 	import {Navbar,NavbarBrand,Nav,NavItem,NavLink} from 'sveltestrap';
 	
 	const routes = {
 		"/": HomePage,
 		"/foundsresearchsources-stats": FoundsResearchSourcesStats,
+		"/greenhousegasemissions-stats": GreenhouseGasEmissions,
 		"*": NotFoundPage,
 		
 	};
@@ -26,6 +28,9 @@
               </NavItem>
 			  <NavItem  >
                 <NavLink href="/#/foundsresearchsources-stats">Founds research sources stats</NavLink>
+              </NavItem>
+			  <NavItem  >
+                <NavLink href="/#/greenhousegasemissions-stats">Greenhouse gas emissions stats</NavLink>
               </NavItem>
             </Nav>
         </Navbar>
