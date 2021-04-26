@@ -53,4 +53,11 @@
     </Table>
 </body>
 </main>
-
+<style>
+    td{
+        text-align: center;
+    }
+    thead{
+        font-weight: bold;
+    }
+</style>
