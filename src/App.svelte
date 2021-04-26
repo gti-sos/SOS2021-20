@@ -30,7 +30,7 @@
                 <NavLink href="/#/foundsresearchsources-stats">Fuentes de financiación de la investigación</NavLink>
               </NavItem>
 			  <NavItem  >
-                <NavLink href="/#/greenhousegasemissions-stats">Greenhouse gas emissions stats</NavLink>
+                <NavLink href="/#/greenhousegasemissions-stats">Emisiones de gases de efecto invernadero</NavLink>
               </NavItem>
             </Nav>
         </Navbar>

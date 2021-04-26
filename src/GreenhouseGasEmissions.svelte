@@ -26,7 +26,7 @@
 
 </script>
 <main>
-    <p>Greenhouse gas emissions in Europe </p>
+    <p>Emisiones de gases de efecto invernadero en la Unión Europea </p>
     <Table bordered>
         <thead>
             <tr>
