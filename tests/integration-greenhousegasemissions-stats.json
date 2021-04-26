@@ -6,13 +6,13 @@
 	},
 	"item": [
 		{
-			"name": "loadInitialData(409)",
+			"name": "greenhousegasemissions-stats(409)",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 409\", function () {\r",
+							"pm.test(\"Bad request, status code is 409\", function () {\r",
 							"    pm.response.to.have.status(409);\r",
 							"});"
 						],
@@ -57,7 +57,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats/loadInitialData/ccyy",
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats/ccyy",
 					"host": [
 						"{{HOST}}"
 					],
@@ -65,7 +65,6 @@
 						"api",
 						"v1",
 						"greenhousegasemissions-stats",
-						"loadInitialData",
 						"ccyy"
 					]
 				}
@@ -73,7 +72,7 @@
 			"response": []
 		},
 		{
-			"name": "greenhousegasemissions-stats Copy",
+			"name": "greenhousegasemissions-stats(200)",
 			"event": [
 				{
 					"listen": "test",
@@ -109,7 +108,7 @@
 			"response": []
 		},
 		{
-			"name": "new data",
+			"name": "new data(201)",
 			"event": [
 				{
 					"listen": "test",
@@ -128,7 +127,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "        {\r\n        \"country\": \"italy\",\r\n\t\"year\": 2016,\r\n\t\"carbon-dioxide\": 268.71585,\r\n\t\"methane\": 1.51641,\r\n    \"nitrous-oxide\": 0.06049\r\n        }",
+					"raw": "{\r\n    \"country\": \"france\",\r\n\t\"year\": 2016,\r\n\t\"carbon_dioxide\": 268.71585,\r\n\t\"methane\": 1.51641,\r\n    \"nitrous_oxide\": 0.06049\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -169,7 +168,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "        {\r\n        \"country\": \"italy\",\r\n\t\"year\": 2016,\r\n\t\"carbon-dioxide\": 268.71585,\r\n\t\"methane\": 1.51641,\r\n    \"nitrous-oxide\": 0.06049\r\n        }",
+					"raw": "{\r\n    \"country\": \"france\",\r\n\t\"year\": 2016,\r\n\t\"carbon_dioxide\": 268.71585,\r\n\t\"methane\": 1.51641,\r\n    \"nitrous_oxide\": 0.06049\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -210,7 +209,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "        {\r\n        \"country\": italy,\r\n\t\"year\": 2018,\r\n\t\"carbon-dioxide\": 268.71585,\r\n\t\"methane\": 1.51641,\r\n    \"nitrous-oxide\": 0.06049\r\n        }",
+					"raw": "{\r\n    \"country\": 12,\r\n\t\"year\": \"2016\",\r\n\t\"carbon_dioxide\": \"268.71585\",\r\n\t\"methane\": \"1.51641\",\r\n    \"nitrous_oxide\": \"0.06049\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -226,213 +225,6 @@
 						"api",
 						"v1",
 						"greenhousegasemissions-stats"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "greenhousegasemissions-stats Copy",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"pm.test(\"There are five data\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.length).to.eql(5);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats",
-					"host": [
-						"{{HOST}}"
-					],
-					"path": [
-						"api",
-						"v1",
-						"greenhousegasemissions-stats"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "country/year",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats/italy/2016",
-					"host": [
-						"{{HOST}}"
-					],
-					"path": [
-						"api",
-						"v1",
-						"greenhousegasemissions-stats",
-						"italy",
-						"2016"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "country/year(200)",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats/italy/2016",
-					"host": [
-						"{{HOST}}"
-					],
-					"path": [
-						"api",
-						"v1",
-						"greenhousegasemissions-stats",
-						"italy",
-						"2016"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "country/year(404)",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 400\", function () {\r",
-							"    pm.response.to.have.status(400);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats/italy/2016",
-					"host": [
-						"{{HOST}}"
-					],
-					"path": [
-						"api",
-						"v1",
-						"greenhousegasemissions-stats",
-						"italy",
-						"2016"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "country/year Copy",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 404\", function () {\r",
-							"    pm.response.to.have.status(404);\r",
-							"});\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats/italy/2016",
-					"host": [
-						"{{HOST}}"
-					],
-					"path": [
-						"api",
-						"v1",
-						"greenhousegasemissions-stats",
-						"italy",
-						"2016"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "post erróneo",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 405\", function () {\r",
-							"    pm.response.to.have.status(405);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats/spain/2014",
-					"host": [
-						"{{HOST}}"
-					],
-					"path": [
-						"api",
-						"v1",
-						"greenhousegasemissions-stats",
-						"spain",
-						"2014"
 					]
 				}
 			},
@@ -458,7 +250,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": ""
+					"raw": "{\r\n    \"country\": \"spain\",\r\n    \"year\": 2014,\r\n    \"carbon_dioxide\": 268.71585,\r\n    \"methane\": 0.06049\r\n}"
 				},
 				"url": {
 					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats",
@@ -469,6 +261,536 @@
 						"api",
 						"v1",
 						"greenhousegasemissions-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "country/year(200)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats/spain/2014",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"greenhousegasemissions-stats",
+						"spain",
+						"2014"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "country/year(404)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats/spain/2014",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"greenhousegasemissions-stats",
+						"spain",
+						"2014"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "country/year(404)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats/spain/2014",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"greenhousegasemissions-stats",
+						"spain",
+						"2014"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "country/year",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats/belgium/2014",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"greenhousegasemissions-stats",
+						"belgium",
+						"2014"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put(200)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"country\": \"belgium\",\r\n\t\"year\": 2014,\r\n\t\"carbon_dioxide\": 268.71585,\r\n\t\"methane\": 1.51641,\r\n    \"nitrous_oxide\": 0.06049\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats/belgium/2014",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"greenhousegasemissions-stats",
+						"belgium",
+						"2014"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put(400)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"country\": \"belgium\",\r\n\t\"year\": \"2014\",\r\n\t\"carbon_dioxide\": 268.71585,\r\n\t\"methane\": 1.51641,\r\n    \"nitrous_oxide\": 0.06049\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats/belgium/2014",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"greenhousegasemissions-stats",
+						"belgium",
+						"2014"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post erróneo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {\r",
+							"    pm.response.to.have.status(405);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"country\": \"spain\",\r\n    \"year\": 2014,\r\n    \"carbon_dioxide\": 268.71585,\r\n    \"methane\": 0.06049\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats/spain/2014",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"greenhousegasemissions-stats",
+						"spain",
+						"2014"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "greenhousegasemissions-stats(Pagination)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"//pm.test(\"There are five data\", function () {\r",
+							"  //  var jsonData = pm.response.json();\r",
+							"    //pm.expect(jsonData.length).to.eql(5);\r",
+							"//});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats?limit=2&offset=1",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"greenhousegasemissions-stats"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "2"
+						},
+						{
+							"key": "offset",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "greenhousegasemissions-stats(Parametrized search by country)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"//pm.test(\"There are five data\", function () {\r",
+							"  //  var jsonData = pm.response.json();\r",
+							"    //pm.expect(jsonData.length).to.eql(5);\r",
+							"//});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats?country=belgium",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"greenhousegasemissions-stats"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "belgium"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "greenhousegasemissions-stats(Parametrized search by year)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"//pm.test(\"There are five data\", function () {\r",
+							"  //  var jsonData = pm.response.json();\r",
+							"    //pm.expect(jsonData.length).to.eql(5);\r",
+							"//});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats?year=2014",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"greenhousegasemissions-stats"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2014"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "greenhousegasemissions-stats(Parametrized search by year and pagination)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"//pm.test(\"There are five data\", function () {\r",
+							"  //  var jsonData = pm.response.json();\r",
+							"    //pm.expect(jsonData.length).to.eql(5);\r",
+							"//});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats?year=2014&limit=2&offset=1",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"greenhousegasemissions-stats"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2014"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						},
+						{
+							"key": "offset",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "greenhousegasemissions-stats(Parametrized search by methane value)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"//pm.test(\"There are five data\", function () {\r",
+							"  //  var jsonData = pm.response.json();\r",
+							"    //pm.expect(jsonData.length).to.eql(5);\r",
+							"//});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats?methane=1.76903",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"greenhousegasemissions-stats"
+					],
+					"query": [
+						{
+							"key": "methane",
+							"value": "1.76903"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "greenhousegasemissions-stats(Parametrized search by methane value but not found)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"//pm.test(\"There are five data\", function () {\r",
+							"  //  var jsonData = pm.response.json();\r",
+							"    //pm.expect(jsonData.length).to.eql(5);\r",
+							"//});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats?methane=111111",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"greenhousegasemissions-stats"
+					],
+					"query": [
+						{
+							"key": "methane",
+							"value": "111111"
+						}
 					]
 				}
 			},
@@ -501,6 +823,39 @@
 						"api",
 						"v1",
 						"greenhousegasemissions-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "greenhousegasemissions-stats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Bad request, status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats/loadInitialData",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"greenhousegasemissions-stats",
+						"loadInitialData"
 					]
 				}
 			},

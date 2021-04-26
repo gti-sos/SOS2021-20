@@ -34,28 +34,28 @@ var jga_initialData = [
         "year": 2014,
         "carbon_dioxide": 268.71585,
         "methane": 1.51641,
-        "methane": 0.06049
+        "nitrous_oxide": 0.06049,
     },
     {
         "country": "belgium",
         "year": 2014,
         "carbon_dioxide": 105.3731,
         "methane": 0.32512,
-        "nitrous_oxide": 0.02038
+        "nitrous_oxide": 0.02038,
     },
     {
         "country": "italy",
         "year": 2014,
         "carbon_dioxide": 146.71485,
         "methane": 1.76903,
-        "nitrous_oxide": 0.12664
+        "nitrous_oxide": 0.12664,
     },
     {
         "country": "germany",
         "year": 2014,
         "carbon_dioxide": 185.3671,
         "methane": 0.36512,
-        "nitrous_oxide": 0.97038
+        "nitrous_oxide": 0.97038,
     }
     
 
@@ -134,16 +134,14 @@ module.exports.init = (app) => {
 
 
     //POST /api/v1/greenhousegasemissions-stats
-    app.post(BASE_API_PATH +"/greenhousegasemissions-stats", (req, res) => {
+    app.post(BASE_API_PATH +"/greenhousegasemissions-stats", paperwork.accept(greenhouseGasEmissionsSchema), function (req, res){
         var newResource = req.body;
 
         greenhousegasemissionsDB.find({
             country: newResource.country, 
-            year: newResource.year,
-            carbon_dioxide: newResource.carbon_dioxide,
-            methane: newResource.methane,
-            nitrous_oxide: newResource.nitrous_oxide
-        }, (err, resource) => {
+            year: newResource.year
+            
+        }, function(err, resource) {
 
             if (err) {
 
@@ -155,12 +153,12 @@ module.exports.init = (app) => {
                 if (resource.length == 0) {
 
                     greenhousegasemissionsDB.insert(newResource);
-                    console.log("New resource added: " + JSON.stringify(newResource, null, 2));
+                    console.log("New resource added:\n " + JSON.stringify(newResource, null, 2));
                     res.sendStatus(201);
 
                 } else {
 
-                    console.log("The resource exist on database");
+                    console.log("The resource:\n" + JSON.stringify(newResource, null, 2) + "\nExist on database");
                     res.sendStatus(409);
                 }
 
@@ -201,7 +199,7 @@ module.exports.init = (app) => {
     });
 
     //DELETE /api/v1/greenhousegasemissions-stats/country/year
-    app.delete(BASE_API_PATH + "/greenhousegasemissions-stats/:country/:year", (req, res) => {
+    app.delete(BASE_API_PATH + "/greenhousegasemissions-stats/:country/:year", function(req, res) {
         var country = req.params.country;
         var year = parseInt(req.params.year);
         greenhousegasemissionsDB.remove({ country: country, year: year }, {}, function (err, numRemoved) {
@@ -209,7 +207,7 @@ module.exports.init = (app) => {
                 console.log(DATABASE_ERR_MSSG + err);
                 res.sendStatus(500);
             } else {
-                if (numRemoved.length == 0) {
+                if (numRemoved == 0) {
                     res.sendStatus(404);
                 } else {
                     console.log("Removed " + numRemoved + " registers from database");
@@ -222,7 +220,7 @@ module.exports.init = (app) => {
     });
 
     //PUT /api/v1/greenhousegasemissions-stats/country/year
-    app.put(BASE_API_PATH + "/greenhousegasemissions-stats/:country/:year", function (req, res) {
+    app.put(BASE_API_PATH + "/greenhousegasemissions-stats/:country/:year", paperwork.accept(greenhouseGasEmissionsSchema), function (req, res){
 
         var country = req.params.country;
         var year = parseInt(req.params.year);
@@ -241,7 +239,7 @@ module.exports.init = (app) => {
                     nitrous_oxide: dataToUpdate.nitrous_oxide
                 }
             }
-            , {}, (err, updateResource) => {
+            , {}, function(err, updateResource) {
                 if (err) {
                     console.error("ERROR updating resource: " + err);
                     res.sendStatus(500);
@@ -268,7 +266,7 @@ module.exports.init = (app) => {
     });
 
     //DELETE /api/v1/greenhousegasemissions-stats
-    app.delete(BASE_API_PATH + "/greenhousegasemissions-stats", (req, res) => {
+    app.delete(BASE_API_PATH + "/greenhousegasemissions-stats", function(req, res) {
 
         greenhousegasemissionsDB.remove({}, { multi: true }, function (err, numRemoved) {
             if (err) {
