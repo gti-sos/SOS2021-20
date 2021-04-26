@@ -26,7 +26,7 @@
 
 </script>
 <main>
-    <p>Emisiones de gases de efecto invernadero en la Unión Europea </p>
+    <p>Emisiones de gases de efecto invernadero en la Unión Europea medidas en miles de toneladas </p>
     <Table bordered>
         <thead>
             <tr>
@@ -52,6 +52,9 @@
 </main>
 
 <style>
+    p{
+        text-align: center;
+    }
     td{
         text-align: center;
     }
