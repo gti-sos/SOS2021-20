@@ -24,10 +24,10 @@
             <NavbarBrand href="/">SOS2021-20</NavbarBrand>
             <Nav navbar >
               <NavItem  >
-                <NavLink href="/">Home Page</NavLink>
+                <NavLink href="/">Página de inicio</NavLink>
               </NavItem>
 			  <NavItem  >
-                <NavLink href="/#/foundsresearchsources-stats">Founds research sources stats</NavLink>
+                <NavLink href="/#/foundsresearchsources-stats">Fuentes de financiación de la investigación</NavLink>
               </NavItem>
 			  <NavItem  >
                 <NavLink href="/#/greenhousegasemissions-stats">Greenhouse gas emissions stats</NavLink>
