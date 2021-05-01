@@ -47,21 +47,21 @@ app.get("/info/renewablepowercapacities-stats", (request, response) => {
 // Student: Jorge Marín Cordero 
 // Resource: foundsresearchsources-stats
 
-var foundsResearchSourcesAPI = require("./foundsResearchSourcesAPI");
+var foundsResearchSourcesAPI = require("./src/back/foundsResearchSourcesAPI");
 foundsResearchSourcesAPI.init(app);
 
 // ################################################################################# //
 // Student: Álvaro Caro Jiménez  
 // Resource: renewablepowercapacities-stats
 
-var renewablepowercapacities = require("./renewablepowercapacitiesAPI");
+var renewablepowercapacities = require("./src/back/renewablepowercapacitiesAPI");
 renewablepowercapacities.init(app);
 
 // ################################################################################# //
 // Student: Jesús Guerra Adame  
 // Resource: greenhousegasemissions-stats
 
-var greenhouseGasEmissionsAPI = require("./greenhouseGasEmissionsAPI");
+var greenhouseGasEmissionsAPI = require("./src/back/greenhouseGasEmissionsAPI");
 greenhouseGasEmissionsAPI.init(app);
 
 // ################################################################################# //

@@ -1,11 +1,11 @@
 <script>
 
 	import Router from "svelte-spa-router";
-	import HomePage from "./HomePage.svelte";
-	import NotFoundPage from "./NotFoundPage.svelte";
-	import FoundsResearchSourcesStats from "./FoundsResearchSourcesStats.svelte";
-	import GreenhouseGasEmissions from "./GreenhouseGasEmissions.svelte";
-	import RenewablePowerCapacities from "./RenewablePowerCapacities.svelte";
+	import HomePage from "../HomePage.svelte";
+	import NotFoundPage from "../NotFoundPage.svelte";
+	import FoundsResearchSourcesStats from "../FoundsResearchSourcesStats.svelte";
+	import GreenhouseGasEmissions from "../GreenhouseGasEmissions.svelte";
+	import RenewablePowerCapacities from "../RenewablePowerCapacities.svelte";
 	
 	import {Navbar,NavbarBrand,Nav,NavItem,NavLink} from 'sveltestrap';
 	
