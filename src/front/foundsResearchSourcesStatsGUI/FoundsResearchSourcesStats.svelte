@@ -131,6 +131,7 @@
 
         <div class="container" >
             <div class="buttons-center">
+                <h4>Fuentes de financiación de la investigación</h4>
                 <Button color="success" on:click={loadData}>Cargar Datos</Button>
                 <Button color="primary" on:click={() => push("#/foundsresearchsources-stats/update-data")} >Editar Datos </Button>
                 <Button color="danger" on:click={deleteAllData}>Borrar Datos</Button>
@@ -173,7 +174,6 @@
                 {/each}
             </tbody>
         </Table>
-
 
 <style>
     th,td {

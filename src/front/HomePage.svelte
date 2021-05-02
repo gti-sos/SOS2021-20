@@ -19,7 +19,7 @@ import Button from "sveltestrap/src/Button.svelte";
 
     .text-center {
     text-align: center;
-    margin-top: 13em;
-    margin-bottom: 23em;
+    margin-top: 15em;
+    margin-bottom: 23.1em;
 }
 </style>
