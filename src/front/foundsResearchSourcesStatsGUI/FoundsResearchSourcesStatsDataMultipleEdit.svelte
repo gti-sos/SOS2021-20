@@ -114,5 +114,7 @@
     }
     .text-center {
   text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 </style>
