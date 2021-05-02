@@ -16,7 +16,7 @@
 
     async function getData(){
         console.log("Fetching data...");
-        const res = await fetch("/api/v1/greenhousegasemissions-stats" + "/"params.country + "/"params.year);
+        const res = await fetch("/api/v1/greenhousegasemissions-stats" + "/" + params.country + "/"+params.year);
 
         if(res.ok){
             console.log("OK");
