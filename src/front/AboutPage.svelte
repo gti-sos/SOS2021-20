@@ -51,3 +51,9 @@
                 (Desarrollado por: Jesús Guerra Adame)</li>
         </ul>
     </div>
+    <style>
+        .container{
+            margin-top: 2em;
+            margin-bottom: 2em;
+        }
+    </style>
