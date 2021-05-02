@@ -8,6 +8,7 @@
 	import FoundsResearchSourcesStatsDataEdit from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataEdit.svelte"
 	import FoundsResearchSourcesStatsDataMultipleEdit from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataMultipleEdit.svelte"
 	import GreenhouseGasEmissions from "./GreenhouseGasEmissionsStatsGUI/GreenhouseGasEmissions.svelte";
+	import GreenhouseGasEmissionsEdit from "./GreenhouseGasEmissionsStatsGUI/GreenhouseGasEmissionsEdit.svelte";
 	import RenewablePowerCapacities from "./RenewablePowerCapacitiesStatsGUI/RenewablePowerCapacities.svelte";
 
 	import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "sveltestrap";
@@ -19,6 +20,7 @@
 		"/foundsresearchsources-stats/:country/:year": FoundsResearchSourcesStatsDataEdit,
 		"/foundsresearchsources-stats/update-data": FoundsResearchSourcesStatsDataMultipleEdit,
 		"/greenhousegasemissions-stats": GreenhouseGasEmissions,
+		"/greenhousegasemissions-stats/:country/:year": GreenhouseGasEmissionsEdit,
 		"/renewablepowercapacities-stats": RenewablePowerCapacities,
 		"*": NotFoundPage,
 	};

@@ -1,14 +1,22 @@
 <script>
 
     import{onMount}from "svelte";
-    import {push} from "svelte-spa-router";
+    import {pop} from "svelte-spa-router"
     import Table from "sveltestrap/src/Table.svelte";
     import Button from "sveltestrap/src/Button.svelte";
-    let data = [];
+
+    export let params = {};
+    let data = {};
+    let carbon_dioxide = null ;
+    let methane = null;
+    let nitrous_oxide = null;
+    let errorMsg = "";
+
+    onMount(getData);
 
     async function getData(){
         console.log("Fetching data...");
-        const res = await fetch("/api/v1/greenhousegasemissions-stats");
+        const res = await fetch("/api/v1/greenhousegasemissions-stats" + "/"params.country + "/"params.year);
 
         if(res.ok){
             console.log("OK");
@@ -24,7 +32,7 @@
 
 </script>
 <main>
-    <p>Emisiones de gases de efecto invernadero en la Unión Europea medidas en miles de toneladas </p>
+    <h3>Editar datos </h3>
     <Table bordered>
         <thead>
             <tr>
@@ -43,6 +51,8 @@
                 <td>{onedata.carbon_dioxide}</td>
                 <td>{onedata.methane}</td>
                 <td>{onedata.nitrous_oxide}</td>
+                <td><input bind:value="{updateData}"></td>
+                <td><Button outline color="primary" on:click={updateData}>Actualizar</Button></td>
             </tr>
            {/each}
         </tbody>
@@ -62,4 +72,4 @@
 
     }
 
-</style>
+</style> 
