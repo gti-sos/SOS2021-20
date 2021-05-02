@@ -1,61 +1,25 @@
 <script>
+import { push } from "svelte-spa-router";
+import Button from "sveltestrap/src/Button.svelte";
 </script>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>SOS2021-20</title>
 </head>
+    <div class="container">
+        <div class="text-center">
+        <h1>SOS 2021-20</h1>
+        <p class="lead">Bienvenido a la página principal del grupo 20 de la asignatura, Sistemas Orientados a Servicios </p>
 
-<body>
-        <p class="lead">Team 20 landing page for Service oriented Computing Course at the University of Sevilla </p>
+        <Button on:click={()=>push("#/info")}>Sobre nosotros</Button>
+        </div>
+    </div>
+<style>
 
-        <h3>Team:</h3>
-
-        <ul>
-            <li>Jorge Marín Cordero, link to github account: <a
-                    href="https://github.com/JorgeMarinC">https://github.com/JorgeMarinC</a></li>
-            <li>Álvaro Caro Jiménez, link to github account: <a
-                    href="https://github.com/alvcarjim1">https://github.com/alvcarjim1</a></li>
-            <li>Jesús Guerra Adame, link to github account: <a
-                    href="https://github.com/jesgueada">https://github.com/jesgueada</a></li>
-        </ul>
-
-        <h3>Project description:</h3>
-        <p>Our project looks for the relationships between the renewable power production capacities, the greenhouse
-            gases emissions and the sources of the founds destinated to research.</p>
-
-        <h3>Repository URL:</h3>
-        <p><strong>SOS2021-20</strong> (<a
-                href="https://github.com/gti-sos/SOS2021-20">https://github.com/gti-sos/SOS2021-20</a>)</p>
-
-        <h3>Deployment URL:</h3>
-        <p><a href="https://sos2021-20.herokuapp.com">https://sos2021-20.herokuapp.com</a></p>
-
-
-        <h3>APIs Back-End</h3>
-        <ul>
-            <li>Api link: <a
-                    href="https://sos2021-20.herokuapp.com/api/v1/foundsresearchsources-stats">/foundsresearchsources-stats</a>
-                (Developed by: Jorge Marín Cordero <a
-                    href="https://documenter.getpostman.com/view/15070037/TzJsfdKV">Documentation</a>)</li>
-            <li>Api link: <a
-                    href="http://sos2021-20.herokuapp.com/api/v1/renewablepowercapacities-stats">/renewablepowercapacities-stats</a>
-                (Developed by: Álvaro Caro Jiménez <a
-                    href="https://documenter.getpostman.com/view/15467208/TzJuAdf1">Documentation</a>)</li>
-            <li>Api link: <a
-                    href="https://sos2021-20.herokuapp.com/api/v1/greenhousegasemissions-stats">/greenhousegasemissions-stats</a>
-                (Developed by: Jesús Guerra Adame <a
-                    href="https://documenter.getpostman.com/view/14978263/TzJu8wiQ">Documentation</a>)</li>
-        </ul>
-
-        <h3>APIs Front-End</h3>
-        <ul>
-            <li>Api link: <a href="#/foundsresearchsources-stats">/foundsresearchsources-stats</a>
-                (Developed by: Jorge Marín Cordero)</li>
-            <li>Api link: <a href="#/renewablepowercapacities-stats">/renewablepowercapacities-stats</a>
-                (Developed by: Álvaro Caro Jiménez)</li>
-            <li>Api link: <a href="#/greenhousegasemissions-stats">/greenhousegasemissions-stats</a>
-                (Developed by: Jesús Guerra Adame)</li>
-        </ul>
-
-</body>
+    .text-center {
+    text-align: center;
+    margin-top: 10em;
+    margin-bottom: 23em;
+}
+</style>
