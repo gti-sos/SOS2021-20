@@ -26,7 +26,7 @@
 	};
 </script>
 	<header>
-		<Navbar color="bg-ligth" light expand="xl">
+		<Navbar style="background-color: rgba(0, 0, 0, 0.2);" light expand="xl">
 			<NavbarBrand href="/">SOS2021-20</NavbarBrand>
 			<Nav navbar>
 				<NavItem>
@@ -62,5 +62,3 @@
 		
 	<Footer/>
 	
-
-

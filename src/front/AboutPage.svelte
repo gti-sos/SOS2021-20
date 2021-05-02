@@ -7,11 +7,11 @@
         <h4>Integrantes del equipo:</h4>
 
         <ul>
-            <li>Jorge Marín Cordero, enlace a la cuenta de github: <a
+            <li>Jorge Marín Cordero (foundsresearchsources-stats), enlace a la cuenta de github: <a
                     href="https://github.com/JorgeMarinC">https://github.com/JorgeMarinC</a></li>
-            <li>Álvaro Caro Jiménez, enlace a la cuenta de github: <a
+            <li>Álvaro Caro Jiménez (renewablepowercapacities-stats), enlace a la cuenta de github: <a
                     href="https://github.com/alvcarjim1">https://github.com/alvcarjim1</a></li>
-            <li>Jesús Guerra Adame, enlace a la cuenta de github: <a
+            <li>Jesús Guerra Adame (greenhousegasemissions-stats), enlace a la cuenta de github: <a
                     href="https://github.com/jesgueada">https://github.com/jesgueada</a></li>
         </ul>
 
@@ -51,3 +51,9 @@
                 (Desarrollado por: Jesús Guerra Adame)</li>
         </ul>
     </div>
+    <style>
+        .container{
+            margin-top: 4em;
+            margin-bottom: 3em;
+        }
+    </style>

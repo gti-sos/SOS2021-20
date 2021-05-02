@@ -45,7 +45,7 @@
 
 
 <!-- Footer -->
-<footer class="bg-light text-center text-lg-start bottom">
+<footer style="background-color: rgba(0, 0, 0, 0.2);" class="text-center text-lg-start mt-auto py-3">
     <!-- Grid container -->
     <div class="container p-4">
       <!--Grid row-->
@@ -99,3 +99,4 @@
     <!-- Copyright -->
   </footer>
   <!-- Footer -->
+
