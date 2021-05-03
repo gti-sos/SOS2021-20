@@ -33,10 +33,16 @@
         const res = await fetch(API_PATH);
         if (res.ok) {
             const returnedJson = await res.json();
-            foundsResearchSourcesData = returnedJson;
+            if(typeof returnedJson.length == "undefined"){
+                console.log("only one element!")
+                foundsResearchSourcesData = [returnedJson];
+            }else{
+                foundsResearchSourcesData = returnedJson;
+            }
             console.log("!"+foundsResearchSourcesData.length + ", Registers loaded!");
         } else {
             console.log("Error");
+            foundsResearchSourcesData=[];
         }
     }
     onMount(getData);
@@ -99,7 +105,7 @@
             {
                 method: "DELETE",
             }
-        ).then((res) => {
+        ).then(() => {
             getData();
         });
     }
