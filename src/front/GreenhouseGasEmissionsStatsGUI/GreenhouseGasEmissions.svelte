@@ -35,18 +35,24 @@
 
     //GetData
     async function getData(){
-        console.log("Fetching data...");
-        const res = await fetch("/api/v1/greenhousegasemissions-stats");
-
-        if(res.ok){
-            console.log("OK");
-            const json = await res.json();
-            data = json;
-            console.log(`We have received ${data.length} data.`);
-        }else{
-            console.log("Error!!");
+        
+                console.log("Fetching data...");
+                const res = await fetch("/api/v1/greenhousegasemissions-stats");
+                if(res.ok){
+                    const returnedJson = await res.json();
+                    if(typeof returnedJson.length == "undefined"){
+                        console.log("only one element!")
+                        data = [returnedJson];
+                    }else{
+                        data = returnedJson;
+                    }
+                    console.log("!"+data.length + ", Registers loaded!");
+                } else {
+                    console.log("Error");
+                    data = [];
         }
     }
+
     onMount(getData);  
 
     //DeleteAllData
@@ -68,6 +74,9 @@
 
     //InsertData
     async function insertData(){
+        if (newData.country == "" || newData.year == "" || newData.country == null || newData.year == null){
+             alert("Debe indicar un país y un año");         
+        }else{
                                  console.log("Inserting data...");
                                  const res = await fetch("/api/v1/greenhousegasemissions-stats",
                                     {
@@ -83,11 +92,20 @@
                                                     "Content-Type": "application/json"
                                                  }
                                     }).then((res) =>{
-                                                        getData();
-                                                        newData = [];
-                                                    });
-    }
+                                        if(res.ok){
+                                        alert("El registro ha sido insertado correctamente.");
+                                        getData();
+                                    }
+                                    if(res.status == 400){
+                                        alert("La entrada de datos no es correcta:\nTodos los campos deben estar rellenos.");
+                                        }
 
+                                    if(res.status == 409) {
+                                        alert("Los datos que intenta introducir ya se encuentran en la base de datos:\n Puede modificar el dato si es necesario.");
+                                        }
+                                                    });
+            }
+    }
     //DeleteOneData
     async function deleteOneData(country, year){
         if(confirm("Va a eliminar un dato, ¿está seguro?\n Esta acción es irreversible")){
@@ -126,11 +144,11 @@
         </thead>
         <tbody>
             <tr>
-                <td><input bind:value="{newData.country}"></td>
-                <td><input bind:value="{newData.year}"></td>
-                <td><input bind:value="{newData.carbon_dioxide}"></td>
-                <td><input bind:value="{newData.methane}"></td>
-                <td><input bind:value="{newData.nitrous_oxide}"></td>
+                <td><input placeholder="Inserte país" bind:value="{newData.country}"></td>
+                <td><input placeholder="Inserte año" bind:value="{newData.year}"></td>
+                <td><input placeholder="Inserte dato" bind:value="{newData.carbon_dioxide}"></td>
+                <td><input placeholder="Inserte dato" bind:value="{newData.methane}"></td>
+                <td><input placeholder="Inserte país" bind:value="{newData.nitrous_oxide}"></td>
                 <td><Button block color="info" size="sm" on:click={insertData}>Añadir dato</Button></td>
             </tr>
             {#each data as onedata}
