@@ -1,290 +1,236 @@
 <script>
-
-    import{
-        onMount
-    } from "svelte";
+    import { onMount } from "svelte";
 
     import Table from "sveltestrap/src/Table.svelte";
-    import { Button, Col, Row } from 'sveltestrap';
-    
+    import { Button, Col, Row } from "sveltestrap";
+
     let datos = [];
-    let  datos_aux = []; 
+    let nuevoDato = {
+        country: "",
+        year: "",
+        solar_production_in_megawatts: "",
+        hydraulic_production_in_megawatts: "",
+        wind_power_production_in_megawatts: "",
+    };
+
+    const RUTA_API = "/api/v1/renewablepowercapacities-stats";
 
     //CARGA DATOS EN LA TABLA loadInitialData
-    async function cargarDatos(){
+    async function cargarDatos() {
         console.log("Buscando datos...");
-        const res_iniciar = await fetch("/api/v1/renewablepowercapacities-stats/loadInitialData");
+        const res_iniciar = await fetch(
+            "/api/v1/renewablepowercapacities-stats/loadInitialData"
+        );
         const res = await fetch("/api/v1/renewablepowercapacities-stats"); //ESPERO A QUE TERMINE LA BUSQUEDA con await
 
-        console.log(res_iniciar.status)
-        if(res_iniciar.status != 200){
+        console.log(res_iniciar.status);
+        if (res_iniciar.status != 200) {
             console.log("Error datos ya cargados");
-        }else{
+        } else {
             console.log("Ok cargando datos.");
             const json = await res.json(); //FORMA DE METER LOS DATOS DE LA VARIABLE CONTACTS
             datos = json; //METO LOS DATOS PARSEADOS EN LA VAR CONTACTS
-            console.log(`Tenemos ${datos.length} datos.`)
-          
+            console.log(`Tenemos ${datos.length} datos.`);
         }
-
     }
 
     //MUESTRA LOS DATOS DE LA BD EN LA TABLA
-    async function verTabla(){
+ /*   async function verTabla() {
         console.log("Buscando datos...");
-       
+
         const res = await fetch("/api/v1/renewablepowercapacities-stats"); //ESPERO A QUE TERMINE LA BUSQUEDA con await
 
-        if(res.ok){
+        if (res.ok) {
             console.log("Ok.");
             const json = await res.json(); //FORMA DE METER LOS DATOS DE LA VARIABLE CONTACTS
 
-                if(datos_aux.length != 0){
-                    //SI ENTRAMOS AQUI ES QUE ANTES HEMOS FILTRADO
-                    datos = datos_aux;
-                }else{
-                    datos = json; //METO LOS DATOS PARSEADOS EN LA VAR CONTACTS
-                     console.log(`Tenemos ${datos.length} datos.`)
-                }
-            
-          
-        }else{
+            datos = json; //METO LOS DATOS PARSEADOS EN LA VAR CONTACTS
+            console.log(`Tenemos ${datos.length} datos.`);
+        } else {
             console.log("Error");
         }
-    }
+    }*/
 
-    //BORRA LOS DATOS DE LA BD 
-    async function borrarDatos() {
-        
-        console.log("borrando datos......");
-
-        const res = await fetch("/api/v1/renewablepowercapacities-stats", {
-        method: "DELETE",
-        }).then(function (res) {
-            if (res.ok) {
-                console.log("DATOS BORRADOS");
-                datos = [];
-                
-            } else if (res.status = 404) {
-                
-                console.log("ERROR DB NO ENCONTRADA");
-            } else {
-                
-                console.log("ERROR");
+    async function verTabla() {
+        console.log("Buscando datos...");
+        const res = await fetch(RUTA_API);
+        if (res.ok) {
+            const returnedJson = await res.json();
+            if(typeof returnedJson.length == "undefined"){
+                console.log("Solo queda un elemento")
+                datos = [returnedJson];
+            }else{
+                datos = returnedJson;
             }
-        });
-    }
-   
-    //ACTUALIZA UN REGISTRO DE LA BD
-    async function actualizar() {
-        
-        var pais = prompt("Inserte el nombre del pais:");
-        var ano = prompt("Inserte el año:");
-        var solar = prompt("Producción Solar en MegaWatios:");
-        var hidraulica = prompt("Producción Hidraulica en MegaWatios:");
-        var eolica = prompt("Producción Eolica en MegaWatios:");
-        
-        var error=false;
-        if(pais=="" || pais==null 
-            || ano=="" || pais==null
-            || solar=="" || pais==null
-            || hidraulica=="" || pais==null
-            || eolica=="" || pais==null
-        ){
-            error=true;
+            console.log("!"+datos.length + ", Registers loaded!");
+        } else {
+            console.log("Error");
+            datos=[];
         }
+    }
+    
 
-        if(error==true){
-            console.log("Error en los datos, no se ha podido actualizar.");
-        }else{
-            console.log("el pais es: "+pais);
-            console.log("el año es: "+ano);
-            console.log("solar es: "+solar);
-            console.log("hidraulica es: "+hidraulica);
-            console.log("eolica es: "+eolica);
+    ///----
 
-            ano = parseInt(ano, 10);
-            solar = parseInt(solar, 10);
-            hidraulica = parseInt(hidraulica, 10);
-            eolica = parseInt(eolica, 10);
-
-            var datoActualizado=JSON.stringify( {"country":pais,"year":ano,"solar_production_in_megawatts":solar,"hydraulic_production_in_megawatts":hidraulica,"wind_power_production_in_megawatts":eolica} );
-            var url = "/api/v1/renewablepowercapacities-stats/"+pais+"/"+ano;
+    //AÑADIR UN NUEVO DATO
+    async function addDato() {
+        if (nuevoDato.country == "" || nuevoDato.year == "" ||  nuevoDato.country == null || nuevoDato.year == null) {
             
-           // postData(url,datoActualizado);
-           fetch('/api/v1/renewablepowercapacities-stats/'+pais+'/'+ano, {
-                method: 'PUT',
+            alert("Error - Revise los datos.");
+        
+        } else {
+            
+            console.log("Insertando nuevo dato...");
+
+            const res = await fetch("/api/v1/renewablepowercapacities-stats", {
+                
+                method: "POST",
+                body: JSON.stringify({
+                    
+                    country: nuevoDato.country,
+                    year: parseInt(nuevoDato.year),
+
+                    solar_production_in_megawatts: parseFloat(
+                        nuevoDato.solar_production_in_megawatts
+                    ),
+                    hydraulic_production_in_megawatts: parseFloat(
+                        nuevoDato.hydraulic_production_in_megawatts
+                    ),
+                    wind_power_production_in_megawatts: parseFloat(
+                        nuevoDato.wind_power_production_in_megawatts
+                    ),
+                }),
+
                 headers: {
-                    'Accept': 'application/json, text/plain, */*',
-                    'Content-Type': 'application/json'
+                    "Content-Type": "application/json",
                 },
-                body: JSON.stringify({"country":pais,"year":ano,"solar_production_in_megawatts":solar,"hydraulic_production_in_megawatts":hidraulica,"wind_power_production_in_megawatts":eolica})
-                }).then(res => res.json())
-                .then(res => console.log(res));
+            }).then((res) => {
+                
+                if (res.ok) {
+                    alert("El registro ha sido insertado correctamente.");
+                    nuevoDato = [];
 
-            }
-
-       verTabla();
+                    verTabla();
+                }
+                if (res.status == 400) {
+                    alert(
+                        "La entrada de datos no es correcta:\nTodos los campos menos el país deben ser númericos."
+                    );
+                }
+                if (res.status == 409) {
+                    alert(
+                        "Los datos que intenta introducir ya se encuentran en la base de datos."
+                    );
+                }
+            });//fin then
+        }//FIN ELSE
     }
 
-    //ELIMINA UN REGISTRO DE LA BD
-    async function eliminar() {
+    //BORRA UN DATO POR PAIS Y AÑO
+   /* async function borrarDato(pais, ano) {
         
-        var pais = prompt("Inserte el nombre del pais:");
-        var ano = prompt("Inserte el año:");
-        var error=false;
-        
-        var error=false;
-        if(pais=="" || pais==null || ano=="" || pais==null){
-            error=true;
-        }
+        var opcion = confirm("¿Estás seguro?");
+        if(opcion){
 
-        if(error==true){
-            console.log("Error en los datos, no se ha podido borrar.");
-        }else{
-            console.log("el pais es: "+pais);
-            console.log("el año es: "+ano);
-            
-            var url = "/api/v1/renewablepowercapacities-stats/"+pais+"/"+ano;
-            
-            fetch(url, {
-                method: 'DELETE'
+            console.log("Borrando datos...");
+            var ruta = RUTA_API + "/" + pais + "/" + ano;
+            const res = await fetch(ruta, {
+                method: "DELETE",
+            }).then((res) => {
+                verTabla();
             });
 
-            verTabla();
-        }
-    }
-
-    //AÑADE UN NUEVO REGISTRO A LA BD
-    async function addRegistro() {
-        
-        var pais = prompt("Inserte el nombre del pais:");
-        var ano = prompt("Inserte el año:");
-        var solar = prompt("Producción Solar en MegaWatios:");
-        var hidraulica = prompt("Producción Hidraulica en MegaWatios:");
-        var eolica = prompt("Producción Eolica en MegaWatios:");
-        
-        var error=false;
-        if(pais=="" || pais==null 
-            || ano=="" || pais==null
-            || solar=="" || pais==null
-            || hidraulica=="" || pais==null
-            || eolica=="" || pais==null
-        ){
-            error=true;
-        }
-
-        if(error==true){
-            console.log("Error en los datos, no se ha podido actualizar.");
         }else{
-            console.log("el pais es: "+pais);
-            console.log("el año es: "+ano);
-            console.log("solar es: "+solar);
-            console.log("hidraulica es: "+hidraulica);
-            console.log("eolica es: "+eolica);
-
-           ano = parseInt(ano, 10);
-           solar = parseInt(solar, 10);
-           hidraulica = parseInt(hidraulica, 10);
-           eolica = parseInt(eolica, 10);
-
-            var datoActualizado=JSON.stringify( {"country":pais,"year":ano,"solar_production_in_megawatts":solar,"hydraulic_production_in_megawatts":hidraulica,"wind_power_production_in_megawatts":eolica} );
-            var url = "/api/v1/renewablepowercapacities-stats/"+pais+"/"+ano;
-            
-           
-           fetch('/api/v1/renewablepowercapacities-stats/', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json, text/plain, */*',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({"country":pais,"year":ano,"solar_production_in_megawatts":solar,"hydraulic_production_in_megawatts":hidraulica,"wind_power_production_in_megawatts":eolica})
-                }).then(res => res.json())
-                .then(res => console.log(res));
-
-            }
-
-       verTabla();
-    }
-
-    //VISUALIZA UN DATO DE LA BD
-    async function verRegistro() {
-        
-        var pais = prompt("Inserte el nombre del pais:");
-        var ano = prompt("Inserte el año:");
-        var error=false;
-        
-        if(pais=="" || pais==null || ano=="" || pais==null){
-            error=true;
-        }
-
-        if(error==true){
-            console.log("Error en los datos, no se ha podido actualizar.");
-        }else{
-            
-            console.log("VIENDO UN REGISTRO...");
-            var ruta="/api/v1/renewablepowercapacities-stats?country="+pais+"&year="+ano;
-            console.log(ruta);
-            const res = await fetch(ruta); //ESPERO A QUE TERMINE LA BUSQUEDA con await
-
-            if(res.ok){
-                console.log("Ok verRegistro.");
-                const json = await res.json(); //FORMA DE METER LOS DATOS DE LA VARIABLE CONTACTS
-                 datos_aux = datos;
-                datos = [] //BORRO LA TABLA
-                datos = json; //METO LOS DATOS PARSEADOS EN LA VAR CONTACTS
-                console.log(`Tenemos ${datos.length} REGISTROS.`)
-                
-            }else{
-                console.log("Error");
-            }
+            console.log("Cancelado.");
         }
         
+        
+    }*/
+    //DeleteOneData
+    async function deleteOneData(country, year){
+        if(confirm("Va a eliminar un dato, ¿está seguro?\n Esta acción es irreversible")){
+            console.log("Deleting data...");
+            const res = await fetch(RUTA_API + "/" + country + "/" + year ,
+            {
+                method: "DELETE",
+            }
+            ).then((res) => {
+                verTabla();
+            });
+        }
     }
 
-   
+    //ELIMINA TODOS LOS DATOS DE LA BD
+    async function eliminarDatos() {
+        var opcion = confirm("¿Estás seguro?");
+        if (opcion) {
+            console.log("borrando datos......");
 
-   onMount(verTabla); //METODO QUE ACTUALIZA EL ESTADO DE LA TABLA
+            const res = await fetch(RUTA_API, {
+                method: "DELETE",
+            }).then(function (res) {
+                if (res.ok) {
+                    console.log("DATOS BORRADOS");
+                    datos = [];
+                } else if ((res.status = 404)) {
+                    console.log("ERROR DB NO ENCONTRADA");
+                } else {
+                    console.log("ERROR");
+                }
+            });
+        } else {
+        }
+    }
 
-  
+    onMount(verTabla); 
 </script>
 
 <main>
+    <br /><br /><hr/>
     <Table bordered>
         <thead>
             <tr>
-                <td><b>Pais</b></td>
-                <td><b>Año</b></td>
-                <td><b>Producción Solar en MegaWatios</b></td>
-                <td><b>Producción Hidraulica en MegaWatios</b></td>
-                <td><b>Producción Eolica en MegaWatios</b></td>
+                <th>Pais</th>
+                <th>Año</th>
+                <th>Producción Solar en MegaWatios</th>
+                <th>Producción Hidraulica en MegaWatios</th>
+                <th>Producción Eolica en MegaWatios</th>
             </tr>
-      </thead>
-      <tbody>
-        {#each datos as dato}
+        </thead>
+        <tbody>
             <tr>
-                <td>{dato.country}</td>
-                <td>{dato.year}</td>
-                <td>{dato.solar_production_in_megawatts}</td>
-                <td>{dato.hydraulic_production_in_megawatts}</td>
-                <td>{dato.wind_power_production_in_megawatts}</td>
+                <td><input bind:value={nuevoDato.country} /></td>
+                <td><input bind:value={nuevoDato.year} /></td>
+                <td><input bind:value={nuevoDato.solar_production_in_megawatts}/></td>
+                <td><input  bind:value={nuevoDato.hydraulic_production_in_megawatts}/></td>
+                <td><input bind:value={nuevoDato.wind_power_production_in_megawatts}/></td>
+                <td><Button color="success" on:click={addDato}>Añadir dato</Button></td>
             </tr>
-        {/each}
-      </tbody>
+            {#each datos as dato}
+                <tr>
+                    <td>
+                        <a href="#/renewablepowercapacities-stats/{dato.country}/{dato.year}">{dato.country} </a>
+                    </td>
+                    <!--  <td>{dato.country}</td> -->
+                    <td>{dato.year}</td>
+                    <td>{dato.solar_production_in_megawatts}</td>
+                    <td>{dato.hydraulic_production_in_megawatts}</td>
+                    <td>{dato.wind_power_production_in_megawatts}</td>
+                    <td><Button color="danger" on:click={deleteOneData(dato.country, dato.year)}> Borrar</Button>
+                    </td>
+                </tr>
+            {/each}
+        </tbody>
     </Table>
-    <Button color="success"  on:click={verTabla}>Ver Registros Actuales</Button>
-    <br><br>
-    <Button  on:click={cargarDatos}>Cargar Datos</Button>
-    <Button  color="primary" on:click={actualizar}>Actualizar Dato</Button>
-    <Button  color="primary" on:click={addRegistro}>Añadir un registro</Button>
-    <Button color="primary" on:click={verRegistro}>Ver un registro</Button>
-    <Button  color="danger" on:click={eliminar}>Eliminar un registro</Button>
-    <Button  color="danger" on:click={borrarDatos}>Eliminar Datos</Button>
-    <br/><br/>
-   
+
+    <br /><br />
+    <center>
+        <Button color="info" on:click={cargarDatos}>Cargar Datos</Button>
+        <Button color="danger" on:click={eliminarDatos}>Eliminar Datos</Button>
+    </center>
+        
+    <br /><br />
 </main>
 
 <style>
-
-
 </style>

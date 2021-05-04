@@ -29,6 +29,15 @@ var jmcInitialData = [
         "wind_power_production_in_megawatts": 3267900,
 
 
+    },
+    {
+        "country": "czechia",
+        "year": 2018,
+        "solar_production_in_megawatts": 2075.072,
+        "hydraulic_production_in_megawatts": 2264.019,
+        "wind_power_production_in_megawatts": 316.200,
+
+
     }
 ];
 
