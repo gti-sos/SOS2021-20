@@ -50,7 +50,7 @@
 							"});\r",
 							"pm.test(\"cargado dos o mas datos\", function(){\r",
 							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.length).to.eql(2);\r",
+							"    pm.expect(jsonData.length).to.eql(3);\r",
 							"});"
 						],
 						"type": "text/javascript"
