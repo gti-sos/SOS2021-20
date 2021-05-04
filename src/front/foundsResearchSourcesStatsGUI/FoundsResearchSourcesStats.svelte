@@ -3,8 +3,10 @@
     import {push} from "svelte-spa-router";
     import Table from "sveltestrap/src/Table.svelte";
     import Button from "sveltestrap/src/Button.svelte";
+
     const API_PATH = "/api/v1/foundsresearchsources-stats";
     let foundsResearchSourcesData = [];
+
     let newData = {
         country: "",
         year: "",
@@ -88,7 +90,7 @@
                                         alert("Los datos que intenta introducir ya se encuentran en la base de datos.");
                                         }
 
-                    
+                                        newData=[];
                                 });
                 }    
     }
@@ -131,18 +133,61 @@
 }
     }
 
-    
+
+    let countryInputValue = []
+    let yearInputValue = [];
+
+    // Search by country/year
+    async function searchData() {
+        const res = await fetch(
+            API_PATH + "?country="+countryInputValue+"&year="+yearInputValue,{
+                method: "GET",
+                headers:{
+                "Content-Type":"application/json",
+                }
+            });
+            if (res.ok) {
+                const returnedJson = await res.json();
+                if(typeof returnedJson.length == "undefined"){
+                    console.log("only one element!")
+                    foundsResearchSourcesData = [returnedJson];
+                }else{
+                    foundsResearchSourcesData = returnedJson;
+                }
+            }else{
+            var mssg = "";
+                if(countryInputValue.length>0 && yearInputValue.length>0){
+                    mssg = mssg + "No existen registros para "+countryInputValue +" en el año "+yearInputValue;    
+                }else if(countryInputValue.length>0){
+                    mssg = mssg + "No existen registros para: "+countryInputValue;
+                }else if(yearInputValue.length>0){
+                    mssg = mssg + "No existen registros para el año: "+yearInputValue;
+                }
+            alert(mssg);
+            foundsResearchSourcesData=[];
+        }
+    }
+        
 </script>
 
+        <div>
+            <h4>Fuentes de financiación de la investigación</h4>
+            <div class="row">
+            <div class="col-4">
+                <input id="countrySearch" bind:value={countryInputValue} type="text" placeholder="Introduce un país">
+                <input bind:value={yearInputValue} type="text" placeholder="Introduce un año">
+                <Button color="dark" on:click={searchData}>Buscar</Button>
+                </div>
+            <div id="buttns" class="col-4">
 
-        <div class="container" >
-            <div class="buttons-center">
-                <h4>Fuentes de financiación de la investigación</h4>
                 <Button color="success" on:click={loadData}>Cargar Datos</Button>
                 <Button color="primary" on:click={() => push("#/foundsresearchsources-stats/update-data")} >Editar Datos </Button>
                 <Button color="danger" on:click={deleteAllData}>Borrar Datos</Button>
         </div>
+        <div class="col-4"></div>
     </div>
+    </div>
+
         <Table bordered responsive>
             <thead>
                 <tr>
@@ -161,7 +206,7 @@
                     <td><input bind:value={newData.percentage_of_government_funding}/></td>
                     <td><input bind:value={newData.percentage_of_private_financing}/></td>
                     <td><input bind:value={newData.percentage_of_non_profit_funding}/></td>
-                    <td><Button color="success" on:click={insertNewData}>Añadir dato</Button></td>
+                    <td><Button color="success" on:click={insertNewData}> Añadir dato</Button></td>
                 </tr>
                 {#each foundsResearchSourcesData as row}
                     <tr>
@@ -180,7 +225,7 @@
                 {/each}
             </tbody>
         </Table>
-
+        
 <style>
     th,td {
         text-align: center;
@@ -188,9 +233,17 @@
     thead {
         font-weight: bold;
     }
-    .buttons-center {
+    h4 {
         text-align: center;
         padding-top: 1em;
-        padding-bottom: 2em;
-}
+        padding-bottom: 1em;
+    }
+    #buttns{
+        text-align: center;
+        padding-bottom: 1em;
+    }
+    #countrySearch{
+        margin-left: 1.5em;
+    }
+
 </style>

@@ -52,7 +52,7 @@
                 },
             }).then((res) =>{
                             if(res.ok){
-                                alert("El registro ha sido insertado correctamente.");
+                                alert("El registro ha sido actualizado correctamente.");
                                 getData();
                             }
                             if(res.status == 400){
