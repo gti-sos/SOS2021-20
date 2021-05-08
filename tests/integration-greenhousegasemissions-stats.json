@@ -81,9 +81,9 @@
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							"pm.test(\"There are four data\", function () {\r",
+							"pm.test(\"There are ten data\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.length).to.eql(4);\r",
+							"    pm.expect(jsonData.length).to.eql(10);\r",
 							"});"
 						],
 						"type": "text/javascript"
