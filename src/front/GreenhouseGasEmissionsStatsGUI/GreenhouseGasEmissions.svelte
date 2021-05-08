@@ -45,14 +45,14 @@
                 const res = await fetch("/api/v1/greenhousegasemissions-stats?limit="+ limit +"&offset="+ offset);
                 if(res.ok){
                     const returnedJson = await res.json();
-                   
-                    if(typeof returnedJson.length == "undefined"){
-                        console.log("only one element!")
-                        data = [returnedJson];
-                    }else{
-                        data = returnedJson;
-                    }
-                    console.log("!"+data.length + ", Registers loaded!");
+                                if(typeof returnedJson.length == "undefined"){
+                                    console.log("only one element!")
+                                    data = [returnedJson];
+                                }else{
+                                    data = returnedJson;
+                                }
+                                console.log("!"+data.length + ", Registers loaded!");
+                         
                 } else {
                     console.log("Error");
                     data = [];
@@ -165,12 +165,9 @@
     }
   
     //Pagination 
-    function nextPage(){
+    function nextPage(){        
 		    offset = offset + 10;
 			getData(offset);
-            
-          
-		
         
     }
 
