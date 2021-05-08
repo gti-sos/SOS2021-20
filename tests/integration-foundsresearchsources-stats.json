@@ -102,9 +102,9 @@
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
-							"pm.test(\"Five countries loaded by loadInitialData\", function () {",
+							"pm.test(\"Twentyfive countries loaded by loadInitialData\", function () {",
 							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.length).to.eql(5);",
+							"    pm.expect(jsonData.length).to.eql(25);",
 							"});",
 							"pm.test(\"Response time is less than 200ms\", function () {",
 							"    pm.expect(pm.response.responseTime).to.be.below(200);",
@@ -459,7 +459,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/denmark/2014",
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats/denmark/2019",
 					"host": [
 						"{{HOST}}"
 					],
@@ -468,7 +468,7 @@
 						"v1",
 						"foundsresearchsources-stats",
 						"denmark",
-						"2014"
+						"2019"
 					]
 				},
 				"description": "Allows you to retrieve data for an especific country on an especific year.\n\nValidation test must return:\n\n- Status code 404."
@@ -769,7 +769,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats?country=belgium",
+					"raw": "{{HOST}}/api/v1/foundsresearchsources-stats?country=belgium&year=2015",
 					"host": [
 						"{{HOST}}"
 					],
@@ -782,6 +782,10 @@
 						{
 							"key": "country",
 							"value": "belgium"
+						},
+						{
+							"key": "year",
+							"value": "2015"
 						}
 					]
 				},
@@ -905,15 +909,7 @@
 							"pm.test(\"Content-Type is present\", function () {",
 							"    pm.response.to.have.header(\"Content-Type\");",
 							"});",
-							"pm.test(\"¿Is the correct resource?\", function () {",
-							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.country).to.eql(\"belgium\");",
-							"    pm.expect(jsonData.year).to.eql(2015);",
-							"    pm.expect(jsonData.percentage_of_government_funding).to.eql(22.5);",
-							"    pm.expect(jsonData.percentage_of_private_financing).to.eql(58.6);",
-							"    pm.expect(jsonData.percentage_of_non_profit_funding).to.eql(0.4);",
-							"",
-							"});"
+							""
 						],
 						"type": "text/javascript"
 					}
