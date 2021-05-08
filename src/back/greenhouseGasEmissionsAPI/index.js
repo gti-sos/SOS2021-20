@@ -56,7 +56,49 @@ var jga_initialData = [
         "carbon_dioxide": 185.3671,
         "methane": 0.36512,
         "nitrous_oxide": 0.97038,
-    }
+    },
+    {
+        "country": "italyff",
+        "year": 2014,
+        "carbon_dioxide": 146.71485,
+        "methane": 1.76903,
+        "nitrous_oxide": 0.12664,
+    },
+    {
+        "country": "itefealy",
+        "year": 2014,
+        "carbon_dioxide": 146.71485,
+        "methane": 1.76903,
+        "nitrous_oxide": 0.12664,
+    },
+    {
+        "country": "iefeftaly",
+        "year": 2014,
+        "carbon_dioxide": 146.71485,
+        "methane": 1.76903,
+        "nitrous_oxide": 0.12664,
+    },
+    {
+        "country": "iththtaly",
+        "year": 2014,
+        "carbon_dioxide": 146.71485,
+        "methane": 1.76903,
+        "nitrous_oxide": 0.12664,
+    },
+    {
+        "country": "jmjm",
+        "year": 2014,
+        "carbon_dioxide": 146.71485,
+        "methane": 1.76903,
+        "nitrous_oxide": 0.12664,
+    },
+    {
+        "country": "liki",
+        "year": 2014,
+        "carbon_dioxide": 146.71485,
+        "methane": 1.76903,
+        "nitrous_oxide": 0.12664,
+    },
     
 
 ];

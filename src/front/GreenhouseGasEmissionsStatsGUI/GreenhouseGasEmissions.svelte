@@ -5,10 +5,14 @@
     import Table from "sveltestrap/src/Table.svelte";
     import Button from "sveltestrap/src/Button.svelte";
     import ButtonGroup from "sveltestrap/src/ButtonGroup.svelte";
+    import {Col, Pagination, Tooltip} from 'sveltestrap';
+    import {Icon} from 'sveltestrap';
     
 
     
     let data = [];
+    let offset = 0;
+    let limit = 10;
     let newData = {
         country: "",
         year:"",
@@ -33,13 +37,15 @@
 
     }
 
+    
     //GetData
     async function getData(){
         
                 console.log("Fetching data...");
-                const res = await fetch("/api/v1/greenhousegasemissions-stats");
+                const res = await fetch("/api/v1/greenhousegasemissions-stats?limit="+ limit +"&offset="+ offset);
                 if(res.ok){
                     const returnedJson = await res.json();
+                   
                     if(typeof returnedJson.length == "undefined"){
                         console.log("only one element!")
                         data = [returnedJson];
@@ -93,7 +99,7 @@
                                                  }
                                     }).then((res) =>{
                                         if(res.ok){
-                                        alert("El registro ha sido insertado correctamente.");
+                                        alert("El dato "+ newData.country + " del año "+ newData.year + " ha sido insertado correctamente.");
                                         getData();
                                     }
                                     if(res.status == 400){
@@ -105,10 +111,11 @@
                                         }
                                                     });
             }
+            newData =[];
     }
     //DeleteOneData
     async function deleteOneData(country, year){
-        if(confirm("Va a eliminar un dato, ¿está seguro?\n Esta acción es irreversible")){
+        if(confirm("Va a eliminar el dato: "+ country + " del año "+ year + " ¿está seguro?\nEsta acción es irreversible")){
             console.log("Deleting data...");
             const res = await fetch("/api/v1/greenhousegasemissions-stats" + "/" + country + "/" + year ,
             {
@@ -119,21 +126,92 @@
             });
         }
     }
+    
+    //SearchData
+    let searchedCountry=[];
+    let searchedYear=[];
+    
+    async function searchData(country, year){
+        const res = await fetch("/api/v1/greenhousegasemissions-stats" + "/?country="+ searchedCountry + "&year=" + searchedYear ,
+        {
+                method: "GET",
+                headers:{
+                        "Content-Type": "application/json"
+                        }
+        });
+
+        if(res.ok){
+            const returnedJson = await res.json();
+            if(searchedCountry.length == 0 && searchedYear.length == 0 ){
+                console.log("Error");
+                alert("Introduce al menos un parámetro para la búsqueda");
+                data = [];
+            
+            }else if(typeof returnedJson.length == "undefined"){
+                data = [returnedJson];
+            }else{
+                data = returnedJson;
+            }
+            console.log(returnedJson);
+           
+
+        }else{
+            console.log("Error");
+            alert("El dato " + searchedCountry + " del año " + searchedYear + " no se encuentra en la base de datos" );
+            }
+        searchedCountry=[];
+        searchedYear=[];
+        
+    }
+  
+    //Pagination 
+    function nextPage(){
+		    offset = offset + 10;
+			getData(offset);
+            
+          
+		
+        
+    }
+
+    function previousPage(){
+        if(offset == 0){
+            offset = 0;
+            getdata(offset);
+        }else{
+			offset = offset - 10;
+			getData(offset);
+        }
+
+        
+    }
 
     
 </script>
 <main>
     <header>
-        <div class="initialbuttons">
+        
             <h3>Emisiones de gases de efecto invernadero en la Unión Europea medidas en miles de toneladas </h3>
-            <Button color="success" on:click={loadInitialData}>Cargar Datos</Button>
-            <Button color="danger" on:click={deleteAllData}>Eliminar Datos</Button>
-        </div>
+            <div class="row">
+                <div id= "initialbuttons"class="col-5">
+                    <Button color="success" on:click={loadInitialData}>Cargar Datos</Button>
+                    <Button class ="elimi" color="danger" on:click={deleteAllData}>Eliminar Datos</Button>
+                </div>
+                
+                <div id = "searchfilter" class="col-7">
+                    <input bind:value="{searchedCountry}" placeholder="Introduce país">
+                    <input bind:value="{searchedYear}" placeholder="Introduce año">
+                    <Button color="secondary" on:click={searchData}>Buscar dato</Button>
+                    <Button color="danger" on:click={getData}>Quitar filtros de búsqueda</Button>
+                </div>
+            </div>
+        
+        
     </header>
     
-    <Table bordered>
+    <Table hover bordered>
         <thead>
-            <tr>
+            <tr id= "tabletitle">
                 <th>País</th>
                 <th>Año</th>
                 <th>Dióxido de carbono</th>
@@ -148,7 +226,7 @@
                 <td><input placeholder="Inserte año" bind:value="{newData.year}"></td>
                 <td><input placeholder="Inserte dato" bind:value="{newData.carbon_dioxide}"></td>
                 <td><input placeholder="Inserte dato" bind:value="{newData.methane}"></td>
-                <td><input placeholder="Inserte país" bind:value="{newData.nitrous_oxide}"></td>
+                <td><input placeholder="Inserte dato" bind:value="{newData.nitrous_oxide}"></td>
                 <td><Button block color="info" size="sm" on:click={insertData}>Añadir dato</Button></td>
             </tr>
             {#each data as onedata}
@@ -170,11 +248,16 @@
            {/each}
         </tbody>
     </Table>
+    <div>
+        <Button  color="primary" on:click={previousPage}>Página Anterior</Button>
+		<Button  color="primary" on:click={nextPage}>Siguiente Página</Button>    
+    </div>
 </main>
 
 <style>
     h3{
         text-align: center;
+        
     }
     th{
         text-align: center;
@@ -188,12 +271,21 @@
 
     }
 
-    .initialbuttons{
+    #initialbuttons{
         text-align: center;
         padding-top: 10px;
         padding-bottom: 10px;
 
     }
+    #searchfilter{
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
 
+    }
+    #tabletitle{
+        background-color:darkgrey;
+    }
+  
 
 </style>
