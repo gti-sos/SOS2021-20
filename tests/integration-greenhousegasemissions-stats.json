@@ -81,7 +81,7 @@
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							"pm.test(\"There are four data\", function () {\r",
+							"pm.test(\"There are eleven data\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
 							"    pm.expect(jsonData.length).to.eql(11);\r",
 							"});"
@@ -860,6 +860,12 @@
 				}
 			},
 			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "HOST",
+			"value": "localhost:10000"
 		}
 	]
 }
