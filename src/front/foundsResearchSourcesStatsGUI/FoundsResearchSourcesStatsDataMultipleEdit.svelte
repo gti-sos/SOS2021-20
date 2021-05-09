@@ -72,6 +72,7 @@
 </script>
 
 <main>
+    <h4>Vista de edición múltiple</h4>
         <Table bordered responsive>
             <thead>
                 <tr>
@@ -99,13 +100,13 @@
         </Table>
         <div class="container" >
             <div class="text-center">
-            <Button color="secondary" on:click="{pop}">Volver</Button>
+            <Button style="margin-bottom: 2em;" color="secondary" on:click="{pop}">Volver</Button>
         </div>
     </div>
 </main>
 
 <style>
-    th,
+    /* th,
     td {
         text-align: center;
     }
@@ -116,5 +117,22 @@
   text-align: center;
   margin-top: 1em;
   margin-bottom: 1em;
-}
+} */
+
+th{
+        color: rgba(0, 0, 0, 0.7);
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+    th,td,input {
+        text-align: center;
+    }
+    thead {
+        font-weight: bold;
+    }
+    h4 {
+        color: rgba(0, 0, 0, 0.7);
+        text-align: center;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
 </style>
