@@ -41,23 +41,6 @@
     onMount(getRegistersNumFoundsResearchSources);
     onMount(getRegistersNumGreenhouseGasEmissions);
     onMount(getRegistersNumRenewablePowerCapacities);
-
-    // Clock
-    let time = new Date();
-	  $: hours = (time.getHours()<10?'0':'') +time.getHours();
-	  $: minutes = (time.getMinutes()<10?'0':'')+ time.getMinutes();
-	  $: seconds = (time.getSeconds()<10?'0':'')+time.getSeconds();
-    
-	  onMount(() => {
-	  	const interval = setInterval(() => {
-	  		time = new Date();
-	  	}, 1000);
-    
-	  	return () => {
-	  		clearInterval(interval);
-	  	};
-	  });
-    
 </script>
 
 
@@ -109,8 +92,8 @@
     <!-- Grid container -->
   
     <!-- Copyright -->
-    <div class="text-center p-6" style="background-color: rgba(0, 0, 0, 0.2);">
-      <div class="clock"><strong>{hours}:{minutes}:{seconds}</strong></div>
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2021 Copyright:
       <a class="text-dark" href="https://sos2021-20.herokuapp.com/">sos2021-20.herokuapp.com</a>
     </div>
     <!-- Copyright -->
