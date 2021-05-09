@@ -1,4 +1,5 @@
 <script>
+	import { onMount } from "svelte";
 	import Router from "svelte-spa-router";
 	import HomePage from "./HomePage.svelte";
 	import Footer from "./Footer.svelte";
@@ -13,7 +14,17 @@
 	import RenewablePowerCapacitiesEdit from "./RenewablePowerCapacitiesStatsGUI/RenewablePowerCapacitiesDataEdit.svelte";
 	
 
-	import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "sveltestrap";
+	import { 
+		Navbar,
+		NavbarBrand,
+		Nav,
+		NavItem,
+		NavLink,
+		Dropdown,
+		DropdownToggle,
+		DropdownMenu,
+		DropdownItem
+	} from "sveltestrap";
 
 	const routes = {
 		"/": HomePage,
@@ -27,11 +38,27 @@
 		"/renewablepowercapacities-stats/:country/:year": RenewablePowerCapacitiesEdit,
 		"*": NotFoundPage,
 	};
+
+	    // Clock
+		let time = new Date();
+	  $: hours = (time.getHours()<10?'0':'') +time.getHours();
+	  $: minutes = (time.getMinutes()<10?'0':'')+ time.getMinutes();
+	  $: seconds = (time.getSeconds()<10?'0':'')+time.getSeconds();
+    
+	  onMount(() => {
+	  	const interval = setInterval(() => {
+	  		time = new Date();
+	  	}, 1000);
+    
+	  	return () => {
+	  		clearInterval(interval);
+	  	};
+	  });
 </script>
 	<header>
 		<Navbar style="background-color: rgba(0, 0, 0, 0.2);" light expand="xl">
 			<NavbarBrand href="/">SOS2021-20</NavbarBrand>
-			<Nav navbar>
+			<Nav class="mr-auto" navbar>
 				<NavItem>
 					<NavLink href="/">
 						Página de inicio
@@ -58,6 +85,7 @@
 					</NavLink>
 				</NavItem>
 			</Nav>
+			<NavbarBrand class="ml-auto" href="/">{hours}:{minutes}:{seconds}</NavbarBrand>
 		</Navbar>
 	</header>
 	
