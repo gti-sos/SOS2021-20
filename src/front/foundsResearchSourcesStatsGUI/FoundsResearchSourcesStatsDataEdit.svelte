@@ -70,8 +70,7 @@
 
 </script>
 <main>
-    
-    <h2>Editar los datos de "{params.country}" en el año "{params.year}"</h2>
+    <h4>Editar los datos de "{params.country}" en el año "{params.year}"</h4>
     <Table bordered responsive>
         <thead>
             <tr>
@@ -98,13 +97,25 @@
     </Table>
     <div class="container" >
         <div class="text-center">
-        <Button color="secondary" on:click="{pop}">Volver</Button>
+        <Button style="margin-bottom: 30em; 3em;" color="secondary" on:click="{pop}">Volver</Button>
     </div>
 </div>
 </main>
 <style>
-    h2
-    {text-align: center;
-
+     th{
+        color: rgba(0, 0, 0, 0.7);
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+    th,td,input {
+        text-align: center;
+    }
+    thead {
+        font-weight: bold;
+    }
+    h4 {
+        color: rgba(0, 0, 0, 0.7);
+        text-align: center;
+        padding-top: 1em;
+        padding-bottom: 1em;
     }
 </style>
