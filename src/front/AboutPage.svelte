@@ -28,15 +28,15 @@
         <h4>APIs (Back-End)</h4>
         <ul>
             <li>Enlace a la API: <a
-                    href="https://sos2021-20.herokuapp.com/api/v1/foundsresearchsources-stats">/foundsresearchsources-stats</a>
+                    href="/api/v1/foundsresearchsources-stats">/foundsresearchsources-stats</a>
                 (Desarrollado por: Jorge Marín Cordero <a
                     href="https://documenter.getpostman.com/view/15070037/TzJsfdKV">Documentación</a>)</li>
             <li>Enlace a la API: <a
-                    href="http://sos2021-20.herokuapp.com/api/v1/renewablepowercapacities-stats">/renewablepowercapacities-stats</a>
+                    href="api/v1/renewablepowercapacities-stats">/renewablepowercapacities-stats</a>
                 (Desarrollado por: Álvaro Caro Jiménez <a
                     href="https://documenter.getpostman.com/view/15467208/TzJuAdf1">Documentación</a>)</li>
             <li>Enlace a la API: <a
-                    href="https://sos2021-20.herokuapp.com/api/v1/greenhousegasemissions-stats">/greenhousegasemissions-stats</a>
+                    href="/api/v1/greenhousegasemissions-stats">/greenhousegasemissions-stats</a>
                 (Desarrollado por: Jesús Guerra Adame <a
                     href="https://documenter.getpostman.com/view/14978263/TzJu8wiQ">Documentación</a>)</li>
         </ul>
