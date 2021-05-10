@@ -3,7 +3,7 @@
 
 //Define API endpoint
 var BASE_API_PATH = "/api/v1";
-var JMC_ENDPOINT = "/renewablepowercapacities-stats";
+var ACJ_ENDPOINT = "/renewablepowercapacities-stats";
 
 //Create database
 var Datastore = require("nedb");
@@ -11,7 +11,7 @@ var renewablepowercapacitiesDB = new Datastore();
 var DATABASE_ERR_MSSG = "Database error in renewablepowercapacities-stats API:\n";
 
 //Initial data for renewablepowercapacities-stats
-var jmcInitialData = [
+var acjInitialData = [
     {
         "country": "germany",
         "year": 2018,
@@ -31,6 +31,87 @@ var jmcInitialData = [
 
     },
     {
+        "country": "cyprus",
+        "year": 2018,
+        "solar_production_in_megawatts": 118.479,
+        "hydraulic_production_in_megawatts": 0000,
+        "wind_power_production_in_megawatts": 157.725,
+
+
+    },
+    {
+        "country": "latvia",
+        "year": 2018,
+        "solar_production_in_megawatts": 1962,
+        "hydraulic_production_in_megawatts": 1564985,
+        "wind_power_production_in_megawatts": 78172,
+
+
+    },
+    {
+        "country": "lithuania",
+        "year": 2018,
+        "solar_production_in_megawatts": 82000,
+        "hydraulic_production_in_megawatts": 80077000,
+        "wind_power_production_in_megawatts": 50033000,
+
+
+    },
+    {
+        "country": "luxemburg",
+        "year": 2018,
+        "solar_production_in_megawatts": 130624,
+        "hydraulic_production_in_megawatts": 1330473,
+        "wind_power_production_in_megawatts": 12284,
+
+
+    },
+    {
+        "country": "hungary",
+        "year": 2018,
+        "solar_production_in_megawatts": 728000,
+        "hydraulic_production_in_megawatts": 57000,
+        "wind_power_production_in_megawatts": 329000,
+
+
+    },
+    {
+        "country": "malta",
+        "year": 2018,
+        "solar_production_in_megawatts": 131185,
+        "hydraulic_production_in_megawatts": 0000,
+        "wind_power_production_in_megawatts": 0100,
+
+
+    },
+    {
+        "country": "neederlands",
+        "year": 2018,
+        "solar_production_in_megawatts": 4608000,
+        "hydraulic_production_in_megawatts": 37000,
+        "wind_power_production_in_megawatts": 4393000,
+
+
+    },
+    {
+        "country": "austria",
+        "year": 2018,
+        "solar_production_in_megawatts": 1455132,
+        "hydraulic_production_in_megawatts": 14516246,
+        "wind_power_production_in_megawatts": 3132713,
+
+
+    },
+    {
+        "country": "poland",
+        "year": 2018,
+        "solar_production_in_megawatts": 561976,
+        "hydraulic_production_in_megawatts": 2390768,
+        "wind_power_production_in_megawatts": 5766078,
+
+
+    },
+    {
         "country": "czechia",
         "year": 2018,
         "solar_production_in_megawatts": 2075.072,
@@ -41,14 +122,16 @@ var jmcInitialData = [
     }
 ];
 
+renewablepowercapacitiesDB.insert(acjInitialData);
+
 
 module.exports.init = (app) => {
 
     //GET /api/v1/renewablepowercapacities-stats/loadInitialData"
-    app.get(BASE_API_PATH + JMC_ENDPOINT + "/loadInitialData", (req, res) => {
+    app.get(BASE_API_PATH + ACJ_ENDPOINT + "/loadInitialData", (req, res) => {
 
         if (renewablepowercapacitiesDB.getAllData().length == 0) {
-            renewablepowercapacitiesDB.insert(jmcInitialData);
+            renewablepowercapacitiesDB.insert(acjInitialData);
             res.status(200).send("Data created sucessfully!!");
         } else {
             res.sendStatus(409);
@@ -58,7 +141,7 @@ module.exports.init = (app) => {
 
     //GET /api/v1/renewablepowercapacities-stats
     //GET /api/v1/renewablepowercapacities-stats?country=country&year=year&...
-    app.get(BASE_API_PATH + JMC_ENDPOINT, (req, res) => {
+    app.get(BASE_API_PATH + ACJ_ENDPOINT, (req, res) => {
         let query = {};
         let offset = 0;
         let limit = Number.MAX_SAFE_INTEGER;
@@ -113,7 +196,7 @@ module.exports.init = (app) => {
 
 
     //POST /api/v1/renewablepowercapacities-stats
-    app.post(BASE_API_PATH + JMC_ENDPOINT, (req, res) => {
+    app.post(BASE_API_PATH + ACJ_ENDPOINT, (req, res) => {
         var newResource = req.body;
 
         renewablepowercapacitiesDB.find({
@@ -155,7 +238,7 @@ module.exports.init = (app) => {
     });
 
     //GET /api/v1/renewablepowercapacities-stats/country/year
-    app.get(BASE_API_PATH + JMC_ENDPOINT + "/:country/:year", (req, res) => {
+    app.get(BASE_API_PATH + ACJ_ENDPOINT + "/:country/:year", (req, res) => {
         renewablepowercapacitiesDB.find({ country: req.params.country, year: parseInt(req.params.year) }, (err, resource) => {
             if (err) {
                 console.error(DATABASE_ERR_MSSG + err);
@@ -186,7 +269,7 @@ module.exports.init = (app) => {
     });
 
     //DELETE /api/v1/renewablepowercapacities-stats/country/year
-    app.delete(BASE_API_PATH + JMC_ENDPOINT + "/:country/:year", (req, res) => {
+    app.delete(BASE_API_PATH + ACJ_ENDPOINT + "/:country/:year", (req, res) => {
         var country = req.params.country;
         var year = parseInt(req.params.year);
         renewablepowercapacitiesDB.remove({ country: country, year: year }, {}, function (err, numRemoved) {
@@ -207,7 +290,7 @@ module.exports.init = (app) => {
     });
 
     //PUT /api/v1/renewablepowercapacities-stats/country/year
-    app.put(BASE_API_PATH + JMC_ENDPOINT + "/:country/:year", function (req, res) {
+    app.put(BASE_API_PATH + ACJ_ENDPOINT + "/:country/:year", function (req, res) {
 
         var country = req.params.country;
         var year = parseInt(req.params.year);
@@ -243,17 +326,17 @@ module.exports.init = (app) => {
 
 
     //POST /api/v1/renewablepowercapacities-stats/country/year (NOT ALLOWED)
-    app.post(BASE_API_PATH + JMC_ENDPOINT + "/:country/:year", function (req, res) {
+    app.post(BASE_API_PATH + ACJ_ENDPOINT + "/:country/:year", function (req, res) {
         res.status(405).send("Method not allowed!!");
     });
 
     //PUT /api/v1/renewablepowercapacities-stats(NOT ALLOWED)
-    app.put(BASE_API_PATH + JMC_ENDPOINT, function (req, res) {
+    app.put(BASE_API_PATH + ACJ_ENDPOINT, function (req, res) {
         res.status(405).send("Method not allowed!!");
     });
 
     //DELETE /api/v1/renewablepowercapacities-stats
-    app.delete(BASE_API_PATH + JMC_ENDPOINT, (req, res) => {
+    app.delete(BASE_API_PATH + ACJ_ENDPOINT, (req, res) => {
 
         renewablepowercapacitiesDB.remove({}, { multi: true }, function (err, numRemoved) {
             if (err) {

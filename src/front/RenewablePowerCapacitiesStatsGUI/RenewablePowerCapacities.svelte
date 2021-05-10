@@ -17,40 +17,26 @@
 
     //CARGA DATOS EN LA TABLA loadInitialData
     async function cargarDatos() {
+        
         console.log("Buscando datos...");
-        const res_iniciar = await fetch(
-            "/api/v1/renewablepowercapacities-stats/loadInitialData"
-        );
+        const res_iniciar = await fetch("/api/v1/renewablepowercapacities-stats/loadInitialData");
         const res = await fetch("/api/v1/renewablepowercapacities-stats"); //ESPERO A QUE TERMINE LA BUSQUEDA con await
 
         console.log(res_iniciar.status);
         if (res_iniciar.status != 200) {
             console.log("Error datos ya cargados");
+            alert("Error datos ya cargados");
         } else {
             console.log("Ok cargando datos.");
             const json = await res.json(); //FORMA DE METER LOS DATOS DE LA VARIABLE CONTACTS
             datos = json; //METO LOS DATOS PARSEADOS EN LA VAR CONTACTS
             console.log(`Tenemos ${datos.length} datos.`);
+            alert("Datos cargados correctamente.");
         }
     }
 
-    //MUESTRA LOS DATOS DE LA BD EN LA TABLA
- /*   async function verTabla() {
-        console.log("Buscando datos...");
-
-        const res = await fetch("/api/v1/renewablepowercapacities-stats"); //ESPERO A QUE TERMINE LA BUSQUEDA con await
-
-        if (res.ok) {
-            console.log("Ok.");
-            const json = await res.json(); //FORMA DE METER LOS DATOS DE LA VARIABLE CONTACTS
-
-            datos = json; //METO LOS DATOS PARSEADOS EN LA VAR CONTACTS
-            console.log(`Tenemos ${datos.length} datos.`);
-        } else {
-            console.log("Error");
-        }
-    }*/
-
+    
+    //MUESTRA TODOS LOS DATOS DE LA BD
     async function verTabla() {
         console.log("Buscando datos...");
         const res = await fetch(RUTA_API);
@@ -62,7 +48,7 @@
             }else{
                 datos = returnedJson;
             }
-            console.log("!"+datos.length + ", Registers loaded!");
+            console.log("!"+datos.length + ", Registro cargado");
         } else {
             console.log("Error");
             datos=[];
@@ -113,43 +99,21 @@
                     verTabla();
                 }
                 if (res.status == 400) {
-                    alert(
-                        "La entrada de datos no es correcta:\nTodos los campos menos el país deben ser númericos."
-                    );
+                    alert("Los datos introducidos no son correctos - Revise los campos.");
                 }
                 if (res.status == 409) {
-                    alert(
-                        "Los datos que intenta introducir ya se encuentran en la base de datos."
-                    );
+                    alert("Error - Los datos introducidos ya existen." );
                 }
             });//fin then
         }//FIN ELSE
     }
 
-    //BORRA UN DATO POR PAIS Y AÑO
-   /* async function borrarDato(pais, ano) {
-        
-        var opcion = confirm("¿Estás seguro?");
-        if(opcion){
-
-            console.log("Borrando datos...");
-            var ruta = RUTA_API + "/" + pais + "/" + ano;
-            const res = await fetch(ruta, {
-                method: "DELETE",
-            }).then((res) => {
-                verTabla();
-            });
-
-        }else{
-            console.log("Cancelado.");
-        }
-        
-        
-    }*/
-    //DeleteOneData
-    async function deleteOneData(country, year){
-        if(confirm("Va a eliminar un dato, ¿está seguro?\n Esta acción es irreversible")){
-            console.log("Deleting data...");
+   
+    //BORRA UN SOLO DATO
+    async function borrarDato(country, year){
+        if(confirm("Va a eliminar un dato, ¿Estas seguro")){
+            console.log("Borrando dato...");
+            alert("Dato borrado");
             const res = await fetch(RUTA_API + "/" + country + "/" + year ,
             {
                 method: "DELETE",
@@ -171,6 +135,7 @@
             }).then(function (res) {
                 if (res.ok) {
                     console.log("DATOS BORRADOS");
+                    alert("Datos eliminados.")
                     datos = [];
                 } else if ((res.status = 404)) {
                     console.log("ERROR DB NO ENCONTRADA");
@@ -182,11 +147,102 @@
         }
     }
 
-    onMount(verTabla); 
+     //VISUALIZA UN DATO DE LA BD
+    let busqueda_pais=[];
+    let busqueda_ano=[];
+    
+    //VER REGISTRO POR PAIS Y ANO
+    async function verRegistroPaisAno(){
+
+        var ruta="/api/v1/renewablepowercapacities-stats?country="+busqueda_pais+"&year="+busqueda_ano;
+        console.log(ruta);
+        
+        const res = await fetch(ruta);
+
+        if(res.ok){
+            
+            const returnedJson = await res.json();
+            
+            if(busqueda_pais.length == 0 && busqueda_ano.length == 0 ){
+                
+                alert("Debes de introducir un pais y el año.");
+                console.log("Error");
+                //datos = [];
+            
+            }else if(typeof returnedJson.length == "undefined"){
+                datos = [returnedJson];
+            }else{
+                datos = returnedJson;
+            }
+
+        }else{
+            
+            console.log("Error");
+                alert("El pais" + busqueda_pais + " con año " + busqueda_ano + " no existe en nuestra BD." );
+            }
+            
+            busqueda_pais=[];
+            busqueda_ano=[];
+        
+    }
+
+     //GetData
+     async function paginarDato(){
+        
+        console.log("Fetching data...");
+        const res = await fetch(RUTA_API+"?limit="+ limit +"&offset="+ offset);
+        if(res.ok){
+            const returnedJson = await res.json();
+                        if(typeof returnedJson.length == "undefined"){
+                            console.log("only one element!")
+                            datos = [returnedJson];
+                        }else{
+                            datos = returnedJson;
+                        }
+                        console.log("!"+datos.length + ", Registers loaded!");
+                 
+        } else {
+            console.log("Error");
+            datos = [];
+}
+}
+
+    //Paginar
+    let offset = 0;
+    let limit = 10;
+    function nextPage(){        
+		    offset = offset + 10;
+			paginarDato(offset);
+    }
+
+    function previousPage(){
+        if(offset == 0){
+            offset = 0;
+            paginarDato(offset);
+        }else{
+			offset = offset - 10;
+			paginarDato(offset);
+        }
+    }
+
+    onMount(verTabla);//CARGAR LOS DATOS AL INICIAR  
 </script>
 
 <main>
-    <br /><br /><hr/>
+    <br /><br />
+    <center><h3>Capacidad de producción de energia renovable</h3></center>
+    <br/>
+    <div id="capaBusqueda" style="background-color: aquamarine;" >
+        <br/>
+        <center>
+            <input bind:value="{busqueda_pais}" placeholder="Pais">
+            <input bind:value="{busqueda_ano}" placeholder="Año">
+            <Button color="primary" on:click={verRegistroPaisAno}>Buscar</Button>
+            <Button color="danger" on:click={verTabla}>Eliminar Filtro Búsqueda</Button>
+        </center>    
+        <br/>
+    </div>    
+    <hr/>
     <Table bordered>
         <thead>
             <tr>
@@ -216,7 +272,7 @@
                     <td>{dato.solar_production_in_megawatts}</td>
                     <td>{dato.hydraulic_production_in_megawatts}</td>
                     <td>{dato.wind_power_production_in_megawatts}</td>
-                    <td><Button color="danger" on:click={deleteOneData(dato.country, dato.year)}> Borrar</Button>
+                    <td><Button color="danger" on:click={borrarDato(dato.country, dato.year)}> Borrar</Button>
                     </td>
                 </tr>
             {/each}
@@ -230,6 +286,11 @@
     </center>
         
     <br /><br />
+    <div>
+        &nbsp;&nbsp;<Button  color="primary" on:click={previousPage}>Página Anterior</Button>
+		&nbsp;&nbsp;<Button  color="primary" on:click={nextPage}>Siguiente Página</Button>    
+    </div>
+    <br/>
 </main>
 
 <style>
