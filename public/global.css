@@ -70,3 +70,22 @@ footer {
     height: 200px;
     width: 100%;
 }
+
+/* Navbar CSS */
+.nav-link{
+	color: brown;
+}
+.navbar{
+	background-color: rgba(0, 0, 0, 0.2);
+	
+}
+.navbar a{
+	color: rgba(0, 0, 0, 0.7);
+}
+
+.navbar a:hover{
+	color: rgba(46, 46, 196, 0.878);
+}
+.navbar a:active{
+	color: rgba(46, 46, 196, 0.878);
+}
