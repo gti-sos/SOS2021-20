@@ -5,6 +5,7 @@
 	import Footer from "./Footer.svelte";
 	import NotFoundPage from "./NotFoundPage.svelte";
 	import AboutPage from "./AboutPage.svelte";
+	import UnifiedChart from "./UnifiedChart.svelte";
 	import FoundsResearchSourcesStats from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStats.svelte";
 	import FoundsResearchSourcesStatsDataEdit from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataEdit.svelte"
 	import FoundsResearchSourcesStatsDataMultipleEdit from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataMultipleEdit.svelte"
@@ -18,6 +19,7 @@
 	const routes = {
 		"/": HomePage,
 		"/info": AboutPage,
+		"/unified-chart":UnifiedChart,
 		"/foundsresearchsources-stats": FoundsResearchSourcesStats,
 		"/foundsresearchsources-stats/:country/:year": FoundsResearchSourcesStatsDataEdit,
 		"/foundsresearchsources-stats/update-data": FoundsResearchSourcesStatsDataMultipleEdit,
@@ -57,10 +59,10 @@
 			  <ul class="navbar-nav mr-auto">
 				<li class="nav-item dropdown">
 				  <a class="nav-link dropdown-toggle" href="/#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Graficas
+					Gráficos
 				  </a>
 				  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="/#">Gráfico conjunto</a>
+					<a class="dropdown-item" href="/#/unified-chart">Gráfico conjunto</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="/#/foundsresearchsources-stats/chart">Fuentes de financiación de la investigación</a>
 					<a class="dropdown-item" href="/#">Emisiones de gases de efecto invernadero</a>

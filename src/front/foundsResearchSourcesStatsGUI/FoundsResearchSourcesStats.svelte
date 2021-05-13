@@ -280,6 +280,7 @@
                 <Button style="background-color: rgba(0, 0, 0, 0.2);color: rgba(0, 0, 0, 0.7);" color="light" on:click={loadData}>Cargar Datos</Button>
                 <Button style="background-color: rgba(0, 0, 0, 0.2);color: rgba(0, 0, 0, 0.7);" color="light" on:click={() => push("#/foundsresearchsources-stats/update-data")} >Editar Datos </Button>
                 <Button style="background-color: rgba(0, 0, 0, 0.2);color: rgba(0, 0, 0, 0.7);" color="light" on:click={deleteAllData}>Borrar Datos</Button>
+                <Button style="background-color: rgba(0, 0, 0, 0.2);color: rgba(0, 0, 0, 0.7);" color="light" on:click={() => push("#/foundsresearchsources-stats/chart")}>Representación Gráfica</Button>
             </div>
         
     </div>
