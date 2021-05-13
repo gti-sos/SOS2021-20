@@ -13,7 +13,7 @@ body {
 }
 
 a {
-	color: rgb(0,100,200);
+	color: rgba(46, 46, 196, 0.878);
 	text-decoration: none;
 }
 
@@ -84,8 +84,5 @@ footer {
 }
 
 .navbar a:hover{
-	color: rgba(46, 46, 196, 0.878);
-}
-.navbar a:active{
 	color: rgba(46, 46, 196, 0.878);
 }
