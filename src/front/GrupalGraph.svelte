@@ -5,6 +5,7 @@
     
     let dataJesus = [];
     let dataJorge = [];
+    let dataAlvaro = [];
     let total = [];
     let axisX = [];
     let carbonLine= [];
@@ -13,14 +14,19 @@
     let governmentLine= [];
     let privateLine = [];
     let nonprofitLine = []; 
+    let solarLine= [];
+    let hidraulicLine = [];
+    let windLine = []; 
 
 async function loadGraph(){
 
 
     const res = await fetch( "/api/v1/greenhousegasemissions-stats");
     const res1 = await fetch( "/api/v1/foundsresearchsources-stats");
+    const res2 = await fetch( "/api/v1/renewablepowercapacities-stats");
     dataJesus = await res.json();
     dataJorge = await res1.json();
+    dataAlvaro = await res2.json();
     //total = dataJesus.concat(dataJorge);
     //console.log(total);
    
@@ -40,6 +46,13 @@ async function loadGraph(){
         privateLine.push(d["percentage_of_private_financing"]);  
         nonprofitLine.push(d["percentage_of_non_profit_funding"]);  
     });
+
+    dataAlvaro.forEach(d => {
+        axisX.push(d.country+" "+d.year); 
+        solarLine.push(d["solar_production_in_megawatts"]);  
+        hidraulicLine.push(d["hydraulic_production_in_megawatts"]);  
+        windLine.push(d["wind_power_production_in_megawatts"]);  
+    });
 			
 			
 		
@@ -50,13 +63,13 @@ async function loadGraph(){
                 height: 400
             },
         title: {
-            text: 'Emisiones de Dióxido de Carbono, Metano y Óxido de nitrógeno por país en el periodo 2014-2018'
+            text: 'Datos conjuntos en el periodo 2014-2018'
         },
 
         
         yAxis: {
             title: {
-                    text: 'Toneladas'
+                    text: 'Valores'
                 }
             
         },
@@ -93,7 +106,17 @@ async function loadGraph(){
             }, {
                 name: 'Financiación ONGs',
                 data: nonprofitLine,
-            }],
+            }, {
+                name: 'Producción Solar en MegaWatios',
+                data: solarLine,
+            }, {
+                name: 'Producción Hidraulica en MegaWatios',
+                data: hidraulicLine,
+            }, {
+                name: 'Producción Eolica en MegaWatios',
+                data: windLine,
+            }
+        ],
         
 
         responsive: {
