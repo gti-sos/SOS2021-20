@@ -9,7 +9,7 @@
 	import FoundsResearchSourcesStats from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStats.svelte";
 	import FoundsResearchSourcesStatsDataEdit from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataEdit.svelte"
 	import FoundsResearchSourcesStatsDataMultipleEdit from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataMultipleEdit.svelte"
-	// import FoundsResearchSourcesStatsChart from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsChart.svelte";
+	import FoundsResearchSourcesStatsChart from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsChart.svelte";
 	import GreenhouseGasEmissions from "./GreenhouseGasEmissionsStatsGUI/GreenhouseGasEmissions.svelte";
 	import GreenhouseGasEmissionsEdit from "./GreenhouseGasEmissionsStatsGUI/GreenhouseGasEmissionsEdit.svelte";
 	import GreenhouseGasEmissionsGraph from "./GreenhouseGasEmissionsStatsGUI/GreenhouseGasEmissionsGraph.svelte";
@@ -24,7 +24,7 @@
 		"/foundsresearchsources-stats": FoundsResearchSourcesStats,
 		"/foundsresearchsources-stats/:country/:year": FoundsResearchSourcesStatsDataEdit,
 		"/foundsresearchsources-stats/update-data": FoundsResearchSourcesStatsDataMultipleEdit,
-		// "/foundsresearchsources-stats/chart": FoundsResearchSourcesStatsChart,
+		"/foundsresearchsources-stats/chart": FoundsResearchSourcesStatsChart,
 		"/greenhousegasemissions-stats": GreenhouseGasEmissions,
 	    "/greenhousegasemissions-stats/:country/:year": GreenhouseGasEmissionsEdit,
 		"/greenhousegasemissions-stats/graph": GreenhouseGasEmissionsGraph,

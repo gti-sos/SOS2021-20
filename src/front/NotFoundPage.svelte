@@ -9,7 +9,7 @@
 			<div class="notfound-404">
 				<h1>¡Error 404!</h1>
 			</div>
-			<h2>Oops! La vista que buscas no existe</h2>
+			<h2>¡Oops! La vista que buscas no existe</h2>
 			<p>La vista la la que intentas acceder no existe, se ha eliminado, su nombre ha cambiado o está temporalmente fuera de servicio.</p>
 			<Button on:click={()=>push("#/")}>Volver a la página principal</Button>
 		</div>
@@ -21,6 +21,7 @@
 
     .notfound {
     text-align: center;
-    margin-top: 10em;
+    margin-top: 15em;
+	margin-bottom: 20em;
 }
 </style>
