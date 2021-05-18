@@ -283,6 +283,7 @@
     <center>
         <Button color="info" on:click={cargarDatos}>Cargar Datos</Button>
         <Button color="danger" on:click={eliminarDatos}>Eliminar Datos</Button>
+        <a href="#/renewablepowercapacities-stats/char"><Button color="info">Ver grafica</Button></a>
     </center>
         
     <br /><br />

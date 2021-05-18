@@ -15,6 +15,7 @@
 	import GreenhouseGasEmissionsGraph from "./GreenhouseGasEmissionsStatsGUI/GreenhouseGasEmissionsGraph.svelte";
 	import RenewablePowerCapacities from "./RenewablePowerCapacitiesStatsGUI/RenewablePowerCapacities.svelte";
 	import RenewablePowerCapacitiesEdit from "./RenewablePowerCapacitiesStatsGUI/RenewablePowerCapacitiesDataEdit.svelte";
+	import RenewablePowerCapacitiesChar from "./RenewablePowerCapacitiesStatsGUI/RenewablePowerCapacitiesChar.svelte";
 	import GrupalGraph from "./GrupalGraph.svelte";
 
 	const routes = {
@@ -30,6 +31,7 @@
 		"/greenhousegasemissions-stats/graph": GreenhouseGasEmissionsGraph,
 		"/renewablepowercapacities-stats": RenewablePowerCapacities,
 		"/renewablepowercapacities-stats/:country/:year": RenewablePowerCapacitiesEdit,
+		"/renewablepowercapacities-stats/char": RenewablePowerCapacitiesChar,
 		"/grupal-graph":GrupalGraph,
 		"*": NotFoundPage,
 	};
