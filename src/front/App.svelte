@@ -72,7 +72,7 @@
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="/#/foundsresearchsources-stats/chart">Fuentes de financiación de la investigación</a>
 					<a class="dropdown-item" href="/#/greenhousegasemissions-stats/graph">Emisiones de gases de efecto invernadero</a>
-					<a class="dropdown-item" href="/#">Capacidad de producción de energia renovable</a>
+					<a class="dropdown-item" href="/#/renewablepowercapacities-stats/char">Capacidad de producción de energia renovable</a>
 				  </div>
 				</li>
 				<li class="nav-item">
