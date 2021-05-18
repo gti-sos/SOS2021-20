@@ -36,22 +36,22 @@ async function loadGraph(){
     dataJesus.forEach(d => {
         axisX.push(d.country+" "+d.year);
         carbonLine.push(d["carbon_dioxide"]);
-        methaneLine.push(d["methane"]);
-        nitrousLine.push(d["nitrous_oxide"]);   
+        // methaneLine.push(d["methane"]);
+        // nitrousLine.push(d["nitrous_oxide"]);   
     });
 
     dataJorge.forEach(d => {
         axisX.push(d.country+" "+d.year); 
-        governmentLine.push(d["percentage_of_government_funding"]);  
+        // governmentLine.push(d["percentage_of_government_funding"]);  
         privateLine.push(d["percentage_of_private_financing"]);  
-        nonprofitLine.push(d["percentage_of_non_profit_funding"]);  
+        // nonprofitLine.push(d["percentage_of_non_profit_funding"]);  
     });
 
     dataAlvaro.forEach(d => {
         axisX.push(d.country+" "+d.year); 
         solarLine.push(d["solar_production_in_megawatts"]);  
-        hidraulicLine.push(d["hydraulic_production_in_megawatts"]);  
-        windLine.push(d["wind_power_production_in_megawatts"]);  
+        // hidraulicLine.push(d["hydraulic_production_in_megawatts"]);  
+        // windLine.push(d["wind_power_production_in_megawatts"]);  
     });
 			
 			
@@ -91,30 +91,12 @@ async function loadGraph(){
         series: [{
                 name: 'Dióxido de carbono',
                 data: carbonLine,
-            }, {
-                name: 'Metano',
-                data: methaneLine,
-            }, {
-                name: 'Óxido de nitrógeno',
-                data: nitrousLine,
-            }, {
-                name: 'Financiación estatal',
-                data: governmentLine,
-            }, {
+            } , {
                 name: 'Financiación privada',
                 data: privateLine,
-            }, {
-                name: 'Financiación ONGs',
-                data: nonprofitLine,
-            }, {
+            },  {
                 name: 'Producción Solar en MegaWatios',
                 data: solarLine,
-            }, {
-                name: 'Producción Hidraulica en MegaWatios',
-                data: hidraulicLine,
-            }, {
-                name: 'Producción Eolica en MegaWatios',
-                data: windLine,
             }
         ],
         
@@ -152,7 +134,7 @@ async function loadGraph(){
     <figure class="highcharts-figure">
         <div id="container"></div>
         <p class="backbutton">
-            <Button color="secondary"><a href="#/greenhousegasemissions-stats">Volver</a></Button>
+            <Button color="secondary" on:click="{pop}">Volver</Button>
         </p>
     </figure>
 
@@ -162,9 +144,4 @@ async function loadGraph(){
         text-align: center;
     }
 
-    a{
-        color: black;
-        
-    }
-    
     </style>
