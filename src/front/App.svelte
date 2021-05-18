@@ -12,9 +12,10 @@
 	// import FoundsResearchSourcesStatsChart from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsChart.svelte";
 	import GreenhouseGasEmissions from "./GreenhouseGasEmissionsStatsGUI/GreenhouseGasEmissions.svelte";
 	import GreenhouseGasEmissionsEdit from "./GreenhouseGasEmissionsStatsGUI/GreenhouseGasEmissionsEdit.svelte";
+	import GreenhouseGasEmissionsGraph from "./GreenhouseGasEmissionsStatsGUI/GreenhouseGasEmissionsGraph.svelte";
 	import RenewablePowerCapacities from "./RenewablePowerCapacitiesStatsGUI/RenewablePowerCapacities.svelte";
 	import RenewablePowerCapacitiesEdit from "./RenewablePowerCapacitiesStatsGUI/RenewablePowerCapacitiesDataEdit.svelte";
-
+	import GrupalGraph from "./GrupalGraph.svelte";
 
 	const routes = {
 		"/": HomePage,
@@ -26,8 +27,10 @@
 		// "/foundsresearchsources-stats/chart": FoundsResearchSourcesStatsChart,
 		"/greenhousegasemissions-stats": GreenhouseGasEmissions,
 	    "/greenhousegasemissions-stats/:country/:year": GreenhouseGasEmissionsEdit,
+		"/greenhousegasemissions-stats/graph": GreenhouseGasEmissionsGraph,
 		"/renewablepowercapacities-stats": RenewablePowerCapacities,
 		"/renewablepowercapacities-stats/:country/:year": RenewablePowerCapacitiesEdit,
+		"/grupal-graph":GrupalGraph,
 		"*": NotFoundPage,
 	};
 
@@ -63,9 +66,10 @@
 				  </a>
 				  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<a class="dropdown-item" href="/#/unified-chart">Gráfico conjunto</a>
+					<a class="dropdown-item" href="/#/grupal-graph">Gráfico conjunto 2</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="/#/foundsresearchsources-stats/chart">Fuentes de financiación de la investigación</a>
-					<a class="dropdown-item" href="/#">Emisiones de gases de efecto invernadero</a>
+					<a class="dropdown-item" href="/#/greenhousegasemissions-stats/graph">Emisiones de gases de efecto invernadero</a>
 					<a class="dropdown-item" href="/#">Capacidad de producción de energia renovable</a>
 				  </div>
 				</li>

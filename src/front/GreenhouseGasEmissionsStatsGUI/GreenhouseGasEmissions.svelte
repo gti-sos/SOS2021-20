@@ -193,6 +193,7 @@
                 <div id= "initialbuttons"class="col-5">
                     <Button color="success" on:click={loadInitialData}>Cargar Datos</Button>
                     <Button class ="elimi" color="danger" on:click={deleteAllData}>Eliminar Datos</Button>
+                    <Button color="warning"><a href="#/greenhousegasemissions-stats/graph">Grafica</a></Button>
                 </div>
                 
                 <div id = "searchfilter" class="col-7">
@@ -225,6 +226,7 @@
                 <td><input placeholder="Inserte dato" bind:value="{newData.methane}"></td>
                 <td><input placeholder="Inserte dato" bind:value="{newData.nitrous_oxide}"></td>
                 <td><Button block color="info" size="sm" on:click={insertData}>Añadir dato</Button></td>
+                
             </tr>
             {#each data as onedata}
             <tr>
