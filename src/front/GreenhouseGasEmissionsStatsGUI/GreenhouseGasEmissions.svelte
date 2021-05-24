@@ -7,8 +7,8 @@
     import ButtonGroup from "sveltestrap/src/ButtonGroup.svelte";
     import {Col, Pagination, Tooltip} from 'sveltestrap';
     import {Icon} from 'sveltestrap';
-    
-
+    //Define API endpoint
+    var BASE_API_PATH = "/api/v1";
     
     let data = [];
     let offset = 0;
@@ -24,7 +24,7 @@
     //LoadInitialData
     async function loadInitialData(){
         console.log("Loading data...");
-        const res = await fetch("/api/v1/greenhousegasemissions-stats/loadInitialData").then((res)=>{
+        const res = await fetch(BASE_API_PATH +"/greenhousegasemissions-stats/loadInitialData").then((res)=>{
 
         if(res.ok){
             console.log("OK");
@@ -42,7 +42,7 @@
     async function getData(){
         
                 console.log("Fetching data...");
-                const res = await fetch("/api/v1/greenhousegasemissions-stats?limit="+ limit +"&offset="+ offset);
+                const res = await fetch(BASE_API_PATH +"/greenhousegasemissions-stats?limit="+ limit +"&offset="+ offset);
                 if(res.ok){
                     const returnedJson = await res.json();
                                 if(typeof returnedJson.length == "undefined"){
@@ -65,7 +65,7 @@
     async function deleteAllData(){
         if(confirm("¿Está seguro que quiere eliminar todos los datos?\n Esta acción es irreversible.")){ 
             console.log("Deleting data...");
-            const res = await fetch("/api/v1/greenhousegasemissions-stats",{
+            const res = await fetch(BASE_API_PATH +"/greenhousegasemissions-stats",{
                 method: "DELETE"
                 }).then((res)=>{
                     if (res.ok) {
@@ -84,7 +84,7 @@
              alert("Debe indicar un país y un año");         
         }else{
                                  console.log("Inserting data...");
-                                 const res = await fetch("/api/v1/greenhousegasemissions-stats",
+                                 const res = await fetch(BASE_API_PATH +"/greenhousegasemissions-stats",
                                     {
                                         method: "POST",
                                         body: JSON.stringify({
@@ -117,7 +117,7 @@
     async function deleteOneData(country, year){
         if(confirm("Va a eliminar el dato: "+ country + " del año "+ year + " ¿está seguro?\nEsta acción es irreversible")){
             console.log("Deleting data...");
-            const res = await fetch("/api/v1/greenhousegasemissions-stats" + "/" + country + "/" + year ,
+            const res = await fetch(BASE_API_PATH +"/greenhousegasemissions-stats" + "/" + country + "/" + year ,
             {
                 method: "DELETE",
             }
@@ -132,7 +132,7 @@
     let searchedYear=[];
     
     async function searchData(country, year){
-        const res = await fetch("/api/v1/greenhousegasemissions-stats" + "/?country="+ searchedCountry + "&year=" + searchedYear ,
+        const res = await fetch(BASE_API_PATH +"/greenhousegasemissions-stats" + "/?country="+ searchedCountry + "&year=" + searchedYear ,
         {
                 method: "GET",
                 headers:{

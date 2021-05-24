@@ -1,9 +1,11 @@
 // Student: Jesús Guerra Adame 
 // Resource: greenhousegasemissions-stats
 
-
+const request = require("request");
 //Define API endpoint
 var BASE_API_PATH = "/api/v1";
+
+
 
 //Create database
 var Datastore = require("nedb");
@@ -39,65 +41,65 @@ var jga_initialData = [
     {
         "country": "belgium",
         "year": 2014,
-        "carbon_dioxide": 105.3731,
-        "methane": 0.32512,
-        "nitrous_oxide": 0.02038,
+        "carbon_dioxide": 100861.37,
+        "methane": 324.78,
+        "nitrous_oxide": 20.86,
     },
     {
         "country": "italy",
         "year": 2014,
-        "carbon_dioxide": 146.71485,
-        "methane": 1.76903,
-        "nitrous_oxide": 0.12664,
+        "carbon_dioxide": 356890.98,
+        "methane": 1756.25,
+        "nitrous_oxide": 60.09,
     },
     {
         "country": "germany",
         "year": 2014,
-        "carbon_dioxide": 185.3671,
-        "methane": 0.36512,
-        "nitrous_oxide": 0.97038,
+        "carbon_dioxide": 817208.15,
+        "methane": 2279.78,
+        "nitrous_oxide": 128.46,
     },
     {
-        "country": "italyff",
-        "year": 2014,
-        "carbon_dioxide": 146.71485,
-        "methane": 1.76903,
-        "nitrous_oxide": 0.12664,
+        "country": "estonia",
+        "year": 2015,
+        "carbon_dioxide": 15963.68,
+        "methane": 45.87,
+        "nitrous_oxide": 3.11,
     },
     {
-        "country": "itefealy",
-        "year": 2014,
-        "carbon_dioxide": 146.71485,
-        "methane": 1.76903,
-        "nitrous_oxide": 0.12664,
+        "country": "france",
+        "year": 2016,
+        "carbon_dioxide": 357726.39,
+        "methane": 2293.69,
+        "nitrous_oxide": 135.93,
     },
     {
-        "country": "iefeftaly",
-        "year": 2014,
-        "carbon_dioxide": 146.71485,
-        "methane": 1.76903,
-        "nitrous_oxide": 0.12664,
+        "country": "croatia",
+        "year": 2017,
+        "carbon_dioxide": 19186.74,
+        "methane": 162.77,
+        "nitrous_oxide": 5.82,
     },
     {
-        "country": "iththtaly",
+        "country": "luxembourg",
         "year": 2014,
-        "carbon_dioxide": 146.71485,
-        "methane": 1.76903,
-        "nitrous_oxide": 0.12664,
+        "carbon_dioxide": 11013.76,
+        "methane": 23.06,
+        "nitrous_oxide": 1.04,
     },
     {
-        "country": "jmjm",
+        "country": "portugal",
         "year": 2014,
-        "carbon_dioxide": 146.71485,
-        "methane": 1.76903,
-        "nitrous_oxide": 0.12664,
+        "carbon_dioxide": 51109.07,
+        "methane": 377.51,
+        "nitrous_oxide": 11.32,
     },
     {
-        "country": "liki",
-        "year": 2014,
-        "carbon_dioxide": 146.71485,
-        "methane": 1.76903,
-        "nitrous_oxide": 0.12664,
+        "country": "romania",
+        "year": 2015,
+        "carbon_dioxide": 78441.93,
+        "methane": 1181.8,
+        "nitrous_oxide": 25.02,
     },
     
 
@@ -326,4 +328,19 @@ module.exports.init = (app) => {
 
 
     });
+
+
+   app.use("/proxyHeroku", function(req, res) {
+        var apiServerHost = "https://sos2021-20.herokuapp.com";
+    
+        var url = apiServerHost + req.url;
+        console.log(`piped: ${req.url} -> ${url}`);
+        req.pipe(request(url)).pipe(res);
+      });
+    
 };
+
+
+
+  
+
