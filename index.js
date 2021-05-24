@@ -4,9 +4,10 @@ var express = require("express");
 // Create service with required modules
 var app = express();
 
-// Allow CORS support
+// Enable CORS HEders only for get petitions
 var cors = require('cors');
 app.use(cors());
+
 // Instantiate parser for JSON
 var bodyParser = require("body-parser");
 
@@ -49,12 +50,12 @@ app.get("/info/renewablepowercapacities-stats", (request, response) => {
 // ################################################################################# //
 // Student: Jorge Marín Cordero 
 // Resource: foundsresearchsources-stats
-var foundsResearchSourcesAPI = require("./src/back/foundsResearchSourcesAPI");
-// var foundsResearchSourcesAPIv1 = require("./src/back/foundsResearchSourcesAPI/v1");
-// var foundsResearchSourcesAPIv2 = require("./src/back/foundsResearchSourcesAPI/v2");
-foundsResearchSourcesAPI.init(app);
-// foundsResearchSourcesAPIv1.init(app);
-// foundsResearchSourcesAPIv2.init(app);
+// var foundsResearchSourcesAPI = require("./src/back/foundsResearchSourcesAPI");
+var foundsResearchSourcesAPIv1 = require("./src/back/foundsResearchSourcesAPI/v1");
+var foundsResearchSourcesAPIv2 = require("./src/back/foundsResearchSourcesAPI/v2");
+// foundsResearchSourcesAPI.init(app);
+foundsResearchSourcesAPIv1.init(app);
+foundsResearchSourcesAPIv2.init(app);
 
 // ################################################################################# //
 // Student: Álvaro Caro Jiménez  
