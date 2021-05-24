@@ -127,7 +127,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"country\": \"france\",\r\n\t\"year\": 2016,\r\n\t\"carbon_dioxide\": 357726.39,\r\n\t\"methane\": 2293.69,\r\n    \"nitrous_oxide\": 135.93\r\n}",
+					"raw": "{\r\n    \"country\": \"france\",\r\n\t\"year\": 2018,\r\n\t\"carbon_dioxide\": 357726.39,\r\n\t\"methane\": 2293.69,\r\n    \"nitrous_oxide\": 135.93\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -735,7 +735,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats?methane=1.76903",
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats?methane=45.87",
 					"host": [
 						"{{HOST}}"
 					],
@@ -747,7 +747,7 @@
 					"query": [
 						{
 							"key": "methane",
-							"value": "1.76903"
+							"value": "45.87"
 						}
 					]
 				}
