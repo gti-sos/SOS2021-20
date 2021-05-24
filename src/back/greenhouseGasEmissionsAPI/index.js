@@ -1,9 +1,11 @@
 // Student: Jesús Guerra Adame 
 // Resource: greenhousegasemissions-stats
 
-
+const request = require("request");
 //Define API endpoint
 var BASE_API_PATH = "/api/v1";
+
+
 
 //Create database
 var Datastore = require("nedb");
@@ -326,4 +328,19 @@ module.exports.init = (app) => {
 
 
     });
+
+
+   app.use("/proxyHeroku", function(req, res) {
+        var apiServerHost = "https://sos2021-20.herokuapp.com";
+    
+        var url = apiServerHost + req.url;
+        console.log(`piped: ${req.url} -> ${url}`);
+        req.pipe(request(url)).pipe(res);
+      });
+    
 };
+
+
+
+  
+
