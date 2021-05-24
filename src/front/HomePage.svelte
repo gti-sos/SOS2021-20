@@ -13,6 +13,7 @@ import Button from "sveltestrap/src/Button.svelte";
         <p class="lead">Bienvenido a la página principal del grupo 20 de la asignatura, Sistemas Orientados a Servicios </p>
 
         <Button on:click={()=>push("#/info")}>Sobre nosotros</Button>
+        <Button on:click={()=>push("#/about")}>Vídeos</Button>
         </div>
     </div>
 <style>

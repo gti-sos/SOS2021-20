@@ -4,6 +4,7 @@
 	import HomePage from "./HomePage.svelte";
 	import Footer from "./Footer.svelte";
 	import NotFoundPage from "./NotFoundPage.svelte";
+	import InfoPage from "./InfoPage.svelte";
 	import AboutPage from "./AboutPage.svelte";
 	import UnifiedChart from "./UnifiedChart.svelte";
 	import FoundsResearchSourcesStats from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStats.svelte";
@@ -20,7 +21,8 @@
 
 	const routes = {
 		"/": HomePage,
-		"/info": AboutPage,
+		"/info": InfoPage,
+		"/about": AboutPage,
 		"/unified-chart":UnifiedChart,
 		"/foundsresearchsources-stats": FoundsResearchSourcesStats,
 		"/foundsresearchsources-stats/:country/:year": FoundsResearchSourcesStatsDataEdit,
