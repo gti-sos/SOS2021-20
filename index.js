@@ -68,8 +68,10 @@ renewablepowercapacities.init(app);
 // Student: Jesús Guerra Adame  
 // Resource: greenhousegasemissions-stats
 
-var greenhouseGasEmissionsAPI = require("./src/back/greenhouseGasEmissionsAPI");
-greenhouseGasEmissionsAPI.init(app);
+var greenhouseGasEmissionsAPIv1 = require("./src/back/greenhouseGasEmissionsAPI/v1");
+var greenhouseGasEmissionsAPIv2 = require("./src/back/greenhouseGasEmissionsAPI/v2/integration");
+greenhouseGasEmissionsAPIv1.init(app);
+greenhouseGasEmissionsAPIv2.init(app);
 
 // ################################################################################# //
 
