@@ -13,6 +13,7 @@ var DATABASE_ERR_MSSG = "Database error in foundsresearchsources-stats API:\n";
 //Instantiate paperwork for JSON validation
 var paperwork = require("paperwork");
 
+var request = require('request');
 
 
 //Define validation schema
