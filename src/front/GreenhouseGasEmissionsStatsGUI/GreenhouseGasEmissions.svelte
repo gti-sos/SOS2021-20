@@ -8,7 +8,7 @@
     import {Col, Pagination, Tooltip} from 'sveltestrap';
     import {Icon} from 'sveltestrap';
     //Define API endpoint
-    var BASE_API_PATH = "https://sos2021-20.herokuapp.com/api/v1";
+    var BASE_API_PATH = "/api/v1";
     
     let data = [];
     let offset = 0;
