@@ -3,7 +3,7 @@
 
 //Define API endpoint
 var BASE_API_PATH = "/api/v3";
-var JMC_ENDPOINT = "/foundsresearchsources-stats";
+var JMC_ENDPOINT = "/jmc/external";
 
 //Create database
 var Datastore = require("nedb");
@@ -19,10 +19,10 @@ var request = require('request');
 module.exports.init = (app) => {
 
     //---------------- External APIs --------------------//
-
-    //GET /api/v1/foundsresearchsources-stats/loadInitialData"
-    app.get(BASE_API_PATH + JMC_ENDPOINT + "/loadInitialData", function (req, res) {
-        request.get("https://api.jcdecaux.com/vls/v1/stations?contract=Seville&apiKey=" + process.env.JC_DECAUX , (error, resp, body) => {
+    
+    // Bikesharing JC Decaux Seville
+    app.get(BASE_API_PATH + JMC_ENDPOINT + "/bikes", function (req, res) {
+        request.get("https://api.jcdecaux.com/vls/v1/stations?contract=Seville&apiKey=" + process.env.JC_DECAUX_KEY , (error, resp, body) => {
             if (error) {
                 return console.dir(error);
             }
