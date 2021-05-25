@@ -6,6 +6,7 @@
 	import NotFoundPage from "./NotFoundPage.svelte";
 	import InfoPage from "./InfoPage.svelte";
 	import AboutPage from "./AboutPage.svelte";
+	import IntegrationPage from "./IntegrationPage.svelte";
 	import UnifiedChart from "./UnifiedChart.svelte";
 	import FoundsResearchSourcesStats from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStats.svelte";
 	import FoundsResearchSourcesStatsDataEdit from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataEdit.svelte"
@@ -23,6 +24,7 @@
 		"/": HomePage,
 		"/info": InfoPage,
 		"/about": AboutPage,
+		"/integrations": IntegrationPage,
 		"/unified-chart":UnifiedChart,
 		"/foundsresearchsources-stats": FoundsResearchSourcesStats,
 		"/foundsresearchsources-stats/:country/:year": FoundsResearchSourcesStatsDataEdit,
