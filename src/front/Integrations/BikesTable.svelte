@@ -26,11 +26,6 @@
             }
             bikesData = [];
         }
-        if (nextJson.status == 404) {
-            existMoreData = false;
-        } else {
-            existMoreData = true;
-        }
     }
 
     onMount(getData);
