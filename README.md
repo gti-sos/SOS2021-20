@@ -1,5 +1,7 @@
 ## SOS2021-20
+[![codecov](https://codecov.io/gh/gti-sos/SOS2021-20/branch/main/graph/badge.svg?token=8rdijERbY9)](https://codecov.io/gh/gti-sos/SOS2021-20)
 <html>
+
 <body>
   <h4>
     Team:
