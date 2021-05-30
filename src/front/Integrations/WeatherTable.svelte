@@ -57,9 +57,9 @@
             {#each weatherData as row}
                 <tr>
                     <td>{row.fecha}</td>
-                    <td>{row.tmed}</td>
-                    <td>{row.tmin}</td>
-                    <td>{row.tmax}</td>
+                    <td>{row.tmed} ºC</td>
+                    <td>{row.tmin} ºC</td>
+                    <td>{row.tmax} ºC</td>
                 </tr>
             {/each}
         </tbody>
