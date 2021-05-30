@@ -2,10 +2,13 @@ name: Running Code Coverage
 
 on: [push, pull_request]
 
+
 jobs:
+  
   build:
 
     runs-on: ubuntu-latest
+   
 
     strategy:
       matrix:
@@ -15,7 +18,8 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
       with:
-        fetch-depth: 3
+        fetch-depth: 6
+        
 
     - name: Set up Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
@@ -27,8 +31,10 @@ jobs:
 
     - name: Run the tests
       run: npm test -- --coverage
+      
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
+       
