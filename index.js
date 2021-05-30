@@ -4,6 +4,11 @@ var express = require("express");
 // Create service with required modules
 var app = express();
 
+// Use ENV vars from local file or from production environment
+if (process.env.NODE_ENVIRONMENT !== 'heroku') {
+    require('dotenv').config();
+  }
+
 // Enable CORS HEders only for get petitions
 var cors = require('cors');
 app.use(cors());
