@@ -110,10 +110,4 @@ async function loadGraph(){
     .backbutton{
         text-align: center;
     }
-
-    a{
-        color: black;
-        
-    }
-    
     </style>
