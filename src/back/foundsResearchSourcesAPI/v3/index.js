@@ -28,30 +28,35 @@ module.exports.init = (app) => {
     });
 
     // AEMET OpenData, Station Seville, Airport (E317)
-    var url = "";
-    async function loadUrl() {
+    function loadAemetData() {
         var today = new Date();
         var startDate = today.getFullYear() + '-' + (today.getMonth() + 1) + '-01';
         var endDate = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-        let response = await fetch("https://opendata.aemet.es/opendata/api/valores/climatologicos/diarios/datos/fechaini/" 
-                                    + startDate + "T00%3A00%3A00UTC/fechafin/" + endDate + "T00%3A00%3A00UTC/estacion/5783?api_key=" 
-                                    + process.env.AEMET_KEY);
-        let data = await response.json();
-        url = data.datos;
-        return url
+        fetch("https://opendata.aemet.es/opendata/api/valores/climatologicos/diarios/datos/fechaini/"
+            + startDate + "T00%3A00%3A00UTC/fechafin/" + endDate + "T00%3A00%3A00UTC/estacion/5783?api_key="
+            + process.env.AEMET_KEY)
+            .then((res) => res.json())
+            .then((res) => {
+                fetch(res.datos)
+                    .then((res2) => res2.json())
+                    .then((res2) => {
+                        console.log(res2);
+                        return res2;
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                        return {};
+                    })
+            })
+            .catch((error2) => {
+                console.log(error2);
+                return {};
+            });
+
     }
 
     app.get(BASE_API_PATH + "/weather", function (req, res) {
-        loadUrl();
-        request.get(url, (error, resp, body) => {
-            if (error) {
-                return res.sendStatus(404);
-            }
-            return res.send(JSON.parse(body));
-        });
 
-
-    });
-
-loadUrl();
+        return res.send(loadAemetData());
+    })
 };
