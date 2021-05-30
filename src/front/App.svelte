@@ -8,6 +8,10 @@
 	import AboutPage from "./AboutPage.svelte";
 	import IntegrationPage from "./IntegrationPage.svelte";
 	import UnifiedChart from "./UnifiedChart.svelte";
+	import BikesChart from "./Integrations/BikesChart.svelte"
+	import BikesTable from "./Integrations/BikesTable.svelte"
+	import WeatherTable from "./Integrations/WeatherTable.svelte"
+	import WeatherChart from "./Integrations/WeatherChart.svelte"	
 	import FoundsResearchSourcesStats from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStats.svelte";
 	import FoundsResearchSourcesStatsDataEdit from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataEdit.svelte"
 	import FoundsResearchSourcesStatsDataMultipleEdit from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataMultipleEdit.svelte"
@@ -18,7 +22,6 @@
 	import RenewablePowerCapacities from "./RenewablePowerCapacitiesStatsGUI/RenewablePowerCapacities.svelte";
 	import RenewablePowerCapacitiesEdit from "./RenewablePowerCapacitiesStatsGUI/RenewablePowerCapacitiesDataEdit.svelte";
 	import RenewablePowerCapacitiesChar from "./RenewablePowerCapacitiesStatsGUI/RenewablePowerCapacitiesChar.svelte";
-	import GrupalGraph from "./GrupalGraph.svelte";
 
 	const routes = {
 		"/": HomePage,
@@ -36,7 +39,10 @@
 		"/renewablepowercapacities-stats": RenewablePowerCapacities,
 		"/renewablepowercapacities-stats/:country/:year": RenewablePowerCapacitiesEdit,
 		"/renewablepowercapacities-stats/char": RenewablePowerCapacitiesChar,
-		"/grupal-graph":GrupalGraph,
+		"/integrations/bikes": BikesChart,
+		"/integrations/weather": WeatherChart,
+		"/integrations/bikes/rawData": BikesTable,
+		"/integrations/weather/rawData": WeatherTable,
 		"*": NotFoundPage,
 	};
 
@@ -72,13 +78,25 @@
 				  </a>
 				  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<a class="dropdown-item" href="/#/unified-chart">Gráfico conjunto</a>
-					<a class="dropdown-item" href="/#/grupal-graph">Gráfico conjunto 2</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="/#/foundsresearchsources-stats/chart">Fuentes de financiación de la investigación</a>
 					<a class="dropdown-item" href="/#/greenhousegasemissions-stats/graph">Emisiones de gases de efecto invernadero</a>
 					<a class="dropdown-item" href="/#/renewablepowercapacities-stats/char">Capacidad de producción de energia renovable</a>
 				  </div>
 				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="/#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					  Integraciones
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					  <a class="dropdown-item" href="/#">Integración..</a>
+					  <a class="dropdown-item" href="/#">Integración..</a>
+					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item" href="/#/integrations/bikes">Uso de API Sevici</a>
+					  <a class="dropdown-item" href="/#/integrations/weather">Uso de API AEMET</a>
+					 
+					</div>
+				  </li>
 				<li class="nav-item">
 					<a class="nav-link" href="/#/foundsresearchsources-stats">Fuentes de financiación de la investigación <span class="sr-only">(current)</span></a>
 				  </li>
