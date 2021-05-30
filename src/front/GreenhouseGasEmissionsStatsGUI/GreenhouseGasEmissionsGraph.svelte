@@ -8,9 +8,9 @@
 async function loadGraph(){
     let data = [];
     let axisX = [];
-    let carbonLine= [];
-    let methaneLine = [];
-    let nitrousLine = [];
+    let carbonBar= [];
+    let methaneBar = [];
+    let nitrousBar = [];
     const res = await fetch( "/api/v1/greenhousegasemissions-stats");
     data = await res.json();
     
@@ -18,18 +18,24 @@ async function loadGraph(){
     data.forEach(d => {
         axisX.push(d.country+" "+d.year);
         console.log(axisX);
-        carbonLine.push(d["carbon_dioxide"]);
-        methaneLine.push(d["methane"]);
-        nitrousLine.push(d["nitrous_oxide"]);  
+        carbonBar.push(d["carbon_dioxide"]);
+        methaneBar.push(d["methane"]);
+        nitrousBar.push(d["nitrous_oxide"]); 
+        /*const array1 = carbonBar.concat(methaneBar);
+    const valuesNumber = array1.concat(nitrousBar);
+    console.log("los datos: " + array1);
+    let sum = valuesNumber.reduce((previous, current) => current += previous);
+    let averageData = sum / valuesNumber.length;
+    console.log("el promedio: " + averageData);*/
     });
+    
+    let sum1 = carbonBar.reduce((previous, current) => current += previous);
+    let sum2 = methaneBar.reduce((previous, current) => current += previous);
+    let sum3 = nitrousBar.reduce((previous, current) => current += previous);
+
 			
 		
     Highcharts.chart('container', {
-        chart: {
-                type: 'line',
-                backgroundColor: null,
-                height: 400
-            },
         title: {
             text: 'Emisiones de Dióxido de Carbono, Metano y Óxido de nitrógeno por país en el periodo 2014-2018'
         },
@@ -38,50 +44,72 @@ async function loadGraph(){
         yAxis: {
             title: {
                     text: 'Toneladas'
-                }
+            }
             
         },
 
         xAxis: {
             title: {
                     text: 'País y Año'
-                },
-                categories: axisX,
+            },
+            categories: axisX,
+            },
+
+        labels: {
+            items: [{
+                html: 'Total de emisiones',
+                style: {
+                    left: '50px',
+                    top: '18px',
+                    color: ( // theme
+                        Highcharts.defaultOptions.title.style &&
+                        Highcharts.defaultOptions.title.style.color
+                    ) || 'black'
+                }
+            }]
         },
 
-        legend: {
+        series: [{
+                type: 'column',
+                name: 'Dióxido de carbono',
+                data: carbonBar,
+            }, {
+                type: 'column',
+                name: 'Metano',
+                data: methaneBar,
+            }, {
+                type: 'column',
+                name: 'Óxido de nitrógeno',
+                data: nitrousBar,
+            },{
+                type: 'pie',
+                name: 'Total emisiones',
+                data: [{
+                    name: 'Dióxido de carbono',
+                    y: sum1,
+                    color: Highcharts.getOptions().colors[0] 
+                }, {
+                    name: 'Metano',
+                    y: sum2,
+                    color: Highcharts.getOptions().colors[1] 
+                }, {
+                    name: 'Óxido de nitrógeno',
+                    y: sum3,
+                    color: Highcharts.getOptions().colors[2]
+                }],
+                center: [100, 80],
+                size: 100,
+                showInLegend: false,
+                dataLabels: {
+                enabled: false
+            }
+
+            }]
+        /*legend: {
             layout: 'vertical',
             align: 'right',
             verticalAlign: 'middle'
-        },
-
-
-        series: [{
-                name: 'Dióxido de carbono',
-                data: carbonLine,
-            }, {
-                name: 'Metano',
-                data: methaneLine,
-            }, {
-                name: 'Óxido de nitrógeno',
-                data: nitrousLine,
-            }],
-        
-
-        responsive: {
-            rules: [{
-                condition: {
-                    maxWidth: 500
-                },
-                chartOptions: {
-                    legend: {
-                        layout: 'horizontal',
-                        align: 'center',
-                        verticalAlign: 'bottom'
-                    }
-                }
-            }]
-        }
+        }, */
 
     });
 }
@@ -90,6 +118,7 @@ async function loadGraph(){
 
 <svelte:head>
     <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js" on:load="{loadGraph}"></script>
@@ -101,19 +130,27 @@ async function loadGraph(){
     <figure class="highcharts-figure">
         <div id="container"></div>
         <p class="backbutton">
-            <Button color="secondary"><a href="#/greenhousegasemissions-stats">Volver</a></Button>
+            <Button color="secondary" on:click="{pop}">Volver</Button>
         </p>
     </figure>
 
 </main>
+
 <style>
     .backbutton{
         text-align: center;
     }
 
-    a{
-        color: black;
-        
-    }
+    .highcharts-figure {
+    min-width: 310px; 
+    max-width: 800px;
+    margin: 1em auto;
+}
+
+#container {
+    height: 400px;
+}
+
+
     
     </style>
