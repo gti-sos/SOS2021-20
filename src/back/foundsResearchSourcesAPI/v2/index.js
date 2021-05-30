@@ -487,21 +487,4 @@ module.exports.init = (app) => {
 
     });
 
-        // ----------------- Integrations --------------- //
-
-        // Integration with Group 4 
-        app.use('/api/v1/education_expenditures', function(req, res) {
-            var url = 'https://sos2021-04.herokuapp.com' + req.baseUrl + req.url;
-            console.log('piped: '+req.baseUrl + req.url);
-            req.pipe(request(url)).pipe(res);
-          });
-
-        // Integration with Group 1
-        app.use('/api/v2/life-stats', function(req, res) {
-            var url = 'https://sos2021-01.herokuapp.com' + req.baseUrl + req.url;
-            console.log('piped: '+req.baseUrl + req.url);
-            req.pipe(request(url)).pipe(res);
-          });
-          
-        
 };

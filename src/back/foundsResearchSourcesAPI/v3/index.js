@@ -12,6 +12,32 @@ const { dataset_dev } = require('svelte/internal');
 
 module.exports.init = (app) => {
 
+    //----------------- Integrations --------------------//
+
+    //-------------------- SOS APIs ---------------------//
+
+    // Integration with Group 4 (Proxy)
+    app.use('/api/v1/education_expenditures', function (req, res) {
+        var url = 'https://sos2021-04.herokuapp.com' + req.baseUrl + req.url;
+        console.log('piped: ' + req.baseUrl + req.url);
+        req.pipe(request(url)).pipe(res);
+    });
+
+    function loadInitialData() {
+        request.get("https://sos2021-01.herokuapp.com/api/v2/life-stats/loadInitialData", (error, resp, body) => {
+            console.log(resp.status);
+        });
+    }
+
+    // Integration with Group 1
+    app.use('/api/v2/life-stats', function (req, res) {
+        loadInitialData();
+        var url = 'https://sos2021-01.herokuapp.com' + req.baseUrl + req.url;
+        console.log('piped: ' + req.baseUrl + req.url);
+        req.pipe(request(url)).pipe(res);
+    });
+
+
     //---------------- External APIs --------------------//
 
     // Bikesharing JC Decaux Seville
@@ -28,6 +54,7 @@ module.exports.init = (app) => {
     });
 
     // AEMET OpenData, Station Seville, Airport (E317)
+    var data=[];
     function loadAemetData() {
         var today = new Date();
         var startDate = today.getFullYear() + '-' + (today.getMonth() + 1) + '-01';
@@ -40,23 +67,21 @@ module.exports.init = (app) => {
                 fetch(res.datos)
                     .then((res2) => res2.json())
                     .then((res2) => {
-                        console.log(res2);
-                        return res2;
+                        data = res2
                     })
                     .catch((error) => {
                         console.log(error);
-                        return {};
+                        ;
                     })
             })
             .catch((error2) => {
                 console.log(error2);
-                return {};
             });
 
     }
 
     app.get(BASE_API_PATH + "/weather", function (req, res) {
-
-        return res.send(loadAemetData());
+        return res.send(data);
     })
+    loadAemetData();
 };

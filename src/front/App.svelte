@@ -7,7 +7,7 @@
 	import InfoPage from "./InfoPage.svelte";
 	import AboutPage from "./AboutPage.svelte";
 	import IntegrationPage from "./IntegrationPage.svelte";
-	import UnifiedChart from "./UnifiedChart.svelte";
+	import UnifiedChart from "./Integrations/UnifiedChart.svelte";
 	import BikesChart from "./Integrations/BikesChart.svelte"
 	import BikesTable from "./Integrations/BikesTable.svelte"
 	import WeatherTable from "./Integrations/WeatherTable.svelte"
