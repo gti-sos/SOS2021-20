@@ -15,4 +15,5 @@ jobs:
       - run: npx newman run tests/integration-foundsresearchsources-stats.json
       - run: npx newman run tests/integration-renewablepowercapacities-stats.json
       # - run: npx newman run tests/integration-greenhousegasemissions-stats.json
+      - run: mkdir tests/screenshots
       - run: node tests/e2e.js
