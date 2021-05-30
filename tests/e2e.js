@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
   const page = await browser.newPage();
   await page.goto('http://localhost:10000');
   console.log("Page opened! Taking a screenshot...");
-  await page.screenshot({ path: '../tests/01.png' });
+  await page.screenshot({ path: '01.png' });
 
 
 
@@ -20,12 +20,12 @@ const puppeteer = require('puppeteer');
   console.log("Clicked \"Integraciones\" link, waiting page load");
   await page.waitForTimeout(1000);
   console.log("Page opened! Taking a screenshot...");
-  await page.screenshot({ path: '../tests/02.png' });
+  await page.screenshot({ path: '02.png' });
 
   await page.goto('http://localhost:10000/#/foundsresearchsources-stats');
   await page.waitForTimeout(1000);
   console.log("Page opened! Taking a screenshot...");
-  await page.screenshot({ path: '../tests/03.png' });
+  await page.screenshot({ path: '03.png' });
 
   var rowCount = (await page.$$(".table > tbody > tr")).length;
   var loaded = parseInt(rowCount) > 2;
