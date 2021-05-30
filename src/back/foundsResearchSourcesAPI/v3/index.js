@@ -80,6 +80,12 @@ module.exports.init = (app) => {
 
     }
 
+    // Trackcorona OpenData Covid-19 disease stats ()
+    app.use('/api/v3/integrations/covid', function (req, res) {
+        var url = 'https://www.trackcorona.live/api/countries'; 
+        console.log('piped: ' + req.baseUrl + req.url);
+        req.pipe(request(url)).pipe(res);
+    });
     app.get(BASE_API_PATH + "/weather", function (req, res) {
         return res.send(data);
     })

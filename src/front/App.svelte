@@ -8,13 +8,15 @@
 	import AboutPage from "./AboutPage.svelte";
 	import IntegrationPage from "./IntegrationPage.svelte";
 	import UnifiedChart from "./Integrations/UnifiedChart.svelte";
-	import BikesChart from "./Integrations/BikesChart.svelte"
-	import BikesTable from "./Integrations/BikesTable.svelte"
-	import WeatherTable from "./Integrations/WeatherTable.svelte"
-	import WeatherChart from "./Integrations/WeatherChart.svelte"	
+	import BikesChart from "./Integrations/BikesChart.svelte";
+	import BikesTable from "./Integrations/BikesTable.svelte";
+	import WeatherTable from "./Integrations/WeatherTable.svelte";
+	import WeatherChart from "./Integrations/WeatherChart.svelte";
+	import CovidChart from "./Integrations/CovidChart.svelte";
+	import CovidTable from "./Integrations/CovidTable.svelte";
 	import FoundsResearchSourcesStats from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStats.svelte";
 	import FoundsResearchSourcesStatsDataEdit from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataEdit.svelte"
-	import FoundsResearchSourcesStatsDataMultipleEdit from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataMultipleEdit.svelte"
+	import FoundsResearchSourcesStatsDataMultipleEdit from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataMultipleEdit.svelte";
 	import FoundsResearchSourcesStatsChart from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsChart.svelte";
 	import GreenhouseGasEmissions from "./GreenhouseGasEmissionsStatsGUI/GreenhouseGasEmissions.svelte";
 	import GreenhouseGasEmissionsEdit from "./GreenhouseGasEmissionsStatsGUI/GreenhouseGasEmissionsEdit.svelte";
@@ -41,8 +43,10 @@
 		"/renewablepowercapacities-stats/char": RenewablePowerCapacitiesChar,
 		"/integrations/bikes": BikesChart,
 		"/integrations/weather": WeatherChart,
+		"/integrations/covid": CovidChart,
 		"/integrations/bikes/rawData": BikesTable,
 		"/integrations/weather/rawData": WeatherTable,
+		"/integrations/covid/rawData": CovidTable,
 		"*": NotFoundPage,
 	};
 
@@ -94,7 +98,7 @@
 					  <div class="dropdown-divider"></div>
 					  <a class="dropdown-item" href="/#/integrations/bikes">Uso de API Sevici</a>
 					  <a class="dropdown-item" href="/#/integrations/weather">Uso de API AEMET</a>
-					 
+					  <a class="dropdown-item" href="/#/integrations/covid">Uso de API TrackCorona</a>
 					</div>
 				  </li>
 				<li class="nav-item">

@@ -18,6 +18,7 @@
         <ul>
             <li><a href="/#/integrations/bikes">Uso de la API de la red Sevici</a></li>
             <li><a href="/#/integrations/weather">Uso de la API de AEMET</a></li>
+            <li><a href="/#/integrations/covid">Uso de API TrackCorona</a></li>
         </ul>
     </div>
     <div class="col-md-4"><h4>Álvaro Caro Jiménez</h4>
