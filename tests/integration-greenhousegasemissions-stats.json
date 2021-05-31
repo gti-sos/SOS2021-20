@@ -735,7 +735,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats?methane=45.87",
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats?methane=1736.04",
 					"host": [
 						"{{HOST}}"
 					],
@@ -747,7 +747,7 @@
 					"query": [
 						{
 							"key": "methane",
-							"value": "45.87"
+							"value": "1736.04"
 						}
 					]
 				}
