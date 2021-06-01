@@ -89,5 +89,5 @@ module.exports.init = (app) => {
     app.get(BASE_API_PATH + "/weather", function (req, res) {
         return res.send(data);
     })
-    loadAemetData();
+    // loadAemetData();
 };
