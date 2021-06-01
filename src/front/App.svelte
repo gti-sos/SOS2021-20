@@ -15,7 +15,7 @@
 	import CovidChart from "./Integrations/CovidChart.svelte";
 	import CovidTable from "./Integrations/CovidTable.svelte";
 	import HdiTable from "./Integrations/HdiTable.svelte";
-	//import HdiGGEGraph from "./Integrations/HdiGGEGraph.svelte";
+	import HdiGGEGraph from "./Integrations/HdiGGEGraph.svelte";
 	import FoundsResearchSourcesStats from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStats.svelte";
 	import FoundsResearchSourcesStatsDataEdit from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataEdit.svelte"
 	import FoundsResearchSourcesStatsDataMultipleEdit from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataMultipleEdit.svelte";
@@ -50,7 +50,7 @@
 		"/integrations/weather/rawData": WeatherTable,
 		"/integrations/covid/rawData": CovidTable,
 		"/integrations/hdi/tableData": HdiTable,
-		//"/integrations/hdi": HdiGGEGraph,
+		"/integrations/hdi": HdiGGEGraph,
 		"*": NotFoundPage,
 	};
 
@@ -99,7 +99,7 @@
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					  <a class="dropdown-item" href="/#">Integración..</a>
 					  <div class="dropdown-divider"></div> 
-					  <a class="dropdown-item" href="/#/integrations/hdi/tableData">Integración de API HDI-stats</a>
+					  <a class="dropdown-item" href="/#/integrations/hdi">Integración de API HDI-stats</a>
 					  <div class="dropdown-divider"></div>
 					  <a class="dropdown-item" href="/#/integrations/bikes">Uso de API Sevici</a>
 					  <a class="dropdown-item" href="/#/integrations/weather">Uso de API AEMET</a>
