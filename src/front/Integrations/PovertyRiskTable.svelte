@@ -9,7 +9,7 @@
 //LoadInitialData
 async function loadInitialData(){
         console.log("Loading data...");
-        const res = await fetch("/v1/integration/hdi-stats/loadInitialData").then((res)=>{
+        const res = await fetch("/v1/integration/poverty_risks/loadInitialData").then((res)=>{
 
         if(res.ok){
             console.log("OK");
@@ -122,4 +122,3 @@ onMount(getData);
   
 
 </style>
-
