@@ -23,20 +23,29 @@ module.exports.init = (app) => {
         req.pipe(request(url)).pipe(res);
     });
 
-    function loadInitialData() {
-        request.get("https://sos2021-01.herokuapp.com/api/v2/life-stats/loadInitialData", (error, resp, body) => {
-            console.log(resp.status);
-        });
-    }
-
     // Integration with Group 1
-    app.use('/api/v2/life-stats', function (req, res) {
-        loadInitialData();
-        var url = 'https://sos2021-01.herokuapp.com' + req.baseUrl + req.url;
-        console.log('piped: ' + req.baseUrl + req.url);
-        req.pipe(request(url)).pipe(res);
-    });
+    var group1Data = [];
+    function loadGroup1Data() {
+        fetch("https://sos2021-01.herokuapp.com/api/v2/life-stats/loadInitialData")
+            .then((res) => {
+                fetch("https://sos2021-01.herokuapp.com/api/v2/life-stats")
+                    .then((res2) => res2.json())
+                    .then((res2) => {
+                        group1Data = res2
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                        ;
+                    })
+            })
+            .catch((error2) => {
+                console.log(error2);
+            });
 
+    }
+    app.get(BASE_API_PATH + "/life-stats", function (req, res) {
+        return res.send(group1Data)
+    });
 
     //---------------- External APIs --------------------//
 
@@ -54,20 +63,19 @@ module.exports.init = (app) => {
     });
 
     // AEMET OpenData, Station Seville, Airport (E317)
-    var data=[];
+    var weatherData = [];
     function loadAemetData() {
         var today = new Date();
-        var startDate = today.getFullYear() + '-' + (today.getMonth() - 1) + '-01';
         var endDate = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
         fetch("https://opendata.aemet.es/opendata/api/valores/climatologicos/diarios/datos/fechaini/"
-            + startDate + "T00%3A00%3A00UTC/fechafin/" + endDate + "T00%3A00%3A00UTC/estacion/5783?api_key="
+            + String(parseInt(today.getFullYear()) - 2) + "-01-01T00%3A00%3A00UTC/fechafin/" + endDate + "T00%3A00%3A00UTC/estacion/5783?api_key="
             + process.env.AEMET_KEY)
             .then((res) => res.json())
             .then((res) => {
                 fetch(res.datos)
                     .then((res2) => res2.json())
                     .then((res2) => {
-                        data = res2
+                        weatherData = res2
                     })
                     .catch((error) => {
                         console.log(error);
@@ -79,20 +87,23 @@ module.exports.init = (app) => {
             });
 
     }
+    app.get(BASE_API_PATH + "/weather", function (req, res) {
+        return res.send(weatherData);
+    })
 
     // Trackcorona OpenData Covid-19 disease stats ()
     app.use('/api/v3/integrations/covid', function (req, res) {
-        var url = 'https://www.trackcorona.live/api/countries'; 
+        var url = 'https://www.trackcorona.live/api/countries';
         console.log('piped: ' + req.baseUrl + req.url);
         req.pipe(request(url)).pipe(res);
     });
-    app.get(BASE_API_PATH + "/weather", function (req, res) {
-        return res.send(data);
-    })
-    console.log(process.env.JC_DECAUX_KEY);
-    console.log(process.env.AEMET_KEY);
-    if(process.env.AEMET_KEY != undefined){
+
+
+
+
+    if (process.env.AEMET_KEY != undefined) {
         loadAemetData();
     };
-    
+    loadGroup1Data();
+
 };
