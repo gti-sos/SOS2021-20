@@ -28,6 +28,12 @@ jobs:
 
     - name: Install dependencies
       run: npm install
+    - name: Build project
+      run: npm run build 
+    - name: Strat application
+      run: npm start &
+    # - name: Backend Tests
+    #   run: npx newman run tests/integration-foundsresearchsources-stats.json
 
     - name: Run the tests
       run: npm test --coverage

@@ -5,13 +5,14 @@
     const API_PATH = "/api/v3/integrations/weather";
 
     async function loadChart() {
-        const bikesData = await fetch(API_PATH);
-        let dataAsJson = await bikesData.json();
+        const weatherData = await fetch(API_PATH);
+        let dataAsJson = await weatherData.json();
 
         let averageTemp = dataAsJson.map((d) => {
+      
             let res = {
                 x: d.fecha,
-                y: parseFloat(d.tmed),
+                y: d.tmed != undefined ? parseFloat(d.tmed) : 20.0,
                 group: 0,
             };
             return res;
@@ -20,7 +21,7 @@
         let minTemp = dataAsJson.map((d) => {
             let res = {
                 x: d.fecha,
-                y: parseFloat(d.tmin),
+                y: d.tmin != undefined ? parseFloat(d.tmin) : 20.0,
                 group: 1,
             };
             return res;
@@ -28,7 +29,7 @@
         let maxTemp = dataAsJson.map((d) => {
             let res = {
                 x: d.fecha,
-                y: parseFloat(d.tmax),
+                y: d.tmax != undefined ? parseFloat(d.tmax) : 20.0,
                 group: 2,
             };
             return res;
@@ -41,13 +42,14 @@
 
         var today = new Date();
         var startDate =
-            today.getFullYear() + "-" + (today.getMonth() + 1) + "-01";
+            String(parseInt(today.getFullYear()) - 2) + "-" + (today.getMonth() - 1) + "-01";
         var endDate =
             today.getFullYear() +
             "-" +
             (today.getMonth() + 1) +
             "-" +
             today.getDate();
+            
         var dataset = new vis.DataSet(items);
         var options = {
             dataAxis: { showMinorLabels: true },
