@@ -36,7 +36,7 @@ jobs:
     #   run: npx newman run tests/integration-foundsresearchsources-stats.json
 
     - name: Run the tests
-      run: npm test -- --coverage
+      run: npm test --coverage
       
 
     - name: Upload coverage to Codecov
