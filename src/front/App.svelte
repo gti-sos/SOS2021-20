@@ -16,6 +16,7 @@
 	import CovidTable from "./Integrations/CovidTable.svelte";
 	import HdiTable from "./Integrations/HdiTable.svelte";
 	import HdiGGEGraph from "./Integrations/HdiGGEGraph.svelte";
+	import CadizTable from "./Integrations/CadizTable.svelte";
 	import FoundsResearchSourcesStats from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStats.svelte";
 	import FoundsResearchSourcesStatsDataEdit from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataEdit.svelte"
 	import FoundsResearchSourcesStatsDataMultipleEdit from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataMultipleEdit.svelte";
@@ -51,6 +52,7 @@
 		"/integrations/covid/rawData": CovidTable,
 		"/integrations/hdi/tableData": HdiTable,
 		"/integrations/hdi": HdiGGEGraph,
+		"/integrations/lugaresInteres": CadizTable,
 		"*": NotFoundPage,
 	};
 
