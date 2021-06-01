@@ -41,13 +41,14 @@
 
         var today = new Date();
         var startDate =
-            today.getFullYear() + "-" + (today.getMonth() + 1) + "-01";
+            today.getFullYear() + "-" + (today.getMonth() - 1) + "-01";
         var endDate =
             today.getFullYear() +
             "-" +
             (today.getMonth() + 1) +
             "-" +
             today.getDate();
+            
         var dataset = new vis.DataSet(items);
         var options = {
             dataAxis: { showMinorLabels: true },

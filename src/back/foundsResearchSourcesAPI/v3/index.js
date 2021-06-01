@@ -57,7 +57,7 @@ module.exports.init = (app) => {
     var data=[];
     function loadAemetData() {
         var today = new Date();
-        var startDate = today.getFullYear() + '-' + (today.getMonth() + 1) + '-01';
+        var startDate = today.getFullYear() + '-' + (today.getMonth() - 1) + '-01';
         var endDate = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
         fetch("https://opendata.aemet.es/opendata/api/valores/climatologicos/diarios/datos/fechaini/"
             + startDate + "T00%3A00%3A00UTC/fechafin/" + endDate + "T00%3A00%3A00UTC/estacion/5783?api_key="
@@ -89,5 +89,5 @@ module.exports.init = (app) => {
     app.get(BASE_API_PATH + "/weather", function (req, res) {
         return res.send(data);
     })
-    // loadAemetData();
+    loadAemetData();
 };
