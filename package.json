@@ -20,6 +20,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "anychart": "^8.10.0",
     "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "bootstrap-icons": "^1.4.1",
@@ -27,7 +28,9 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "frappe-charts": "^1.6.1",
     "highcharts": "^9.1.0",
+    "n3-charts": "^2.0.28",
     "nedb": "^1.8.0",
     "node": "^16.1.0",
     "node-fetch": "^2.6.1",
@@ -38,6 +41,7 @@
     "svelte": "^3.38.2",
     "svelte-spa-router": "^3.1.0",
     "sveltestrap": "^3.14.1",
-    "vis-timeline": "^7.4.8"
+    "vis-timeline": "^7.4.8",
+    "xg-xcharts": "^0.2.2"
   }
 }

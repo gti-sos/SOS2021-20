@@ -83,7 +83,7 @@
 							"});\r",
 							"pm.test(\"There are ten data\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.length).to.eql(10);\r",
+							"    pm.expect(jsonData.length).to.eql(12);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -168,7 +168,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"country\": \"france\",\r\n\t\"year\": 2016,\r\n\t\"carbon_dioxide\": 357726.39,\r\n\t\"methane\": 2293.69,\r\n    \"nitrous_oxide\": 135.93\r\n}",
+					"raw": "{\r\n    \"country\": \"germany\",\r\n\t\"year\": 2015,\r\n\t\"carbon_dioxide\": 820306.73,\r\n\t\"methane\": 2270.84,\r\n    \"nitrous_oxide\": 130.53\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -735,7 +735,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats?methane=45.87",
+					"raw": "{{HOST}}/api/v1/greenhousegasemissions-stats?methane=1736.04",
 					"host": [
 						"{{HOST}}"
 					],
@@ -747,7 +747,7 @@
 					"query": [
 						{
 							"key": "methane",
-							"value": "45.87"
+							"value": "1736.04"
 						}
 					]
 				}

@@ -14,6 +14,9 @@
 	import WeatherChart from "./Integrations/WeatherChart.svelte";
 	import CovidChart from "./Integrations/CovidChart.svelte";
 	import CovidTable from "./Integrations/CovidTable.svelte";
+	import HdiTable from "./Integrations/HdiTable.svelte";
+	import HdiGGEGraph from "./Integrations/HdiGGEGraph.svelte";
+	//import CadizTable from "./Integrations/CadizTable.svelte";
 	import FoundsResearchSourcesStats from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStats.svelte";
 	import FoundsResearchSourcesStatsDataEdit from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataEdit.svelte"
 	import FoundsResearchSourcesStatsDataMultipleEdit from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataMultipleEdit.svelte";
@@ -24,6 +27,14 @@
 	import RenewablePowerCapacities from "./RenewablePowerCapacitiesStatsGUI/RenewablePowerCapacities.svelte";
 	import RenewablePowerCapacitiesEdit from "./RenewablePowerCapacitiesStatsGUI/RenewablePowerCapacitiesDataEdit.svelte";
 	import RenewablePowerCapacitiesChar from "./RenewablePowerCapacitiesStatsGUI/RenewablePowerCapacitiesChar.svelte";
+	import Renewable_Api1Import from "./RenewablePowerCapacitiesStatsGUI/Api1Import.svelte";
+	import Renewable_Api2Import from "./RenewablePowerCapacitiesStatsGUI/Api2Import.svelte";
+	import Renewable_Api3Import from "./RenewablePowerCapacitiesStatsGUI/Api3Import.svelte";
+	import Renewable_Api4Import from "./RenewablePowerCapacitiesStatsGUI/Api4Import.svelte";
+	import Renewable_Api5Import from "./RenewablePowerCapacitiesStatsGUI/Api5Import.svelte";
+	import Renewable_Api6Import from "./RenewablePowerCapacitiesStatsGUI/Api6Import.svelte";
+	import Renewable_Grafica from "./RenewablePowerCapacitiesStatsGUI/Grafica.svelte";
+	import Renewable_Grafica2 from "./RenewablePowerCapacitiesStatsGUI/Grafica2.svelte";
 
 	const routes = {
 		"/": HomePage,
@@ -41,12 +52,23 @@
 		"/renewablepowercapacities-stats": RenewablePowerCapacities,
 		"/renewablepowercapacities-stats/:country/:year": RenewablePowerCapacitiesEdit,
 		"/renewablepowercapacities-stats/char": RenewablePowerCapacitiesChar,
+		"/renewablepowercapacities-stats/Api1_import": Renewable_Api1Import,
+		"/renewablepowercapacities-stats/Api2_import": Renewable_Api2Import,
+		"/renewablepowercapacities-stats/Api3_import": Renewable_Api3Import,
+		"/renewablepowercapacities-stats/Api4_import": Renewable_Api4Import,
+		"/renewablepowercapacities-stats/Api5_import": Renewable_Api5Import,
+		"/renewablepowercapacities-stats/Api6_import":Renewable_Api6Import,
+		"/renewablepowercapacities-stats/grafica": Renewable_Grafica,
+		"/renewablepowercapacities-stats/grafica2": Renewable_Grafica2,
 		"/integrations/bikes": BikesChart,
 		"/integrations/weather": WeatherChart,
 		"/integrations/covid": CovidChart,
 		"/integrations/bikes/rawData": BikesTable,
 		"/integrations/weather/rawData": WeatherTable,
 		"/integrations/covid/rawData": CovidTable,
+		"/integrations/hdi/tableData": HdiTable,
+		"/integrations/hdi": HdiGGEGraph,
+		"/integrations/lugaresInteres": CadizTable,
 		"*": NotFoundPage,
 	};
 
@@ -94,7 +116,8 @@
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					  <a class="dropdown-item" href="/#">Integración..</a>
-					  <a class="dropdown-item" href="/#">Integración..</a>
+					  <div class="dropdown-divider"></div> 
+					  <a class="dropdown-item" href="/#/integrations/hdi">Integración de API HDI-stats</a>
 					  <div class="dropdown-divider"></div>
 					  <a class="dropdown-item" href="/#/integrations/bikes">Uso de API Sevici</a>
 					  <a class="dropdown-item" href="/#/integrations/weather">Uso de API AEMET</a>
