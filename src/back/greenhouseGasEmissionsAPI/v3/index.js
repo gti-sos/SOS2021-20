@@ -46,14 +46,4 @@ const request = require("request");
         req.pipe(request(url)).pipe(res);
       });
 
-//Servidor proxy para uso API consorcio de Cádiz
-
-app.use("/v1/integration/lugaresInteres", function(req, res) {
-  var apiServerHost = "http://api.ctan.es/v1/Consorcios/2/lugares_interes";
-
-  var url = apiServerHost + req.url;
-  console.log(`piped: ${req.url} -> ${url}`);
-  req.pipe(request(url)).pipe(res);
-});
-
 
