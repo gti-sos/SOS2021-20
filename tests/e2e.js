@@ -35,7 +35,7 @@ const puppeteer = require('puppeteer');
 
 
   //--- RENEWABLE POWERCAPACITIES --
-
+/*
 //RENEWABLE - ABRO PAGINA PRINCIPAL 
 await page.goto('http://localhost:10000');
     
@@ -44,7 +44,7 @@ await page.screenshot({ path: 'tests/renewable_1.png' });
 console.log("Pagina Abierta - Foto 1 capturada correctamente");
 
 //RENEWABLE - ABRO DESCRIPCION GRUPO 
-const [response] = await Promise.all([
+const [response2] = await Promise.all([
 page.waitForNavigation(),
 page.click("body > div > div > button"),
 ]); 
@@ -74,7 +74,7 @@ console.log("Datos cargados - Foto 4 capturada correctamente");
 }else{
 console.log("Error - No se ha cargado 2 datos o mas.");
 }
-
+*/
 
 //----- FIN RENEWABLEPOWERCAPACITIES ---
 
