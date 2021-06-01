@@ -89,5 +89,8 @@ module.exports.init = (app) => {
     app.get(BASE_API_PATH + "/weather", function (req, res) {
         return res.send(data);
     })
-    loadAemetData();
+    if(process.env.JC_DECAUX_KEY || process.env.AEMET_KEY != "undefined"){
+        loadAemetData();
+    };
+    
 };
