@@ -16,8 +16,11 @@
 	import CovidTable from "./Integrations/CovidTable.svelte";
 	import HdiTable from "./Integrations/HdiTable.svelte";
 	import HdiGGEGraph from "./Integrations/HdiGGEGraph.svelte";
+	import PovertyRisksTable from "./Integrations/PovertyRisksTable.svelte";
+	import PovertyRisksGraph from "./Integrations/PovertyRisksGraph.svelte";
 	import CadizTable from "./Integrations/CadizTable.svelte";
 	import CadizGraph from "./Integrations/CadizGraph.svelte";
+	//import VuelosTable from "./Integrations/FlightsTable.svelte";
 	import FoundsResearchSourcesStats from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStats.svelte";
 	import FoundsResearchSourcesStatsDataEdit from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataEdit.svelte"
 	import FoundsResearchSourcesStatsDataMultipleEdit from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataMultipleEdit.svelte";
@@ -65,7 +68,10 @@
 		"/integrations/covid/rawData": CovidTable,
 		"/integrations/hdi/tableData": HdiTable,
 		"/integrations/hdi": HdiGGEGraph,
+		"/integrations/povertyRisks/tableData": PovertyRisksTable,
+		"/integrations/povertyRisks": PovertyRisksGraph,
 		"/integrations/lugaresInteres/tableData": CadizTable,
+		"/integrations/vuelos/tableData": VuelosTable,
 		"/integrations/lugaresInteres": CadizGraph,
 		"*": NotFoundPage,
 	};
@@ -116,6 +122,7 @@
 					  <a class="dropdown-item" href="/#">Integración..</a>
 					  <div class="dropdown-divider"></div> 
 					  <a class="dropdown-item" href="/#/integrations/hdi/tableData">Integración 1 de API HDI-stats</a>
+					  <a class="dropdown-item" href="/#/integrations/povertyRisks/tableData">Integración 2 de API poverty_risks-stats</a>
 					  <a class="dropdown-item" href="/#/integrations/lugaresInteres/tableData">Uso 1 API Consorcio Transporte</a>
 					  <div class="dropdown-divider"></div>
 					  <a class="dropdown-item" href="/#/integrations/bikes">Uso de API Sevici</a>
