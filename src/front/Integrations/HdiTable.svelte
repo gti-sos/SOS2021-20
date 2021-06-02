@@ -14,14 +14,11 @@ async function loadInitialData(){
         if(res.ok){
             console.log("OK");
             getData();
-        }else{
-            alert("Los datos ya se han cargado anteriormente");
-            console.log("ERROR!");
         }
     });
 
     }
-onMount(getData);
+onMount(loadInitialData);
 
 //GetData
 async function getData(){
@@ -50,8 +47,8 @@ onMount(getData);
 <main>
     <header>
             <h3>INTEGRACIÓN 1 SOS - HDI-stats GRUPO 23</h3>
-            <h4>Estadística HDI </h4>
-        
+            <h4>Datos de Estadística HDI</h4>
+            <h6>Datos obtenidos de la API pública <a href="http://api.ctan.es/doc/">Red de Consorcios de Transporte de Andalucía </a></h6>
             <div id= "initialbuttons">
                     <Button on:click={() => push("#/integrations/hdi")}>Representación gráfica</Button>
                     <Button on:click={() => push("#/integrations/hdi/tableData")}>Tabla de datos</Button>
@@ -85,6 +82,7 @@ onMount(getData);
            {/each}
         </tbody>
     </Table>
+    <div><h6>Desarrollado por <a href="https://github.com/jesgueada">Jesús Guerra Adame</a></h6></div>
    
 </main>
 
@@ -95,6 +93,10 @@ onMount(getData);
         
     }
     h4{
+        text-align: center;
+        
+    }
+    h6{
         text-align: center;
         
     }

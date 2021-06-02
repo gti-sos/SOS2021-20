@@ -100,7 +100,8 @@ async function loadGraph(){
 <main>
     <header>
         <h3>INTEGRACIÓN 1 SOS - HDI-stats GRUPO 23</h3>
-        <h4>Estadística HDI </h4>
+        <h4>Visualización conjunta de datos</h4>
+        <h6>Datos obtenidos de la API pública <a href="http://api.ctan.es/doc/">Red de Consorcios de Transporte de Andalucía </a></h6>
     
         <div id= "initialbuttons">
                 <Button on:click={() => push("#/integrations/hdi")}>Representación gráfica</Button>
@@ -111,6 +112,7 @@ async function loadGraph(){
     
 </header>
     <div id="chart"></div>
+    <h6>Desarrollado por <a href="https://github.com/jesgueada">Jesús Guerra Adame</a> con la librería <a href="https://frappe.io/charts">Frappe Charts</a></h6>
 </main>
 
 <style>
@@ -120,6 +122,10 @@ async function loadGraph(){
         
     }
     h4{
+        text-align: center;
+        
+    }
+    h6{
         text-align: center;
         
     }
