@@ -1,8 +1,4 @@
-
-
 <script>
-    import {onMount} from "svelte";
-    import {pop} from "svelte-spa-router"
     import Button from "sveltestrap/src/Button.svelte";
     import {push} from "svelte-spa-router";
 
