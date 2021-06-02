@@ -281,7 +281,7 @@
             <Button color="info" on:click={cargarDatos}>Cargar Datos</Button>
             <Button color="danger" on:click={eliminarDatos}>Eliminar Datos</Button>
             <a href="#/renewablepowercapacities-stats/char"><Button color="info">Ver grafica(Line HIGHCHARTS)</Button></a>
-            <a href="#/renewablepowercapacities-stats/grafica"><Button color="info">Ver grafica(c3js)</Button></a>
+            <a href="#/renewablepowercapacities-stats/grafica"><Button color="info">Ver grafica(Chartkick)</Button></a>
             <a href="#/renewablepowercapacities-stats/grafica2"><Button color="info">Ver grafica(Area HIGHCHARTS)</Button></a>
         <br/>
     </div>   
@@ -347,13 +347,17 @@
 
         <h3>APIS A ENTREGAR:</h3>
         <p>Importada por el grupo 3 - VISUALIZACION(TABLA) - PROXY: <a href="#/renewablepowercapacities-stats/Api1_import"><Button color="info">API 1</Button></a> </p>
-        <p>Importada por el grupo 23 - VISUALIZACION(TABLA + INTEGRACIÓN) - PROXY:  <a href="#/renewablepowercapacities-stats/Api5_import"><Button color="info">API 5</Button></a> </p>
+        <p>Importada por el grupo 23 - VISUALIZACION(TABLA) - PROXY:  <a href="#/renewablepowercapacities-stats/Api2_import"><Button color="info">API 2</Button></a> </p>
+        <p>Api importada del TIEMPO.es - VISUALIZACION(TABLA) + NORMAL  <a href="#/renewablepowercapacities-stats/Api3_import"><Button color="info">API 3</Button></a> </p>
+        <p>Importada por RapidApi VISUALIZACION(TABLA) - PROXY OAUTH:  <a href="#/renewablepowercapacities-stats/Api4_import"><Button color="info">API 4</Button></a></p>
+        <!--
         <p>Importada por el eltiempo.es VISUALIZACION(GRÁFICO Y TABLA) - NORMAL:  <a href="#/renewablepowercapacities-stats/Api3_import"><Button color="info">API 3</Button></a></p>
         <p>Importada por el RapidApi VISUALIZACION(TABLA) - PROXY OAUTH:  <a href="#/renewablepowercapacities-stats/Api4_import"><Button color="info">API 4</Button></a></p>
         <hr/>
         <h3> EXTRA: </h3>
         <p>Api importada del TIEMPO.es - DIFERENTE GRÁFICO + PROXY  <a href="#/renewablepowercapacities-stats/Api6_import"><Button color="info">API 6</Button></a> </p>
         <p>Api importada del grupo 23 - GRÁFICO + PROXY <a href="#/renewablepowercapacities-stats/Api2_import"><Button color="info">API 2</Button></a></p>
+       -->
         <!-- <h3>API IMPORTADAS:</h3>
         <p>Api importada del grupo 3:(LISTA PROXY) <a href="#/renewablepowercapacities-stats/Api1_import"><Button color="info">API 1</Button></a> </p>
         <br/>

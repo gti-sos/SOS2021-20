@@ -14,6 +14,10 @@ let deaths_air_pollution = [];
 let datos=[];
   //CARGA DATOS EN LA TABLA loadInitialData
   async function cargarDatos() {
+
+    const res_cargar = await fetch("/api1LoadInitialData");
+    console.log(res_cargar);
+
         
         console.log("Buscando datos...");
         const res = await fetch("/api1");
@@ -56,11 +60,11 @@ let datos=[];
    <Table bordered responsive>
     <thead>
         <tr>
-            <th>Country</th>
-            <th>Year</th>
-            <th>Deaths_ambient_particulate_matter_pollution</th>
-            <th>Deaths_household_air_pollution_from_solid_fuels</th>
-            <th>Deaths_air_pollution</th>
+            <th style="background-color: palegreen;">Country</th>
+            <th style="background-color: palegreen;">Year</th>
+            <th style="background-color: palegreen;">Deaths_ambient_particulate_matter_pollution</th>
+            <th style="background-color: palegreen;">Deaths_household_air_pollution_from_solid_fuels</th>
+            <th style="background-color: palegreen;">Deaths_air_pollution</th>
         </tr>
     </thead>
     <tbody>
@@ -77,11 +81,11 @@ let datos=[];
         {/each}
     </tbody>
 </Table>
-
+<br/>
 <p class="backbutton">
    <center> <Button color="secondary" on:click={pop}>Volver</Button></center>
 </p>
-
+<br/>
 </main>
 
 <style>

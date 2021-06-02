@@ -1,6 +1,9 @@
 // Student: Álvaro Caro Jiménez
 // Resource: renewablepowercapacities-stats
 
+//module para proxy
+const request = require('request');
+
 //Define API endpoint
 var BASE_API_PATH = "/api/v1";
 var ACJ_ENDPOINT = "/renewablepowercapacities-stats";
@@ -112,6 +115,25 @@ var acjInitialData = [
 
     },
     {
+        "country": "Spain",
+        "year": 2018,
+        "solar_production_in_megawatts": 7067685,
+
+        "hydraulic_production_in_megawatts": 20079572,
+        "wind_power_production_in_megawatts": 23405055,
+
+
+    },
+    {
+        "country": "United Kingdom",
+        "year": 2018,
+        "solar_production_in_megawatts": 13073000,
+        "hydraulic_production_in_megawatts": 4773000,
+        "wind_power_production_in_megawatts": 21767221,
+    
+    
+    },    
+    {
         "country": "czechia",
         "year": 2018,
         "solar_production_in_megawatts": 2075.072,
@@ -119,7 +141,8 @@ var acjInitialData = [
         "wind_power_production_in_megawatts": 316.200,
 
 
-    }
+    },
+    
 ];
 
 renewablepowercapacitiesDB.insert(acjInitialData);
@@ -354,4 +377,89 @@ module.exports.init = (app) => {
 
 
     });
+
+
+     //*** PROXY ***
+     app.use("/api1LoadInitialData", function(req,res){
+        
+        console.log("Nuevo proxy creado");
+
+        var apiServerHost = "https://sos2021-03.herokuapp.com/api/v1/air-pollution/loadInitialData";
+        //var url = apiServerHost + "/#/renewablepowercapacities-stats";
+        var url = apiServerHost + req.url;
+        
+        console.log(`piped ${req.baseUrl}${req.url} -> ${url}`);
+       
+        req.pipe(request(url)).pipe(res);
+        
+    });
+
+
+    app.use("/api1", function(req,res){
+        
+        console.log("Nuevo proxy creado");
+
+        var apiServerHost = "https://sos2021-03.herokuapp.com/api/v1/air-pollution";
+        //var url = apiServerHost + "/#/renewablepowercapacities-stats";
+        var url = apiServerHost + req.url;
+        
+        console.log(`piped ${req.baseUrl}${req.url} -> ${url}`);
+       
+        req.pipe(request(url)).pipe(res);
+        
+    });
+    
+
+    app.use("/api2LoadInitialData", function(req,res){
+        
+        console.log("Nuevo proxy creado");
+
+        var apiServerHost = "https://sos2021-23.herokuapp.com/api/v2/unemployment-stats/loadInitialData";
+        //var url = apiServerHost + "/#/renewablepowercapacities-stats";
+        var url = apiServerHost + req.url;
+        
+        console.log(`piped ${req.baseUrl}${req.url} -> ${url}`);
+       
+        req.pipe(request(url)).pipe(res);
+        
+    });
+    app.use("/api2", function(req,res){
+        
+        console.log("Nuevo proxy creado");
+
+        var apiServerHost = "https://sos2021-23.herokuapp.com/api/v2/unemployment-stats";
+        //var url = apiServerHost + "/#/renewablepowercapacities-stats";
+        var url = apiServerHost + req.url;
+        
+        console.log(`piped ${req.baseUrl}${req.url} -> ${url}`);
+       
+        req.pipe(request(url)).pipe(res);
+        
+    });
+    
+    //API4
+  
+    app.get("/api4",function(req,res){
+       
+        var unirest = require("unirest");
+
+        var req = unirest("GET", "https://covid-193.p.rapidapi.com/statistics");
+
+        req.headers({
+            "x-rapidapi-key": "fc9d5b0d1dmsh9c2cf2525cf228ep160457jsn0afd0cc356cd",
+            "x-rapidapi-host": "covid-193.p.rapidapi.com",
+            "useQueryString": true
+        });
+
+
+        req.end(function (res) {
+            if (res.error) throw new Error(res.error);
+
+            console.log(res.body);
+        });
+
+         req.end().pipe(res); //PROXY
+
+    });//FIN METODO
+
 };

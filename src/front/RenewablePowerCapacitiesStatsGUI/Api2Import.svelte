@@ -1,143 +1,89 @@
 <script>
-
-    import { onMount } from "svelte";
-    import Table from "sveltestrap/src/Table.svelte";
+    import {onMount} from "svelte";
     import {pop} from "svelte-spa-router"
-    import { Button, Col, Row } from "sveltestrap";
+    import Button from "sveltestrap/src/Button.svelte";
+    
+    import Table from "sveltestrap/src/Table.svelte";
 
-    import * as c3 from 'c3';
+    onMount(loadGraph);
 
-    onMount(cargarDatos); //CARGAR LOS DATOS AL INICIAR  
+    let datos = [];
+
     
-    
-    
+    let knoperc=[];
     let gfperc= [];
     let intperc = [];
-    let knoperc = [];
-    
-    let datos=[];
-      //CARGA DATOS EN LA TABLA loadInitialData
-    async function cargarDatos() {
-            
-            console.log("Buscando datos...");
-            const res = await fetch("/api2");
-    
-            
-            //const res = await fetch("/api/v1/renewablepowercapacities-stats"); //ESPERO A QUE TERMINE LA BUSQUEDA con await
-    
-            console.log(res.status);
-            
-            if (res.status != 200) {
-                console.log("Error");
-                
-            } else {
-                console.log("Ok.");
-                const json = await res.json(); //FORMA DE METER LOS DATOS DE LA VARIABLE CONTACTS
-                datos = json; //METO LOS DATOS PARSEADOS EN LA VAR CONTACTS
-                console.log(`Tenemos ${datos.length} datos.`);
-                console.log(datos);
-    
-                datos.forEach(d => {
-                    gfperc.push(d["gfperc"]);
-                    intperc.push(d["intperc"]);
-                    knoperc.push(d["knoperc"]);  
-                });
-    
-            }
-            
-            verGrafica();
-            
-    }
-    
-    async function verGrafica(){
-        
-        
-        console.log("hola");
-        
-        var knoperc=["Porcentaje según Knoema.es"];
-        var intperc=["Porcentaje según InternetWorldStats.com"];
-        var gfperc=["Porcentaje según Gfmag.com"];
-        
-        datos.forEach(d => {
-            var texto_gfperc = d["gfperc"];
-            var texto_intperc = d["intperc"];
-            var texto_knoperc = d["knoperc"];
-            
-            gfperc.push(texto_gfperc);
-            intperc.push(texto_intperc);
-            knoperc.push(texto_knoperc);
-                    
-        });
-        
-        
-        var chart = c3.generate({
-            data: {
-                columns: [
-                    gfperc,
-                    intperc,
-                    knoperc
-                ],
-                type: 'spline'
-            }
-        });
-    }
+   
     
 
-    </script>
+async function loadGraph(){
     
+    const res_cargar = await fetch("/api2LoadInitialData");
+    console.log(res_cargar);
+
+    const res_api2 = await fetch("/api2");
+    datos = await res_api2.json();
     
-    <svelte:head>
-  
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.css" integrity="sha512-GQSxWe9Cj4o4EduO7zO9HjULmD4olIjiQqZ7VJuwBxZlkWaUFGCxRkn39jYnD2xZBtEilm0m4WBG7YEmQuMs5Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.js" integrity="sha512-11Z4MD9csmC3vH8Vd0eIPJBQu3uEHEqeznWEt3sLBCdQx3zm9mJbBcJH8WTcyGY9EXDE81BNpjE2vLosPK8cFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.css" integrity="sha512-cznfNokevSG7QPA5dZepud8taylLdvgr0lDqw/FEZIhluFsSwyvS81CMnRdrNSKwbsmc43LtRd2/WMQV+Z85AQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.js" integrity="sha512-+IpCthlNahOuERYUSnKFjzjdKXIbJ/7Dd6xvUp+7bEw0Jp2dg6tluyxLs+zq9BMzZgrLv8886T4cBSqnKiVgUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    </svelte:head>
+    datos.forEach(d => {
+       
 
-    <main>
-        <br/>
-        <center><a target="_blank" href="https://sos2021-23.herokuapp.com/api/v2/unemployment-stats"><h3> API PROPORCIONADA POR EL GRUPO 23 </h3></a></center>
-        <p>Porcentaje de paro</p>
-        <hr/>
+        knoperc.push(d["knoperc"]);
+        gfperc.push(d["gfperc"]);
+        intperc.push(d["intperc"]);  
 
-        <!-- GRAFICA-->
-        <div id="chart"></div>
+        
+    });
 
-        <br/>
+    
+}
 
-       <Table bordered responsive>
+
+</script>
+
+
+    
+
+<main>
+    <br/>
+    <center><a target="_blank" href="https://sos2021-23.herokuapp.com/api/v2/unemployment-stats"><h3> API PROPORCIONADA POR EL GRUPO 23 </h3></a>
+        <p>Aqui podemos ver la relación que existe entre la capacidad de producción de energia renovable y el porcentaje de paro de ese mismo pais.</p>
+        <p>Y llegar a una conclusión de si los paises que mas produccen tienen el porcentaje de paro menor.</p>
+    </center>
+    <hr/>
+    <Table bordered responsive>
         <thead>
             <tr>
-                <th>Country</th>
-                <th>Year</th>
-                <th>Porcentaje según Knoema.es</th>
-                <th>Porcentaje según InternetWorldStats.com</th>
-                <th>Porcentaje según Gfmag.com</th>
+                <th style="background-color: lightseagreen;">Country</th>
+                <th style="background-color: lightseagreen;">Year</th>
+                <th style="background-color: yellowgreen;">% de PARO según Knoema.es</th> 
+                <th style="background-color: yellowgreen;">% de PARO según InternetWorldStats.com</th> 
+                <th style="background-color: yellowgreen;">% de PARO según Gfmag.com</th> 
             </tr>
         </thead>
         <tbody>
-            
+          
             {#each datos as dato}
-                <tr>
+            <tr>
                     <td>{dato.country}</td>
                     <td>{dato.year}</td>
-                    <td>{dato.knoperc}%</td>
-                    <td>{dato.intperc}%</td>
-                    <td>{dato.gfperc}%</td>
+                    <td>{dato.knoperc}</td>
+                    <td>{dato.intperc}</td>
+                    <td>{dato.gfperc}</td>
                     
-                </tr>
+                    
+            </tr>        
+               
             {/each}
+            
+            
+             
         </tbody>
     </Table>
-    
-    <p class="backbutton">
-        <Button color="secondary" on:click={pop}>Volver</Button>
-    </p>
-    
-    
 
-    </main>
-    
-    <style>
-    
-    </style>
+    <br/>
+    <p class="backbutton">
+       <center> <Button color="secondary" on:click={pop}>Volver</Button> </center>
+    </p>
+
+</main>
+

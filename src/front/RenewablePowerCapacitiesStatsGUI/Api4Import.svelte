@@ -4,60 +4,9 @@
     import Table from "sveltestrap/src/Table.svelte";
     import {pop} from "svelte-spa-router"
     import { Button, Col, Row } from "sveltestrap";
-    import * as c3 from 'c3';
-
-//GRAFICO
-async function grafica(){
-    console.log("holaaaa");
     
 
-    var aux_habitantes_europa=["Europa"];
-    var aux_habitantes_africa=["Africa"];
-    var otros_paises=[];
-    datos.forEach(d => {
-           
-            if(d["continent"] == "Europe" && d["country"] != "Europe"){
-               
-                aux_habitantes_europa.push(d["population"]);
-               
-                 
-            }else{
-                
-                if(d["continent"] == "Africa" && d["country"] != "Africa"){
 
-                    aux_habitantes_africa.push(d["population"]);
-                    //otros_paises.push(d["country"]);
-                    //console.log(otros_paises);
-                   // console.log(data2);
-                }
-
-                
-            }
-            
-
-        });
-
-        var chart = c3.generate({
-            data: {
-                columns: [
-                    aux_habitantes_europa,
-                    aux_habitantes_africa
-                ],
-                type : 'donut',
-                onclick: function (d, i) { console.log("onclick", d, i); },
-                onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-                onmouseout: function (d, i) { console.log("onmouseout", d, i); }
-            },
-            donut: {
-                title: "Europa vs Africa"
-            }
-        });
-
-        
-
-}
-
-//FIN GRAFICO
 
     onMount(cargarDatos); //CARGAR LOS DATOS AL INICIAR  
     
@@ -75,10 +24,10 @@ async function grafica(){
         console.log(res.status);
         
         const json = await res.json(); //FORMA DE METER LOS DATOS DE LA VARIABLE CONTACTS
-        console.log(json);
+        //console.log(json);
         
         datos = json["response"];
-        console.log(datos);
+       // console.log(datos);
 
         var x=0;
 
@@ -99,7 +48,7 @@ async function grafica(){
 
         });
         
-        grafica();
+       
 
     }
     
@@ -168,42 +117,6 @@ async function grafica(){
 
 
 <style>
-    .highcharts-figure, .highcharts-data-table table {
-    min-width: 310px; 
-    max-width: 800px;
-    margin: 1em auto;
-}
 
-#container {
-    height: 400px;
-}
-
-.highcharts-data-table table {
-	font-family: Verdana, sans-serif;
-	border-collapse: collapse;
-	border: 1px solid #EBEBEB;
-	margin: 10px auto;
-	text-align: center;
-	width: 100%;
-	max-width: 500px;
-}
-.highcharts-data-table caption {
-    padding: 1em 0;
-    font-size: 1.2em;
-    color: #555;
-}
-.highcharts-data-table th {
-	font-weight: 600;
-    padding: 0.5em;
-}
-.highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
-    padding: 0.5em;
-}
-.highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
-    background: #f8f8f8;
-}
-.highcharts-data-table tr:hover {
-    background: #f1f7ff;
-}
 
 </style>

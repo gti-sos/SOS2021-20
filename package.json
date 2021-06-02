@@ -26,6 +26,8 @@
     "body-parser": "^1.19.0",
     "bootstrap-icons": "^1.4.1",
     "c3": "^0.7.20",
+    "chart.js": "^3.3.2",
+    "chartkick": "^4.0.4",
     "codecov": "^3.8.2",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
@@ -43,6 +45,7 @@
     "svelte": "^3.38.2",
     "svelte-spa-router": "^3.1.0",
     "sveltestrap": "^3.14.1",
+    "unirest": "^0.6.0",
     "vis-timeline": "^7.4.8",
     "ws": "^7.4.6",
     "xg-xcharts": "^0.2.2"

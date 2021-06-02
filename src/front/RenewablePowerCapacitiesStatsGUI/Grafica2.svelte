@@ -111,9 +111,6 @@ async function loadGraph(){
         text-align: center;
     }
 
-    a{
-        color: black;
-        
-    }
+    
     
     </style>
