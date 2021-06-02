@@ -71,8 +71,8 @@
 		"/integrations/povertyRisks/tableData": PovertyRisksTable,
 		"/integrations/povertyRisks": PovertyRisksGraph,
 		"/integrations/lugaresInteres/tableData": CadizTable,
-		"/integrations/vuelos/tableData": VuelosTable,
-		//"/integrations/lugaresInteres": CadizGraph,
+		//"/integrations/vuelos/tableData": VuelosTable,
+		"/integrations/lugaresInteres": CadizGraph,
 		"*": NotFoundPage,
 	};
 

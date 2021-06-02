@@ -36,7 +36,7 @@ const puppeteer = require('puppeteer');
    //--- RENEWABLE POWERCAPACITIES --
 
 //RENEWABLE - ABRO PAGINA PRINCIPAL 
-const browser2 = await puppeteer.launch();
+/*const browser2 = await puppeteer.launch();
 console.log("Browser opened...");
 const page2 = await browser2.newPage();
 await page2.goto('http://localhost:10000');
@@ -74,7 +74,7 @@ console.log("Datos cargados - Foto 3 capturada correctamente");
 console.log("Error - No se ha cargado 2 datos o mas.");
 }
 
-
+*/
 //----- FIN RENEWABLEPOWERCAPACITIES ---
 
 
