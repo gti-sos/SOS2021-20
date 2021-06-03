@@ -15,17 +15,26 @@ module.exports.init = (app) => {
     //----------------- Integrations --------------------//
 
     //-------------------- SOS APIs ---------------------//
-
+    function loadGroup04Data(){
+        fetch("https://education-expenditures.herokuapp.com/api/v1")
+        .then((res) => res.json())
+        .then((data)=>{
+            if(data.length == 0){
+                fetch("https://education-expenditures.herokuapp.com/api/v1/loadInitialData");
+            }
+        });
+    };
     // Integration with Group 4 (Proxy)
-    app.use('/api/v1/education_expenditures', function (req, res) {
-        var url = 'https://sos2021-04.herokuapp.com' + req.baseUrl + req.url;
+    app.use(BASE_API_PATH + '/education-expenditures', function (req, res) {
+        loadGroup04Data();
+        var url = 'https://education-expenditures.herokuapp.com/api/v1';
         console.log('piped: ' + req.baseUrl + req.url);
         req.pipe(request(url)).pipe(res);
     });
 
     // Integration with Group 1
     var group1Data = [];
-    function loadGroup1Data() {
+    function loadGroup01Data() {
         fetch("https://sos2021-01.herokuapp.com/api/v2/life-stats/loadInitialData")
             .then((res) => {
                 fetch("https://sos2021-01.herokuapp.com/api/v2/life-stats")
@@ -99,11 +108,8 @@ module.exports.init = (app) => {
     });
 
 
-
-
+    loadGroup01Data();
     if (process.env.AEMET_KEY != undefined) {
         loadAemetData();
     };
-    loadGroup1Data();
-
 };

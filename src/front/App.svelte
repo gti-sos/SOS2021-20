@@ -25,6 +25,8 @@
 	import FoundsResearchSourcesStatsDataEdit from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataEdit.svelte"
 	import FoundsResearchSourcesStatsDataMultipleEdit from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataMultipleEdit.svelte";
 	import FoundsResearchSourcesStatsChart from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsChart.svelte";
+	import FoundsResearchSourcesIntegrationsG01 from "./Integrations/FoundsResearchSourcesIntegrationsG01.svelte";
+	import FoundsResearchSourcesIntegrationsG04 from "./Integrations/FoundsResearchSourcesIntegrationsG04.svelte";
 	import GreenhouseGasEmissions from "./GreenhouseGasEmissionsStatsGUI/GreenhouseGasEmissions.svelte";
 	import GreenhouseGasEmissionsEdit from "./GreenhouseGasEmissionsStatsGUI/GreenhouseGasEmissionsEdit.svelte";
 	import GreenhouseGasEmissionsGraph from "./GreenhouseGasEmissionsStatsGUI/GreenhouseGasEmissionsGraph.svelte";
@@ -73,6 +75,8 @@
 		"/integrations/lugaresInteres/tableData": CadizTable,
 		//"/integrations/vuelos/tableData": VuelosTable,
 		"/integrations/lugaresInteres": CadizGraph,
+		"/integrations/foundsresearchsourcesG01": FoundsResearchSourcesIntegrationsG01,
+		"/integrations/foundsresearchsourcesG04": FoundsResearchSourcesIntegrationsG04,
 		"*": NotFoundPage,
 	};
 
@@ -125,9 +129,11 @@
 					  <a class="dropdown-item" href="/#/integrations/povertyRisks/tableData">Integración 2 de API poverty_risks-stats</a>
 					  <a class="dropdown-item" href="/#/integrations/lugaresInteres/tableData">Uso 1 API Consorcio Transporte</a>
 					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item" href="/#/integrations/foundsresearchsourcesG01">Integracion fuentes de financiación con G01</a>
+					  <a class="dropdown-item" href="/#/integrations/foundsresearchsourcesG04">Integracion fuentes de financiación con G04</a>
 					  <a class="dropdown-item" href="/#/integrations/bikes">Uso de API Sevici</a>
 					  <a class="dropdown-item" href="/#/integrations/weather">Uso de API AEMET</a>
-					  <a class="dropdown-item" href="/#/integrations/covid">Uso de API TrackCorona</a>
+					  <a class="dropdown-item" href="/#/integrations/covid">Uso de API TrackCorona</a>				  
 					</div>
 				  </li>
 				<li class="nav-item">
