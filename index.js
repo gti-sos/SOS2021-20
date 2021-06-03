@@ -58,9 +58,11 @@ app.get("/info/renewablepowercapacities-stats", (request, response) => {
 var foundsResearchSourcesAPIv1 = require("./src/back/foundsResearchSourcesAPI/v1");
 var foundsResearchSourcesAPIv2 = require("./src/back/foundsResearchSourcesAPI/v2");
 var foundsResearchSourcesAPIv3 = require("./src/back/foundsResearchSourcesAPI/v3");
+var foundsResearchSourcesAPIv4 = require("./src/back/foundsResearchSourcesAPI/v4");
 foundsResearchSourcesAPIv1.init(app);
 foundsResearchSourcesAPIv2.init(app);
 foundsResearchSourcesAPIv3.init(app);
+foundsResearchSourcesAPIv4.init(app);
 
 // ################################################################################# //
 // Student: Álvaro Caro Jiménez  
