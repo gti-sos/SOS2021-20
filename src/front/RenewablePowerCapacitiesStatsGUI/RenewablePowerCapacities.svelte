@@ -278,12 +278,13 @@
             <Button color="danger" on:click={verTabla}>Eliminar Filtro Búsqueda</Button>
         </center> 
         <hr>   
-            <Button color="info" on:click={cargarDatos}>Cargar Datos</Button>
+        <center>    <Button color="info" on:click={cargarDatos}>Cargar Datos</Button>
             <Button color="danger" on:click={eliminarDatos}>Eliminar Datos</Button>
             <a href="#/renewablepowercapacities-stats/char"><Button color="info">Ver grafica(Line HIGHCHARTS)</Button></a>
             <a href="#/renewablepowercapacities-stats/grafica"><Button color="info">Ver grafica(Chartkick)</Button></a>
-            <a href="#/renewablepowercapacities-stats/grafica2"><Button color="info">Ver grafica(Area HIGHCHARTS)</Button></a>
-        <br/>
+            <a href="#/renewablepowercapacities-stats/grafica2"><Button color="info">Ver grafica(areaspline HIGHCHARTS)</Button></a>
+        </center>
+            <br/>
     </div>   
 
     <hr/>

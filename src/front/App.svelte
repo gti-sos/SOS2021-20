@@ -133,7 +133,18 @@
 					  <a class="dropdown-item" href="/#/integrations/foundsresearchsourcesG04">Integracion fuentes de financiación con G04</a>
 					  <a class="dropdown-item" href="/#/integrations/bikes">Uso de API Sevici</a>
 					  <a class="dropdown-item" href="/#/integrations/weather">Uso de API AEMET</a>
+<<<<<<< HEAD
 					  <a class="dropdown-item" href="/#/integrations/covid">Uso de API TrackCorona</a>				  
+=======
+					  <a class="dropdown-item" href="/#/integrations/covid">Uso de API TrackCorona</a>
+					   <!-- RENEWABLE -->
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#/renewablepowercapacities-stats/Api1_import">API del GRUPO 3 - air-pollution</a>
+						<a class="dropdown-item" href="#/renewablepowercapacities-stats/Api2_import">API del GRUPO 23 - unemployment</a>
+						<a class="dropdown-item" href="#/renewablepowercapacities-stats/Api3_import">API el-tiempo.net - Temperatura Max</a>
+						<a class="dropdown-item" href="#/renewablepowercapacities-stats/Api4_import">API RapidApi - Nº Habitantes/Paises</a>
+					 <!-- FIN RENEWABLE -->
+>>>>>>> 4db3ae88f5c72ff996f39139faa754dc201be8b0
 					</div>
 				  </li>
 				<li class="nav-item">
