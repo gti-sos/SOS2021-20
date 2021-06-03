@@ -128,6 +128,13 @@
 					  <a class="dropdown-item" href="/#/integrations/bikes">Uso de API Sevici</a>
 					  <a class="dropdown-item" href="/#/integrations/weather">Uso de API AEMET</a>
 					  <a class="dropdown-item" href="/#/integrations/covid">Uso de API TrackCorona</a>
+					   <!-- RENEWABLE -->
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#/renewablepowercapacities-stats/Api1_import">API del GRUPO 3 - air-pollution</a>
+						<a class="dropdown-item" href="#/renewablepowercapacities-stats/Api2_import">API del GRUPO 23 - unemployment</a>
+						<a class="dropdown-item" href="#/renewablepowercapacities-stats/Api3_import">API el-tiempo.net - Temperatura Max</a>
+						<a class="dropdown-item" href="#/renewablepowercapacities-stats/Api4_import">API RapidApi - Nº Habitantes/Paises</a>
+					 <!-- FIN RENEWABLE -->
 					</div>
 				  </li>
 				<li class="nav-item">

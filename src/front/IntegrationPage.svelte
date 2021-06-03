@@ -23,6 +23,10 @@
     </div>
     <div class="col-md-4"><h4>Álvaro Caro Jiménez</h4>
         <ul>
+            <li><a href="#/renewablepowercapacities-stats/Api1_import">API del GRUPO 3 - air-pollution</a></li>
+            <li><a href="#/renewablepowercapacities-stats/Api2_import">API del GRUPO 23 - unemployment</a></li>
+            <li><a href="#/renewablepowercapacities-stats/Api3_import">API el-tiempo.net - Temperatura Max</a></li>
+            <li><a href="#/renewablepowercapacities-stats/Api4_import">API RapidApi - Nº Habitantes/Paises</a></li>
         </ul>
     </div>
 </div>

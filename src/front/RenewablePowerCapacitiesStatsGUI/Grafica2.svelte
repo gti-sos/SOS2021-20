@@ -26,7 +26,7 @@ async function loadGraph(){
 		
     Highcharts.chart('container', {
         chart: {
-                type: 'area',
+                type: 'areaspline',
                 backgroundColor: null,
                 height: 400
             },
