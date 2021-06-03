@@ -52,8 +52,8 @@
             
         var dataset = new vis.DataSet(items);
         var options = {
-            dataAxis: { showMinorLabels: true },
-            legend: { left: { position: "bottom-left" } },
+            dataAxis: { showMinorLabels: false },
+            // legend: { left: { position: "bottom-left" } },
             start: startDate,
             end: endDate,
         };

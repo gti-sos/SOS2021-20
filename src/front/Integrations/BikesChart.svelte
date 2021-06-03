@@ -214,6 +214,11 @@
             <div id="container-stands" class="chart-container" />
         </figure>
     </div>
+    <p>
+        Este widget ha sido desarrollado por <a
+            href="https://github.com/JorgeMarinC">Jorge Marín Cordero</a
+        >
+    </p>
     <div class="text-center">
         <Button
             style="margin-bottom: 1em;"
