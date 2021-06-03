@@ -74,6 +74,21 @@ async function loadGraph(){
 
 
     Highcharts.chart('container', {
+    
+        lang: {
+                viewFullscreen:"Ver en pantalla completa",
+                exitFullscreen:"Salir de pantalla completa",
+                printChart: "Imprimir gráfico",
+                downloadPNG:"Descargar en formato PNG",
+                downloadJPEG: "Descargar en formato JPEG",
+                downloadPDF: "Descargar en formato PDF",
+                downloadSVG:"Descargar en formato SVG",
+                downloadCSV: "Descargar CSV",
+                downloadXLS: "Descargar XLS",
+                downloadCSV: "Descargar CSV",
+                downloadXLS: "Descargar XLS",
+                viewData: "Ver datos en tabla"
+            },
     chart: {
         type: 'scatter',
        

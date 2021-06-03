@@ -1,5 +1,4 @@
 <script>
-    import {onMount} from "svelte";
     import {pop} from "svelte-spa-router"
     import Button from "sveltestrap/src/Button.svelte";
     
@@ -29,96 +28,93 @@ async function loadGraph(){
     console.log("el promedio: " + averageData);*/
     });
     
-    let sum1 = carbonBar.reduce((previous, current) => current += previous);
-    let sum2 = methaneBar.reduce((previous, current) => current += previous);
-    let sum3 = nitrousBar.reduce((previous, current) => current += previous);
+    //let sum1 = carbonBar.reduce((previous, current) => current += previous);
+    //let sum2 = methaneBar.reduce((previous, current) => current += previous);
+    //let sum3 = nitrousBar.reduce((previous, current) => current += previous);
 
-			
-		
-    Highcharts.chart('container', {
-        title: {
-            text: 'Emisiones de Dióxido de Carbono, Metano y Óxido de nitrógeno por país en el periodo 2014-2018'
-        },
-
+	Highcharts.chart('container', {
         
-        yAxis: {
-            title: {
-                    text: 'Toneladas'
-            }
-            
+        lang: {
+            viewFullscreen:"Ver en pantalla completa",
+                exitFullscreen:"Salir de pantalla completa",
+                printChart: "Imprimir gráfico",
+                downloadPNG:"Descargar en formato PNG",
+                downloadJPEG: "Descargar en formato JPEG",
+                downloadPDF: "Descargar en formato PDF",
+                downloadSVG:"Descargar en formato SVG",
+                downloadCSV: "Descargar CSV",
+                downloadXLS: "Descargar XLS",
+                downloadCSV: "Descargar CSV",
+                downloadXLS: "Descargar XLS",
+                viewData: "Ver datos en tabla"
+            },
+        
+        chart: {
+            type: 'bar'
         },
-
+        title: {
+            text: 'Emisiones de Dióxido de Carbono, Metano y Óxido de nitrógeno por país en el periodo 2014-2016'
+        },
+        
         xAxis: {
-            title: {
-                    text: 'País y Año'
-            },
             categories: axisX,
-            },
-
-        labels: {
-            items: [{
-                html: 'Total de emisiones',
-                style: {
-                    left: '50px',
-                    top: '18px',
-                    color: ( // theme
-                        Highcharts.defaultOptions.title.style &&
-                        Highcharts.defaultOptions.title.style.color
-                    ) || 'black'
-                }
-            }]
-        },
-
-        series: [{
-                type: 'column',
-                name: 'Dióxido de carbono',
-                data: carbonBar,
-            }, {
-                type: 'column',
-                name: 'Metano',
-                data: methaneBar,
-            }, {
-                type: 'column',
-                name: 'Óxido de nitrógeno',
-                data: nitrousBar,
-            },{
-                type: 'pie',
-                name: 'Total emisiones',
-                data: [{
-                    name: 'Dióxido de carbono',
-                    y: sum1,
-                    color: Highcharts.getOptions().colors[0] 
-                }, {
-                    name: 'Metano',
-                    y: sum2,
-                    color: Highcharts.getOptions().colors[1] 
-                }, {
-                    name: 'Óxido de nitrógeno',
-                    y: sum3,
-                    color: Highcharts.getOptions().colors[2]
-                }],
-                center: [100, 80],
-                size: 100,
-                showInLegend: false,
-                dataLabels: {
-                enabled: false
+            title: {
+                text: 'País/Año'
             }
-
-            }]
-        /*legend: {
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Millones de toneladas',
+                
+            },
+            labels: {
+                overflow: 'justify'
+            }
+        },
+        tooltip: {
+            valueSuffix: ' millones de toneladas'
+        },
+        plotOptions: {
+            bar: {
+                dataLabels: {
+                    enabled: true
+                }
+            }
+        },
+        legend: {
             layout: 'vertical',
             align: 'right',
-            verticalAlign: 'middle'
-        }, */
-
-    });
+            verticalAlign: 'top',
+            x: -40,
+            y: 80,
+            floating: true,
+            borderWidth: 1,
+            backgroundColor:
+                Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+            shadow: true
+        },
+        credits: {
+            enabled: false
+        },
+        series: [{
+            name: 'Dióxido de carbono',
+            data: carbonBar
+        }, {
+            name: 'Metano',
+            data: methaneBar
+        }, {
+            name: 'Óxido de nitrógeno',
+            data: nitrousBar
+        }]
+});		
+		
 }
 
 </script>
 
 <svelte:head>
     <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/series-label.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js" on:load="{loadGraph}"></script>
@@ -133,6 +129,7 @@ async function loadGraph(){
             <Button color="secondary" on:click="{pop}">Volver</Button>
         </p>
     </figure>
+    <h6>Desarrollado por <a href="https://github.com/jesgueada">Jesús Guerra Adame</a> con la librería <a href="https://www.highcharts.com/demo/scatter">Highcharts</a></h6>
 
 </main>
 
@@ -150,7 +147,8 @@ async function loadGraph(){
 #container {
     height: 400px;
 }
-
-
-    
-    </style>
+h6{
+        text-align: center;
+        
+    }
+ </style>
