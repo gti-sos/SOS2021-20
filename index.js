@@ -76,9 +76,11 @@ renewablepowercapacities.init(app);
 // Resource: greenhousegasemissions-stats
 
 var greenhouseGasEmissionsAPIv1 = require("./src/back/greenhouseGasEmissionsAPI/v1");
-var greenhouseGasEmissionsAPIv2 = require("./src/back/greenhouseGasEmissionsAPI/v2/integration");
+var greenhouseGasEmissionsAPIv2 = require("./src/back/greenhouseGasEmissionsAPI/v2");
+var greenhouseGasEmissionsAPIv3 = require("./src/back/greenhouseGasEmissionsAPI/v3");
 greenhouseGasEmissionsAPIv1.init(app);
 greenhouseGasEmissionsAPIv2.init(app);
+greenhouseGasEmissionsAPIv3.init(app);
 
 // ################################################################################# //
 
