@@ -88,7 +88,7 @@ var acjInitialData = [
 
     },
     {
-        "country": "neederlands",
+        "country": "netherlands",
         "year": 2018,
         "solar_production_in_megawatts": 4608000,
         "hydraulic_production_in_megawatts": 37000,
