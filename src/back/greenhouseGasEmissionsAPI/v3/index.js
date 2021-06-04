@@ -5,9 +5,10 @@
 const request = require("request");
 var unirest = require("unirest");
 
+module.exports.init = (app) => {
 //Servidor proxy para integración con grupo 23 HDI-stats
   
-    app.use("/v1/integration/hdi-stats/loadInitialData", function(req, res) {
+    app.use("/v3/integration/hdi-stats/loadInitialData", function(req, res) {
       var apiServerHost = "https://sos2021-23.herokuapp.com/api/v1/hdi-stats/loadInitialData";
 
       var url = apiServerHost + req.url;
@@ -16,7 +17,7 @@ var unirest = require("unirest");
     });
 
 
-   app.use("/v1/integration/hdi-stats", function(req, res) {
+   app.use("/v3/integration/hdi-stats", function(req, res) {
         var apiServerHost = "https://sos2021-23.herokuapp.com/api/v1/hdi-stats";
     
         var url = apiServerHost + req.url;
@@ -25,7 +26,7 @@ var unirest = require("unirest");
       });
 
 //Servidor proxy para integración con grupo 04 poverty_risks
-      app.use("/v1/integration/poverty_risks/loadInitialData", function(req, res) {
+      app.use("/v3/integration/poverty_risks/loadInitialData", function(req, res) {
         var apiServerHost = "https://sos2021-04.herokuapp.com/api/v1/poverty_risks/loadInitialData";
 
         var url = apiServerHost + req.url;
@@ -35,7 +36,7 @@ var unirest = require("unirest");
 
 
 
-      app.use("/v1/integration/poverty_risks", function(req, res) {
+      app.use("/v3/integration/poverty_risks", function(req, res) {
         var apiServerHost = "https://sos2021-04.herokuapp.com/api/v1/poverty_risks";
     
         var url = apiServerHost + req.url;
@@ -67,16 +68,11 @@ var unirest = require("unirest");
 
     req.end(function (res) {
       OTTdata = res.body;
-      console.log(res.body); 
-
-
     });
  
-    app.get("api/integration/OTTdetails", function (req, res){
+    app.get("/v3/integration/OTTdetails", function (req, res){
       return res.send(OTTdata);
   });
 
 
-
-
-
+};
