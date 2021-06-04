@@ -126,7 +126,6 @@ module.exports.init = (app) => {
     });
 
     req.end(function (res) {
-        if (res.error) throw new Error(res.error);
         spainData = res.body;
     });
 
