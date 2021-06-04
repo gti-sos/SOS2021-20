@@ -9,6 +9,7 @@
 	import IntegrationPage from "./IntegrationPage.svelte";
 	import UnifiedChart from "./Integrations/UnifiedChart.svelte";
 	import BikesChart from "./Integrations/BikesChart.svelte";
+	import PopulationChart from "./Integrations/PopulationChart.svelte";	
 	import BikesTable from "./Integrations/BikesTable.svelte";
 	import WeatherTable from "./Integrations/WeatherTable.svelte";
 	import WeatherChart from "./Integrations/WeatherChart.svelte";
@@ -25,6 +26,8 @@
 	import FoundsResearchSourcesStatsDataEdit from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataEdit.svelte"
 	import FoundsResearchSourcesStatsDataMultipleEdit from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataMultipleEdit.svelte";
 	import FoundsResearchSourcesStatsChart from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsChart.svelte";
+	import FoundsResearchSourcesIntegrationsG01 from "./Integrations/FoundsResearchSourcesIntegrationsG01.svelte";
+	import FoundsResearchSourcesIntegrationsG04 from "./Integrations/FoundsResearchSourcesIntegrationsG04.svelte";
 	import GreenhouseGasEmissions from "./GreenhouseGasEmissionsStatsGUI/GreenhouseGasEmissions.svelte";
 	import GreenhouseGasEmissionsEdit from "./GreenhouseGasEmissionsStatsGUI/GreenhouseGasEmissionsEdit.svelte";
 	import GreenhouseGasEmissionsGraph from "./GreenhouseGasEmissionsStatsGUI/GreenhouseGasEmissionsGraph.svelte";
@@ -43,7 +46,7 @@
 		"/info": InfoPage,
 		"/about": AboutPage,
 		"/integrations": IntegrationPage,
-		"/unified-chart":UnifiedChart,
+		"/analytics":UnifiedChart,
 		"/foundsresearchsources-stats": FoundsResearchSourcesStats,
 		"/foundsresearchsources-stats/:country/:year": FoundsResearchSourcesStatsDataEdit,
 		"/foundsresearchsources-stats/update-data": FoundsResearchSourcesStatsDataMultipleEdit,
@@ -61,6 +64,7 @@
 		"/renewablepowercapacities-stats/grafica": Renewable_Grafica,
 		"/renewablepowercapacities-stats/grafica2": Renewable_Grafica2,
 		"/integrations/bikes": BikesChart,
+		"/integrations/population": PopulationChart,
 		"/integrations/weather": WeatherChart,
 		"/integrations/covid": CovidChart,
 		"/integrations/bikes/rawData": BikesTable,
@@ -73,6 +77,8 @@
 		"/integrations/lugaresInteres/tableData": CadizTable,
 		//"/integrations/vuelos/tableData": VuelosTable,
 		"/integrations/lugaresInteres": CadizGraph,
+		"/integrations/foundsresearchsourcesG01": FoundsResearchSourcesIntegrationsG01,
+		"/integrations/foundsresearchsourcesG04": FoundsResearchSourcesIntegrationsG04,
 		"*": NotFoundPage,
 	};
 
@@ -107,7 +113,7 @@
 					Gráficos
 				  </a>
 				  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="/#/unified-chart">Gráfico conjunto</a>
+					<a class="dropdown-item" href="/#/analytics">Gráfico conjunto</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="/#/foundsresearchsources-stats/chart">Fuentes de financiación de la investigación</a>
 					<a class="dropdown-item" href="/#/greenhousegasemissions-stats/graph">Emisiones de gases de efecto invernadero</a>
@@ -125,9 +131,19 @@
 					  <a class="dropdown-item" href="/#/integrations/povertyRisks/tableData">Integración 2 de API poverty_risks-stats</a>
 					  <a class="dropdown-item" href="/#/integrations/lugaresInteres/tableData">Uso 1 API Consorcio Transporte</a>
 					  <div class="dropdown-divider"></div>
+					  <a class="dropdown-item" href="/#/integrations/foundsresearchsourcesG01">Integracion fuentes de financiación con G01</a>
+					  <a class="dropdown-item" href="/#/integrations/foundsresearchsourcesG04">Integracion fuentes de financiación con G04</a>
 					  <a class="dropdown-item" href="/#/integrations/bikes">Uso de API Sevici</a>
 					  <a class="dropdown-item" href="/#/integrations/weather">Uso de API AEMET</a>
 					  <a class="dropdown-item" href="/#/integrations/covid">Uso de API TrackCorona</a>
+					  <a class="dropdown-item" href="/#/integrations/population">Uso de RapidApi Spott Población España</a>
+					   <!-- RENEWABLE -->
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#/renewablepowercapacities-stats/Api1_import">API del GRUPO 3 - air-pollution</a>
+						<a class="dropdown-item" href="#/renewablepowercapacities-stats/Api2_import">API del GRUPO 23 - unemployment</a>
+						<a class="dropdown-item" href="#/renewablepowercapacities-stats/Api3_import">API el-tiempo.net - Temperatura Max</a>
+						<a class="dropdown-item" href="#/renewablepowercapacities-stats/Api4_import">API RapidApi - Nº Habitantes/Paises</a>
+					 <!-- FIN RENEWABLE -->
 					</div>
 				  </li>
 				<li class="nav-item">
