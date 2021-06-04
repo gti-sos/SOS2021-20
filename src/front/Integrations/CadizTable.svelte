@@ -13,7 +13,7 @@ let idCat = [];
 async function getData(){
         
         console.log("Fetching data...");
-        const res = await fetch("http://api.ctan.es/v1/Consorcios/2/lugares_interes");
+        const res = await fetch("https://api.ctan.es/v1/Consorcios/2/lugares_interes");
         if(res.ok){
             const returnedJson = await res.json();
 
