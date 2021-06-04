@@ -2,11 +2,8 @@
 // Resource: greenhousegasemissions-stats
 
 
-//Define API endpoint
-var BASE_API_PATH = "/api/v3";
-
 const request = require("request");
-
+var unirest = require("unirest");
 
 //Servidor proxy para integración con grupo 23 HDI-stats
   
@@ -45,6 +42,41 @@ const request = require("request");
         console.log(`piped: ${req.url} -> ${url}`);
         req.pipe(request(url)).pipe(res);
       });
+
+//USO API OTT DETAILS
+
+    var OTTdata = [];
+    var req = unirest("GET", "https://ott-details.p.rapidapi.com/advancedsearch");
+
+    req.query({
+      "start_year": "2020",
+      "end_year": "2020",
+      "min_imdb": "6",
+      "max_imdb": "9",
+      "language": "spanish",
+      "type": "show",
+      "page": "1"
+    });
+
+    req.headers({
+      "x-rapidapi-key": "0e378a889fmshc5a3a6fb5b77ba7p1f3286jsne3d159442600",
+      "x-rapidapi-host": "ott-details.p.rapidapi.com",
+      "useQueryString": true
+    });
+
+
+    req.end(function (res) {
+      OTTdata = res.body;
+      console.log(res.body); 
+
+
+    });
+ 
+    app.get("api/integration/OTTdetails", function (req, res){
+      return res.send(OTTdata);
+  });
+
+
 
 
 
