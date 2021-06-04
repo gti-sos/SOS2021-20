@@ -16,11 +16,12 @@
     </div>
     <div class="col-md-4"><h4>Jorge Marín Cordero</h4>
         <ul>
-            <li><a href="/#/integrations/foundsresearchsourcesG01">Integracion fuentes de financiación con G01</a></li>
-			<li><a href="/#/integrations/foundsresearchsourcesG04">Integracion fuentes de financiación con G04</a></li>
+            <li><a href="/#/integrations/foundsresearchsourcesG01">Integración fuentes de financiación con G01</a></li>
+			<li><a href="/#/integrations/foundsresearchsourcesG04">Integración fuentes de financiación con G04</a></li>
             <li><a href="/#/integrations/bikes">Uso de la API de la red Sevici</a></li>
             <li><a href="/#/integrations/weather">Uso de la API de AEMET</a></li>
             <li><a href="/#/integrations/covid">Uso de API TrackCorona</a></li>
+            <li><a href="/#/integrations/population">Uso de RapidApi Spott Población España</a></li>
         </ul>
     </div>
     <div class="col-md-4"><h4>Álvaro Caro Jiménez</h4>

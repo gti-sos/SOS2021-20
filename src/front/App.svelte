@@ -9,6 +9,7 @@
 	import IntegrationPage from "./IntegrationPage.svelte";
 	import UnifiedChart from "./Integrations/UnifiedChart.svelte";
 	import BikesChart from "./Integrations/BikesChart.svelte";
+	import PopulationChart from "./Integrations/PopulationChart.svelte";	
 	import BikesTable from "./Integrations/BikesTable.svelte";
 	import WeatherTable from "./Integrations/WeatherTable.svelte";
 	import WeatherChart from "./Integrations/WeatherChart.svelte";
@@ -45,7 +46,7 @@
 		"/info": InfoPage,
 		"/about": AboutPage,
 		"/integrations": IntegrationPage,
-		"/unified-chart":UnifiedChart,
+		"/analytics":UnifiedChart,
 		"/foundsresearchsources-stats": FoundsResearchSourcesStats,
 		"/foundsresearchsources-stats/:country/:year": FoundsResearchSourcesStatsDataEdit,
 		"/foundsresearchsources-stats/update-data": FoundsResearchSourcesStatsDataMultipleEdit,
@@ -63,6 +64,7 @@
 		"/renewablepowercapacities-stats/grafica": Renewable_Grafica,
 		"/renewablepowercapacities-stats/grafica2": Renewable_Grafica2,
 		"/integrations/bikes": BikesChart,
+		"/integrations/population": PopulationChart,
 		"/integrations/weather": WeatherChart,
 		"/integrations/covid": CovidChart,
 		"/integrations/bikes/rawData": BikesTable,
@@ -111,7 +113,7 @@
 					Gráficos
 				  </a>
 				  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="/#/unified-chart">Gráfico conjunto</a>
+					<a class="dropdown-item" href="/#/analytics">Gráfico conjunto</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="/#/foundsresearchsources-stats/chart">Fuentes de financiación de la investigación</a>
 					<a class="dropdown-item" href="/#/greenhousegasemissions-stats/graph">Emisiones de gases de efecto invernadero</a>
@@ -134,6 +136,7 @@
 					  <a class="dropdown-item" href="/#/integrations/bikes">Uso de API Sevici</a>
 					  <a class="dropdown-item" href="/#/integrations/weather">Uso de API AEMET</a>
 					  <a class="dropdown-item" href="/#/integrations/covid">Uso de API TrackCorona</a>
+					  <a class="dropdown-item" href="/#/integrations/population">Uso de RapidApi Spott Población España</a>
 					   <!-- RENEWABLE -->
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="#/renewablepowercapacities-stats/Api1_import">API del GRUPO 3 - air-pollution</a>

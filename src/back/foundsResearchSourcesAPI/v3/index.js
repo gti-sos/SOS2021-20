@@ -5,7 +5,7 @@
 var BASE_API_PATH = "/api/v3/integrations";
 
 const fetch = require('node-fetch');
-const { get } = require('request');
+var unirest = require("unirest");
 var request = require('request');
 const { dataset_dev } = require('svelte/internal');
 
@@ -15,14 +15,14 @@ module.exports.init = (app) => {
     //----------------- Integrations --------------------//
 
     //-------------------- SOS APIs ---------------------//
-    function loadGroup04Data(){
+    function loadGroup04Data() {
         fetch("https://education-expenditures.herokuapp.com/api/v1")
-        .then((res) => res.json())
-        .then((data)=>{
-            if(data.length == 0){
-                fetch("https://education-expenditures.herokuapp.com/api/v1/loadInitialData");
-            }
-        });
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.length == 0) {
+                    fetch("https://education-expenditures.herokuapp.com/api/v1/loadInitialData");
+                }
+            });
     };
     // Integration with Group 4 (Proxy)
     app.use(BASE_API_PATH + '/education-expenditures', function (req, res) {
@@ -106,6 +106,33 @@ module.exports.init = (app) => {
         console.log('piped: ' + req.baseUrl + req.url);
         req.pipe(request(url)).pipe(res);
     });
+
+
+
+    //RapidApi integration    
+    var spainData = [];
+    var req = unirest("GET", "https://spott.p.rapidapi.com/places");
+
+    req.query({
+        "limit": "100",
+        "country": "ES",
+        "skip": "0"
+    });
+
+    req.headers({
+        "x-rapidapi-key": process.env.SPOTT_API_KEY,
+        "x-rapidapi-host": "spott.p.rapidapi.com",
+        "useQueryString": true
+    });
+
+    req.end(function (res) {
+        if (res.error) throw new Error(res.error);
+        spainData = res.body;
+    });
+
+    app.get(BASE_API_PATH + "/spainCities", function (req, res) {
+        return res.send(spainData);
+    })
 
 
     loadGroup01Data();
