@@ -21,7 +21,7 @@
 	import PovertyRisksGraph from "./Integrations/PovertyRisksGraph.svelte";
 	import CadizTable from "./Integrations/CadizTable.svelte";
 	import CadizGraph from "./Integrations/CadizGraph.svelte";
-	//import VuelosTable from "./Integrations/FlightsTable.svelte";
+	import OTTTable from "./Integrations/OTTTable.svelte";
 	import FoundsResearchSourcesStats from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStats.svelte";
 	import FoundsResearchSourcesStatsDataEdit from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataEdit.svelte"
 	import FoundsResearchSourcesStatsDataMultipleEdit from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataMultipleEdit.svelte";
@@ -75,7 +75,7 @@
 		"/integrations/povertyRisks/tableData": PovertyRisksTable,
 		"/integrations/povertyRisks": PovertyRisksGraph,
 		"/integrations/lugaresInteres/tableData": CadizTable,
-		//"/integrations/vuelos/tableData": VuelosTable,
+		"/integrations/ottdetails/tableData": OTTTable,
 		"/integrations/lugaresInteres": CadizGraph,
 		"/integrations/foundsresearchsourcesG01": FoundsResearchSourcesIntegrationsG01,
 		"/integrations/foundsresearchsourcesG04": FoundsResearchSourcesIntegrationsG04,
