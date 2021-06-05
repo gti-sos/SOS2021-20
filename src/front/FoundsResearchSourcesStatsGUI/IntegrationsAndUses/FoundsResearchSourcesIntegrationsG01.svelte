@@ -103,7 +103,7 @@ onMount(lifeStatsIntegration);
     <p>
         En este widget se muestra la integración de los datos referentes al
         porcentaje de financiación de la investigación y desarrollo proviniente
-        de diversas fuentes,<br /> con los datos del grupo 01 referentes al índice de calidad de vida.
+        de diversas fuentes en 2018,<br /> con los datos del grupo 01 referentes al índice de calidad de vida en el mismo año.
     </p>
     <figure class="highcharts-figure">
         <div id="container" />
@@ -123,7 +123,7 @@ onMount(lifeStatsIntegration);
 <style>
     h4 {
         color: rgba(0, 0, 0, 0.7);
-        margin-top: 1em;
+        margin-top: 2.8em;
         text-align: center;
     }
     p {

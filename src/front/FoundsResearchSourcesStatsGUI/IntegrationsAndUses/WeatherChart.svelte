@@ -89,7 +89,7 @@
         >
     </div>
     <div class="text-center">
-        <Button style="margin-bottom: 3em;" color="secondary" on:click={pop}
+        <Button style="margin-bottom: 1em;" color="secondary" on:click={pop}
             >Volver</Button
         >
     </div>
@@ -98,12 +98,12 @@
 <style>
     h4 {
         color: rgba(0, 0, 0, 0.7);
-        margin-top: 2em;
+        margin-top: 1em;
         text-align: center;
     }
     p {
         text-align: center;
-        margin-bottom: 2em;
+        margin-bottom: 0em;
         margin-top: 1em;
         opacity: 0.7;
         font-size: 0.8em;
@@ -111,6 +111,6 @@
     #visualization {
         padding-left: 15em;
         padding-right: 15em;
-        margin-top: 7em;
+        margin-top: 1.1em;
     }
 </style>
