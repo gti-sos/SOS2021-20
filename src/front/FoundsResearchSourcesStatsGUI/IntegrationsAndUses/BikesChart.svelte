@@ -242,8 +242,8 @@
     }
     p {
         text-align: center;
-        margin-bottom: 3em;
-        margin-top: 3em;
+        margin-bottom: 0em;
+        margin-top: 2.4em;
         opacity: 0.7;
         font-size: 0.8em;
     }

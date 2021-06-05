@@ -7,7 +7,7 @@
 	import InfoPage from "./InfoPage.svelte";
 	import AboutPage from "./AboutPage.svelte";
 	import IntegrationPage from "./IntegrationPage.svelte";
-	import UnifiedChart from "./Integrations/UnifiedChart.svelte";
+	import UnifiedChart from "./UnifiedChart.svelte";
 	import BikesChart from "./FoundsResearchSourcesStatsGUI/IntegrationsAndUses/BikesChart.svelte";
 	import PopulationChart from "./FoundsResearchSourcesStatsGUI/IntegrationsAndUses/PopulationChart.svelte";	
 	import BikesTable from "./FoundsResearchSourcesStatsGUI/IntegrationsAndUses/BikesTable.svelte";

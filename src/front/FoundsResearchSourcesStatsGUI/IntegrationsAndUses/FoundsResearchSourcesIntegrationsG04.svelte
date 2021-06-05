@@ -186,8 +186,8 @@ onMount(educationExpenditureIntegration);
     <h4>INTEGRACIÓN CON GRUPO 04</h4>
     <p>
         En este widget se muestra la integración de los datos referentes al porcentaje de financiación
-        de la investigación y desarrollo proviniente de diversas fuentes,<br> con los datos del grupo 04 referentes 
-        al gasto en educación de distintos paises.
+        de la investigación y desarrollo proviniente de diversas fuentes en el año 2016,<br> con los datos del grupo 04 referentes 
+        al gasto en educación de distintos paises en el mismo año.
     </p>
     <figure class="highcharts-figure">
         <div id="container" />
@@ -207,7 +207,7 @@ onMount(educationExpenditureIntegration);
 <style>
     h4 {
         color: rgba(0, 0, 0, 0.7);
-        margin-top: 1em;
+        margin-top: 2.8em;
         text-align: center;
     }
     p {
