@@ -11,11 +11,11 @@
 async function getData(){
         
         console.log("Fetching data...");
-        const res = await fetch("api/integration/OTTdetails");
-        console.log(res);
+        const res = await fetch("/v3/integration/OTTdetails");
         if(res.ok){
             const returnedJson = await res.json();
-            dataOTT = [returnedJson];
+            dataOTT = returnedJson.results;
+            console.log(dataOTT);
             console.log("!"+dataOTT.length + ", Registers loaded!");
                  
         } else {
@@ -29,12 +29,12 @@ onMount(getData);
 
 <main>
     <header>
-            <h3>INTEGRACIÓN 1 SOS - HDI-stats GRUPO 23</h3>
-            <h4>Datos de Estadística HDI</h4>
-            <h6>Datos obtenidos de la API pública <a href="http://api.ctan.es/doc/">Red de Consorcios de Transporte de Andalucía </a></h6>
+            <h3>USO DE API EXTERNA 2 - OTT details:</h3>
+            <h4>Valoraciones de TV Shows de España en 2020</h4>
+            <h6>Datos obtenidos de la API privada <a href="https://rapidapi.com/gox-ai-gox-ai-default/api/ott-details/details">OTT details</a></h6>
             <div id= "initialbuttons">
-                    <Button on:click={() => push("#/integrations/hdi")}>Representación gráfica</Button>
-                    <Button on:click={() => push("#/integrations/hdi/tableData")}>Tabla de datos</Button>
+                    <Button on:click={() => push("#/integrations/ottdetails")}>Representación gráfica</Button>
+                    <Button on:click={() => push("#/integrations/ottdetails/tableData")}>Tabla de datos</Button>
              </div>
             
         
@@ -44,22 +44,22 @@ onMount(getData);
     <Table hover bordered>
         <thead>
             <tr id= "tabletitle">
-                <th>País</th>
+                <th>Título</th>
                 <th>Año</th>
-                <th>Rango</th>
-                <th>Valor</th>
-                <th>Escolaridad</th>
+                <th>Género</th>
+                <th>Valoración</th>
+                <th>Tipo</th>
             </tr>
         </thead>
         <tbody>
             
             {#each dataOTT as onedata}
             <tr>
-                <td>{onedata.country}</td>
-                <td>{onedata.year}</td>
-                <td>{onedata.hdirank}</td>
-                <td>{onedata.hdivalue}</td>
-                <td>{onedata.hdischolar}</td>
+                <td>{onedata.title}</td>
+                <td>{onedata.released}</td>
+                <td>{onedata.genre}</td>
+                <td>{onedata.imdbrating}</td>
+                <td>{onedata.type}</td>
             </tr>
         
            {/each}

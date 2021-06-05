@@ -22,6 +22,7 @@
 	import CadizTable from "./Integrations/CadizTable.svelte";
 	import CadizGraph from "./Integrations/CadizGraph.svelte";
 	import OTTTable from "./Integrations/OTTTable.svelte";
+	import OTTGraph from "./Integrations/OTTGraph.svelte";
 	import FoundsResearchSourcesStats from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStats.svelte";
 	import FoundsResearchSourcesStatsDataEdit from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataEdit.svelte"
 	import FoundsResearchSourcesStatsDataMultipleEdit from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataMultipleEdit.svelte";
@@ -75,8 +76,9 @@
 		"/integrations/povertyRisks/tableData": PovertyRisksTable,
 		"/integrations/povertyRisks": PovertyRisksGraph,
 		"/integrations/lugaresInteres/tableData": CadizTable,
-		"/integrations/ottdetails/tableData": OTTTable,
 		"/integrations/lugaresInteres": CadizGraph,
+		"/integrations/ottdetails/tableData": OTTTable,
+		"/integrations/ottdetails": OTTGraph,
 		"/integrations/foundsresearchsourcesG01": FoundsResearchSourcesIntegrationsG01,
 		"/integrations/foundsresearchsourcesG04": FoundsResearchSourcesIntegrationsG04,
 		"*": NotFoundPage,
