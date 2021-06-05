@@ -10,8 +10,11 @@
         <div class="col-md-4">
         <h4>Jesús Guerra Adame</h4>
         <ul>
-            <li><a href="/#/integrations/hdi">Integración con la API HDI-stats del Grupo 23</a></li>
-            <li><a href="https://sos2021-20.herokuapp.com/v1/integration/poverty_risks">Integración con la API poverty_risks del Grupo 04</a></li>
+            <li><a href="/#/integrations/hdi">Integración con API HDI-stats del Grupo 23</a></li>
+            <li><a href="/#/integrations/povertyRisks">Integración con API poverty_risks del Grupo 04</a></li>
+            <li><a href="/#/integrations/lugaresInteres/tableData">Uso 1 API Consorcio Transporte</a></li>
+            <li><a href="/#/integrations/ottdetails/tableData">Uso 2 API OTT details</a></li>
+            <li><a href="/#/integrations/periodicTable">Uso 3 API Tabla Periódica</a></li>
         </ul>
     </div>
     <div class="col-md-4"><h4>Jorge Marín Cordero</h4>

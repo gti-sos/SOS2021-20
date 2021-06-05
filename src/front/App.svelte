@@ -23,6 +23,7 @@
 	import CadizGraph from "./Integrations/CadizGraph.svelte";
 	import OTTTable from "./Integrations/OTTTable.svelte";
 	import OTTGraph from "./Integrations/OTTGraph.svelte";
+	import PeriodicTableGraph from "./Integrations/PeriodicTableGraph.svelte";
 	import FoundsResearchSourcesStats from "./FoundsResearchSourcesStatsGUI/FoundsResearchSourcesStats.svelte";
 	import FoundsResearchSourcesStatsDataEdit from "./FoundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataEdit.svelte"
 	import FoundsResearchSourcesStatsDataMultipleEdit from "./FoundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataMultipleEdit.svelte";
@@ -79,6 +80,7 @@
 		"/integrations/lugaresInteres": CadizGraph,
 		"/integrations/ottdetails/tableData": OTTTable,
 		"/integrations/ottdetails": OTTGraph,
+		"/integrations/periodicTable": PeriodicTableGraph,
 		"/integrations/foundsresearchsourcesG01": FoundsResearchSourcesIntegrationsG01,
 		"/integrations/foundsresearchsourcesG04": FoundsResearchSourcesIntegrationsG04,
 		"*": NotFoundPage,
@@ -132,6 +134,8 @@
 					  <a class="dropdown-item" href="/#/integrations/hdi/tableData">Integración 1 de API HDI-stats</a>
 					  <a class="dropdown-item" href="/#/integrations/povertyRisks/tableData">Integración 2 de API poverty_risks-stats</a>
 					  <a class="dropdown-item" href="/#/integrations/lugaresInteres/tableData">Uso 1 API Consorcio Transporte</a>
+					  <a class="dropdown-item" href="/#/integrations/ottdetails/tableData">Uso 2 API OTT details</a>
+					  <a class="dropdown-item" href="/#/integrations/periodicTable">Uso 3 API Tabla Periódica</a>
 					  <div class="dropdown-divider"></div>
 					  <a class="dropdown-item" href="/#/integrations/foundsresearchsourcesG01">Integracion fuentes de financiación con G01</a>
 					  <a class="dropdown-item" href="/#/integrations/foundsresearchsourcesG04">Integracion fuentes de financiación con G04</a>
