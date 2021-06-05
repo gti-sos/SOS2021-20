@@ -19,41 +19,89 @@
 
 		
 		let foundsSourcesData = foundsResearchSourcesData.map((d) => {
-			let res = {
+			let res1 = {
 				name: d.country + "/" + d.year,
 				value: d["percentage_of_government_funding"]
 			};
-			return res;
+			let res2 = {
+				name: d.country + "/" + d.year,
+				value: d["percentage_of_private_financing"]
+			};
+			let res3 = {
+				name: d.country + "/" + d.year,
+				value: d["percentage_of_non_profit_funding"]
+			};
+			return [res1,res2,res3];		
 		});
 
         let gasEmissionsData = greenhouseGasEmissionsData.map((d) => {
-			let res = {
+			let res1 = {
 				name: d.country + "/" + d.year,
 				value: d["carbon_dioxide"]
 			};
-			return res;
+			let res2 = {
+				name: d.country + "/" + d.year,
+				value: d["methane"]
+			};
+			let res3 = {
+				name: d.country + "/" + d.year,
+				value: d["nitrous_oxide"]
+			};
+			return [res1,res2,res3];
 		});
 
         let renewablePowerData = renewablePowerCapacitiesData.map((d) => {
-			let res = {
+			let res1 = {
 				name: d.country + "/" + d.year,
 				value: d["solar_production_in_megawatts"]
 			};
-			return res;
+			let res2 = {
+				name: d.country + "/" + d.year,
+				value: d["hydraulic_production_in_megawatts"]
+			};
+			let res3 = {
+				name: d.country + "/" + d.year,
+				value: d["wind_power_production_in_megawatts"]
+			};
+			return [res1,res2,res3];
 		});
 
 		let chartData = [
             {
 				name: "Porcentaje de financiación de la investigación por parte del gobierno",
-				data: foundsSourcesData
+				data: foundsSourcesData[0]
+			},
+			{
+				name: "Porcentaje de financiación de la investigación porfuentes privadas",
+				data: foundsSourcesData[1]
+			},
+			{
+				name: "Porcentaje de financiación de la investigación por parte de ONGs",
+				data: foundsSourcesData[2]
 			},
 			{
 				name: "Emisiones de dióxido de carbono en miles de toneladas",
-				data: gasEmissionsData
+				data: gasEmissionsData[0]
+			},
+			{
+				name: "Emisiones de metano en miles de toneladas",
+				data: gasEmissionsData[1]
+			},
+			{
+				name: "Emisiones de óxido nitroso en miles de toneladas",
+				data: gasEmissionsData[2]
 			},
 			{
 				name: "Capacidad de producción de energia solar en Megawatios",
-				data: renewablePowerData
+				data: renewablePowerData[0]
+			},
+			{
+				name: "Capacidad de producción de energia hidráulica en Megawatios",
+				data: renewablePowerData[1]
+			},
+			{
+				name: "Capacidad de producción de energia eólica en Megawatios",
+				data: renewablePowerData[2]
 			}
 			
 		];
