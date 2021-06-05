@@ -8,13 +8,13 @@
 	import AboutPage from "./AboutPage.svelte";
 	import IntegrationPage from "./IntegrationPage.svelte";
 	import UnifiedChart from "./Integrations/UnifiedChart.svelte";
-	import BikesChart from "./Integrations/BikesChart.svelte";
-	import PopulationChart from "./Integrations/PopulationChart.svelte";	
-	import BikesTable from "./Integrations/BikesTable.svelte";
-	import WeatherTable from "./Integrations/WeatherTable.svelte";
-	import WeatherChart from "./Integrations/WeatherChart.svelte";
-	import CovidChart from "./Integrations/CovidChart.svelte";
-	import CovidTable from "./Integrations/CovidTable.svelte";
+	import BikesChart from "./foundsResearchSourcesStatsGUI/IntegrationsAndUses/BikesChart.svelte";
+	import PopulationChart from "./foundsResearchSourcesStatsGUI/IntegrationsAndUses/PopulationChart.svelte";	
+	import BikesTable from "./foundsResearchSourcesStatsGUI/IntegrationsAndUses/BikesTable.svelte";
+	import WeatherTable from "./foundsResearchSourcesStatsGUI/IntegrationsAndUses/WeatherTable.svelte";
+	import WeatherChart from "./foundsResearchSourcesStatsGUI/IntegrationsAndUses/WeatherChart.svelte";
+	import CovidChart from "./foundsResearchSourcesStatsGUI/IntegrationsAndUses/CovidChart.svelte";
+	import CovidTable from "./foundsResearchSourcesStatsGUI/IntegrationsAndUses/CovidTable.svelte";
 	import HdiTable from "./Integrations/HdiTable.svelte";
 	import HdiGGEGraph from "./Integrations/HdiGGEGraph.svelte";
 	import PovertyRisksTable from "./Integrations/PovertyRisksTable.svelte";
@@ -26,8 +26,8 @@
 	import FoundsResearchSourcesStatsDataEdit from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataEdit.svelte"
 	import FoundsResearchSourcesStatsDataMultipleEdit from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataMultipleEdit.svelte";
 	import FoundsResearchSourcesStatsChart from "./foundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsChart.svelte";
-	import FoundsResearchSourcesIntegrationsG01 from "./Integrations/FoundsResearchSourcesIntegrationsG01.svelte";
-	import FoundsResearchSourcesIntegrationsG04 from "./Integrations/FoundsResearchSourcesIntegrationsG04.svelte";
+	import FoundsResearchSourcesIntegrationsG01 from "./foundsResearchSourcesStatsGUI/IntegrationsAndUses/FoundsResearchSourcesIntegrationsG01.svelte";
+	import FoundsResearchSourcesIntegrationsG04 from "./foundsResearchSourcesStatsGUI/IntegrationsAndUses/FoundsResearchSourcesIntegrationsG04.svelte";
 	import GreenhouseGasEmissions from "./GreenhouseGasEmissionsStatsGUI/GreenhouseGasEmissions.svelte";
 	import GreenhouseGasEmissionsEdit from "./GreenhouseGasEmissionsStatsGUI/GreenhouseGasEmissionsEdit.svelte";
 	import GreenhouseGasEmissionsGraph from "./GreenhouseGasEmissionsStatsGUI/GreenhouseGasEmissionsGraph.svelte";
