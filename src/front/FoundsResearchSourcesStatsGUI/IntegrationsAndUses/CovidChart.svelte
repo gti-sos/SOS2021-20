@@ -4,7 +4,15 @@
     import { pop, push } from "svelte-spa-router";
     import Button from "sveltestrap/src/Button.svelte";
     const API_PATH = "/api/v3/integrations/covid";
-
+    const spanish ={
+                viewFullscreen: "Ver en pantalla completa",
+                downloadJPEG: "Descargar en formato JPEG",
+                downloadPDF: "Descargar en formato PDF",
+                downloadPNG: "Descargar en formato JPEG",
+                downloadSVG: "Descargar en formato JPEG",
+                exitFullscreen: "Salir de pantalla completa",
+                printChart: "Imprimir Mapa",
+            };
     async function loadGraph() {
         const covidData = await fetch(API_PATH);
 
@@ -26,15 +34,7 @@
             subtitle: {
                 text: 'Estos datos son posibles gracias a la API abierta que proporciona <a href="https://www.trackcorona.live/" target="_blank">TrackCorona</a>',
             },
-            lang: {
-                viewFullscreen: "Ver en pantalla completa",
-                downloadJPEG: "Descargar en formato JPEG",
-                downloadPDF: "Descargar en formato PDF",
-                downloadPNG: "Descargar en formato JPEG",
-                downloadSVG: "Descargar en formato JPEG",
-                exitFullscreen: "Salir de pantalla completa",
-                printChart: "Imprimir Mapa",
-            },
+            lang: spanish,
 
             mapNavigation: {
                 enabled: true,

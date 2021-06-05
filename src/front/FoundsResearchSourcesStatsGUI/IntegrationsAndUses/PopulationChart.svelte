@@ -4,7 +4,15 @@
     import { pop, push } from "svelte-spa-router";
     import Button from "sveltestrap/src/Button.svelte";
     const API_PATH = "/api/v3/integrations/spain-population";
-
+    const spanish ={
+                viewFullscreen: "Ver en pantalla completa",
+                downloadJPEG: "Descargar en formato JPEG",
+                downloadPDF: "Descargar en formato PDF",
+                downloadPNG: "Descargar en formato JPEG",
+                downloadSVG: "Descargar en formato JPEG",
+                exitFullscreen: "Salir de pantalla completa",
+                printChart: "Imprimir Mapa",
+            };
     async function loadGraph() {
         const spainData = await fetch(API_PATH);
 
@@ -29,7 +37,7 @@
             title: {
                 text: "Gráfico con Highmaps basic lat/lon",
             },
-
+            lang:spanish,
             mapNavigation: {
                 enabled: true,
             },

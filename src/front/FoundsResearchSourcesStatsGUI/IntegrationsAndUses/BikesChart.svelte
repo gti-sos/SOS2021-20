@@ -163,13 +163,13 @@
                         [500, "#DF5353"], // red
                     ],
                     title: {
-                        text: "Estaciones Disponibles",
+                        text: "Aparcamientos Disponibles",
                     },
                 },
 
                 series: [
                     {
-                        name: "Estaciones Disponibles",
+                        name: "Aparcamientos Disponibles",
                         data: [nStands.reduce((a, b) => a + b, 0)],
                         dataLabels: {
                             format:
