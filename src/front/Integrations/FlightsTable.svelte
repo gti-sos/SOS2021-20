@@ -4,49 +4,12 @@
     import {push} from "svelte-spa-router";
     import Table from "sveltestrap/src/Table.svelte";
     import Button from "sveltestrap/src/Button.svelte";
- let data = [];
-let idCat = [];
+ let data = []
 
- 
 
-//GetData
-async function getData(){
-        
-        console.log("Fetching data...");
-        const res = await fetch("https://api.ctan.es/v1/Consorcios/2/lugares_interes");
-        if(res.ok){
-            const returnedJson = await res.json();
-            data = returnedJson.lugaresInteres;
-            console.log("!"+data.length + ", Registers loaded!");
-            console.log(data);
-        } else {
-            console.log("Error");
-            data = [];
-        }
 
-        /*data.forEach(d => {
-            datanumber.push(d["tipo"]);
-            console.log("tipo: " + datanumber); 
-        });*/
-        data.forEach(e => {
-            idCat.push(e["idCat"]);
-            console.log("idcat: " + idCat); 
-        });
-       //Obtener cantidad de cada tipo de categoría
-        var indices = new Array(10);
-        indices.fill(0);
-        for (var i = 0; i < indices.length; i++) {
-             for (var j = 0; j < idCat.length; j++) {
-                if (i == idCat[j]) {
-                indices[i] = indices[i] + 1;
-                }
-            }
-        }
-        console.log("Cantidad: " + indices);
-        indices.shift();
-        console.log("Cantidad sin posición 0: " + indices);
 
-}
+
 
 onMount(getData); 
 </script>
