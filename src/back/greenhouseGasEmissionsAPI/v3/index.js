@@ -74,5 +74,29 @@ module.exports.init = (app) => {
       return res.send(OTTdata);
   });
 
+  //USO API PERIODIC TABLE OF ELEMENTS
+var ptoe = [];
+var req = unirest("GET", "https://periodic-table-of-elements.p.rapidapi.com/elements");
+
+req.headers({
+	"x-rapidapi-key": "0e378a889fmshc5a3a6fb5b77ba7p1f3286jsne3d159442600",
+	"x-rapidapi-host": "periodic-table-of-elements.p.rapidapi.com",
+	"useQueryString": true
+});
+
+
+req.end(function (res) {
+	ptoe = res.body;
+	console.log(res.body);
+  console.log(ptoe);
+});
+
+app.get("/v3/integration/periodictable", function (req, res){
+  return res.send(ptoe);
+ 
+});
+
 
 };
+
+
