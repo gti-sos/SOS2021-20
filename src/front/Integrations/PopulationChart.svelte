@@ -3,7 +3,7 @@
 
     import { pop, push } from "svelte-spa-router";
     import Button from "sveltestrap/src/Button.svelte";
-    const API_PATH = "/api/v3/integrations/spainCities";
+    const API_PATH = "/api/v3/integrations/spain-population";
 
     async function loadGraph() {
         const spainData = await fetch(API_PATH);
