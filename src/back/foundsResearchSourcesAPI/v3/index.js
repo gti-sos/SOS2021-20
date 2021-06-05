@@ -129,9 +129,9 @@ module.exports.init = (app) => {
         spainData = res.body;
     });
 
-    app.get(BASE_API_PATH + "/spainCities", function (req, res) {
+    app.get(BASE_API_PATH + "/spain-population", function (req, res) {
         return res.send(spainData);
-    })
+    });
 
 
     loadGroup01Data();

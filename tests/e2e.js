@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer');
 
-
+const path = require('path');
+const appDir = path.dirname(require.main.filename);
 
 (async () => {
 
@@ -9,7 +10,7 @@ const puppeteer = require('puppeteer');
   const page = await browser.newPage();
   await page.goto('http://localhost:10000');
   console.log("Page opened! Taking a screenshot...");
-  await page.screenshot({ path: '01.png' });
+  await page.screenshot({ path: appDir+'/screenshots/01.png' });
 
 
 
@@ -20,12 +21,12 @@ const puppeteer = require('puppeteer');
   console.log("Clicked \"Integraciones\" link, waiting page load");
   await page.waitForTimeout(1000);
   console.log("Page opened! Taking a screenshot...");
-  await page.screenshot({ path: '02.png' });
+  await page.screenshot({ path: appDir+'/screenshots/02.png' });
 
   await page.goto('http://localhost:10000/#/foundsresearchsources-stats');
   await page.waitForTimeout(1000);
   console.log("Page opened! Taking a screenshot...");
-  await page.screenshot({ path: '03.png' });
+  await page.screenshot({ path: appDir+'/screenshots/03.png' });
 
   var rowCount = (await page.$$(".table > tbody > tr")).length;
   var loaded = parseInt(rowCount) > 2;
@@ -42,7 +43,7 @@ const page2 = await browser2.newPage();
 await page2.goto('http://localhost:10000');
     
 //PRIMERA FOTO
-await page2.screenshot({ path: 'tests/renewable_1.png' });
+await page2.screenshot({ path: appDir+'/screenshots/renewable_1.png' });
 console.log("Pagina Abierta - Foto 1 capturada correctamente");
 
 //RENEWABLE - ABRO DESCRIPCION GRUPO 
@@ -52,7 +53,7 @@ page2.click("body > div > div > button"),
 ]); 
 
 //SEGUNDA FOTO
-await page2.screenshot({path: 'tests/renewable_2.png'})
+await page2.screenshot({path: appDir+'/screenshots/renewable_2.png'})
 console.log("Pagina Abierta - Foto 2 capturada correctamente");
 
 //RENEWABLE - ABRO PAGINA API RENEWABLEPOWERCAPACITIES    
@@ -67,7 +68,7 @@ if(rowCount >=2 ){
 
 console.log("DATOS CARGADOS CORRECTAMENTE");
 
-await page2.screenshot({ path: 'tests/renewable_3.png' });
+await page2.screenshot({ path: appDir+'/screenshots/renewable_3.png' });
 console.log("Datos cargados - Foto 3 capturada correctamente");
 
 }else{
