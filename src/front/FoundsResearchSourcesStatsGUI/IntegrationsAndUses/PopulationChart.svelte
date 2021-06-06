@@ -35,7 +35,10 @@
             },
 
             title: {
-                text: "Gráfico con Highmaps basic lat/lon",
+                text: "Población de las principales ciudades y comunidades autónomas de España",
+            },
+            subtitle: {
+                text: 'Estos datos son posibles gracias a la API abierta que proporciona <a href="https://www.spott.dev/" target="_blank">Spott</a>',
             },
             lang:spanish,
             mapNavigation: {
@@ -45,7 +48,7 @@
             tooltip: {
                 headerFormat: "",
                 pointFormat:
-                    "<b>{point.name}</b><br>Lat: {point.lat}, Lon: {point.lon}<br> Población: {point.population}",
+                    "<b>{point.name}</b><br>Lat: {point.lat}, Lon: {point.lon}<br> Población: <b>{point.population}</b> hab",
             },
 
             series: [
@@ -81,7 +84,7 @@
 
     <h4>USO DE API EXTERNA #4</h4>
     <p>
-        En este widget se muestran las las principales ciudades y comunidades autonomas de España así como su población. <br />
+        En este widget se muestran el número de habitantes de las principales ciudades y comunidades autónomas de España<br />
         
     </p>
     <figure class="highcharts-figure">

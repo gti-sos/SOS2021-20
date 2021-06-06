@@ -66,9 +66,9 @@
     <h4>USO DE API EXTERNA #2</h4>
 
     <p>
-        En este widget se muestran los datos meteorológicos recogidos por una
+        En este widget se muestran los datos de temperatura máxima, media y mínima recogidos por una
         estación perteneciente a la red de estaciones de la agencia estatal de
-        meteorología, concretamente la estación Sevilla, Aeropuerto (E317) <br
+        meteorología entere los años 2019 y 2021. Estación Sevilla, Aeropuerto (E317) <br
         />
         También puede consultar los datos en bruto.
     </p>

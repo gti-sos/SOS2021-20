@@ -75,7 +75,7 @@
 
     <h4>USO DE API EXTERNA #3</h4>
     <p>
-        En este widget se muestran las muertes provocadas por la pandemia del Covid-19. <br />
+        En este widget se muestran las muertes provocadas por la pandemia del Covid-19 a nivel global. <br />
         También puede consultar los datos en bruto.
     </p>
     <figure class="highcharts-figure">

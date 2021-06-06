@@ -107,14 +107,17 @@
                 },
                 {
                     min: 0,
+                    max:100,
                     tooltipValueFormat: "{value} %",
                 },
                 {
                     min: 0,
+                    max:100,
                     tooltipValueFormat: "{value} %",
                 },
                 {
                     min: 0,
+                    max:100,
                     tooltipValueFormat: "{value} %",
                 },
             ],
@@ -186,7 +189,7 @@
         los años 2014 y 2018
     </p>
     <div id="container2">
-        <h5> Gráfico con libreria escogida (Vis.js)</h5>
+        <h5> Gráfico con librería escogida (Vis.js)</h5>
         <div id="visualization2" />
     </div>
     

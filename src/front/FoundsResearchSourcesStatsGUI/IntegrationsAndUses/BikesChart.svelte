@@ -191,7 +191,7 @@
     setInterval(function () {
         loadGraph();
         console.log("Refreshing data");
-    }, 60000);
+    }, 20000);
     onMount(loadGraph);
 </script>
 
@@ -200,7 +200,7 @@
     <p>
         En este widget se muestra en tiempo real los datos de la red de
         estaciones de Sevici, se puede observar la cantidad de bicicletas,
-        aparcamientos y estaciones disponibles en toda la red. <br />
+        aparcamientos y estaciones disponibles en toda la red. el widget se autorefresca cada 20 segundos <br />
         También puede consultar los datos en bruto.
     </p>
     <div class="row">
