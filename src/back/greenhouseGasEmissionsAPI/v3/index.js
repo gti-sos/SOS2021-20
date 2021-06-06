@@ -60,7 +60,7 @@ module.exports.init = (app) => {
     });
 
     req.headers({
-      "x-rapidapi-key": "0e378a889fmshc5a3a6fb5b77ba7p1f3286jsne3d159442600",
+      "x-rapidapi-key": process.env.OTT_API_KEY,
       "x-rapidapi-host": "ott-details.p.rapidapi.com",
       "useQueryString": true
     });
@@ -79,7 +79,7 @@ var ptoe = [];
 var req = unirest("GET", "https://periodic-table-of-elements.p.rapidapi.com/elements");
 
 req.headers({
-	"x-rapidapi-key": "0e378a889fmshc5a3a6fb5b77ba7p1f3286jsne3d159442600",
+	"x-rapidapi-key": process.env.PERIODIC_API_KEY,
 	"x-rapidapi-host": "periodic-table-of-elements.p.rapidapi.com",
 	"useQueryString": true
 });
