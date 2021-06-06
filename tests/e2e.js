@@ -62,13 +62,13 @@ const appDir = path.dirname(require.main.filename);
   console.log("Clicked \"Delete entire dataset\" link, waiting page load");
   await page.waitForTimeout(1000);
 
-  // Check if the element has been deleted
+  // Check the dataset has been deleted
   var rowCount3 = (await page.$$(".table > tbody > tr")).length;
   var loaded3 = parseInt(rowCount3)==1;
   console.log("Entire dataset deleted succesfully? " + loaded3  );
   console.log("Taking a screenshot...");
   await page.screenshot({ path: appDir+'/screenshots/founds-research-03.png' });
-
+  await page.goto('http://localhost:10000/api/v1/foundsresearchsources-stats/loadInitialData');
   console.log("Finishing tests for Founds Research Sources Stats");
   //---------------------------------------------------//
 
