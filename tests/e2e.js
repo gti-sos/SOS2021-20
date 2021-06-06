@@ -5,13 +5,15 @@ const appDir = path.dirname(require.main.filename);
 (async () => {
 
   //-------------------- MAIN APP -------------------//
+  
   const browser = await puppeteer.launch();
   console.log("Browser opened...");
   const page = await browser.newPage();
+  console.log("Starting tests for the main APP");
   await page.goto('http://localhost:10000');
   console.log("Page opened! Taking a screenshot...");
   await page.screenshot({ path: appDir+'/screenshots/main-app-01.png' });
-  const [response] = await Promise.all([
+  const [response01] = await Promise.all([
     page.waitForNavigation(), 
     page.click('button.btn:nth-child(5)'), 
   ]);
@@ -22,15 +24,52 @@ const appDir = path.dirname(require.main.filename);
   //---------------------------------------------------//
 
   //------------- FOUNDS RESEARCH SOURCES -------------//
-  await page.goto('http://localhost:10000/#/foundsresearchsources-stats');
+  console.log("Starting tests for Founds Research Sources Stats");
+
+  // Open data management page 
+  await page.goto('http://localhost:10000/#/foundsresearchsources-stats',{waitUntil: 'load',timeout: 0});
   await page.waitForTimeout(1000);
-  console.log("Page opened! Taking a screenshot...");
+  console.log("Data management page opened! Taking a screenshot...");
   await page.screenshot({ path: appDir+'/screenshots/founds-research-01.png' });
 
-  var rowCount = (await page.$$(".table > tbody > tr")).length;
-  var loaded = parseInt(rowCount) > 2;
-  console.log("Loaded elements correctly? " + loaded  );
+  // Check if data loads successfully
+  var rowCount1 = (await page.$$(".table > tbody > tr")).length;
+  var loaded1 = parseInt(rowCount1) > 2;
+  console.log("Loaded elements correctly? " + loaded1  );
 
+  // Individual element deletion
+  console.log("Deleting element...");
+  const [response02] = await Promise.all([
+    page.click('.table > tbody:nth-child(2) > tr:nth-child(2) > td:nth-child(6) > button:nth-child(1)'),
+    page.evaluate(`window.confirm = () => true`),
+  ]);
+  console.log("Clicked \"Delete element\" link, waiting page load");
+  await page.waitForTimeout(1000);
+
+  // Check if the element has been deleted
+  var rowCount2 = (await page.$$(".table > tbody > tr")).length;
+  var loaded2 = parseInt(rowCount1) > parseInt(rowCount2);
+  console.log("Element deleted succesfully? " + loaded2  );
+  console.log("Taking a screenshot...");
+  await page.screenshot({ path: appDir+'/screenshots/founds-research-02.png' });
+
+  // All data deletion
+  console.log("Deleting all data...");
+  const [response03] = await Promise.all([
+    page.click('#buttns > button:nth-child(3)'),
+    page.evaluate(`window.confirm = () => true`),
+  ]);
+  console.log("Clicked \"Delete entire dataset\" link, waiting page load");
+  await page.waitForTimeout(1000);
+
+  // Check if the element has been deleted
+  var rowCount3 = (await page.$$(".table > tbody > tr")).length;
+  var loaded3 = parseInt(rowCount3)==1;
+  console.log("Entire dataset deleted succesfully? " + loaded3  );
+  console.log("Taking a screenshot...");
+  await page.screenshot({ path: appDir+'/screenshots/founds-research-03.png' });
+
+  console.log("Finishing tests for Founds Research Sources Stats");
   //---------------------------------------------------//
 
    //--- RENEWABLE POWERCAPACITIES --
