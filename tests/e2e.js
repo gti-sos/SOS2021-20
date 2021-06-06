@@ -9,6 +9,7 @@ const appDir = path.dirname(require.main.filename);
   const browser = await puppeteer.launch();
   console.log("Browser opened...");
   const page = await browser.newPage();
+  await page.setViewport({width: 1920, height: 1080});
   console.log("Starting tests for the main APP");
   await page.goto('http://localhost:10000');
   console.log("Page opened! Taking a screenshot...");
@@ -120,7 +121,6 @@ console.log("Datos cargados - Foto 3 capturada correctamente");
 await page.goto('http://localhost:10000/#/greenhousegasemissions-stats');
 await page.waitForTimeout(1000);
 console.log("Page opened");
-await page.setViewport({width: 1920, height: 1080}), //Ajustar vista de la página
 await page.screenshot({ path: appDir +'/screenshots/greenhouse-gas-01.png', fullPage: true});
 console.log("Screenshot taken");
 
@@ -131,7 +131,6 @@ const [responesejes] = await Promise.all([
   page.click(".table > tbody:nth-child(2) > tr:nth-child(2) > td:nth-child(6) > div:nth-child(1) > button:nth-child(2)"),
   console.log("Confirm deletion of data in pop-up"),
   page.evaluate('window.confirm = () => true'),
-  await page.setViewport({width: 1920, height: 1080}),
   await page.waitForTimeout(1000),
   await page.screenshot({ path: appDir +'/screenshots/greenhouse-gas-02.png', fullPage: true }),
   console.log("Screenshot taken"),
@@ -148,7 +147,6 @@ const [responesejes1] = await Promise.all([
   page.click(".elimi"),
   console.log("Confirm deletion of all data in pop-up"),
   page.evaluate('window.confirm = () => true'),
-  await page.setViewport({width: 1920, height: 1080}),
   await page.waitForTimeout(1000),
   await page.screenshot({ path: appDir +'/screenshots/greenhouse-gas-03.png', fullPage: true }),
   console.log("Screenshot taken"),
@@ -160,7 +158,6 @@ const [responesejes3] = await Promise.all([
   page.click(".btn-success"),
   console.log("Confirm load initial data in pop-up"),
   page.evaluate('window.confirm = () => true'),
-  await page.setViewport({width: 1920, height: 1080}),
   await page.waitForTimeout(1000),
   await page.screenshot({ path: appDir +'/screenshots/greenhouse-gas-04.png', fullPage: true }),
   console.log("Screenshot taken"),
