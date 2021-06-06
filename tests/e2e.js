@@ -127,7 +127,6 @@ console.log("Screenshot taken");
 //DELETE ELEMENT OF DB//
 
 const [responesejes] = await Promise.all([
-  page.waitForNavigation(),
   console.log("Click on delete data"),
   page.click(".table > tbody:nth-child(2) > tr:nth-child(2) > td:nth-child(6) > div:nth-child(1) > button:nth-child(2)"),
   console.log("Confirm deletion of data in pop-up"),
