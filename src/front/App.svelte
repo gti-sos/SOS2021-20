@@ -15,15 +15,15 @@
 	import WeatherChart from "./FoundsResearchSourcesStatsGUI/IntegrationsAndUses/WeatherChart.svelte";
 	import CovidChart from "./FoundsResearchSourcesStatsGUI/IntegrationsAndUses/CovidChart.svelte";
 	import CovidTable from "./FoundsResearchSourcesStatsGUI/IntegrationsAndUses/CovidTable.svelte";
-	import HdiTable from "./Integrations/HdiTable.svelte";
-	import HdiGGEGraph from "./Integrations/HdiGGEGraph.svelte";
-	import PovertyRisksTable from "./Integrations/PovertyRisksTable.svelte";
-	import PovertyRisksGraph from "./Integrations/PovertyRisksGraph.svelte";
-	import CadizTable from "./Integrations/CadizTable.svelte";
-	import CadizGraph from "./Integrations/CadizGraph.svelte";
-	import OTTTable from "./Integrations/OTTTable.svelte";
-	import OTTGraph from "./Integrations/OTTGraph.svelte";
-	import PeriodicTableGraph from "./Integrations/PeriodicTableGraph.svelte";
+	import HdiTable from "./GreenhouseGasEmissionsStatsGUI/Integrations/HdiTable.svelte";
+	import HdiGGEGraph from "./GreenhouseGasEmissionsStatsGUI/Integrations/HdiGGEGraph.svelte";
+	import PovertyRisksTable from "./GreenhouseGasEmissionsStatsGUI/Integrations/PovertyRisksTable.svelte";
+	import PovertyRisksGraph from "./GreenhouseGasEmissionsStatsGUI/Integrations/PovertyRisksGraph.svelte";
+	import CadizTable from "./GreenhouseGasEmissionsStatsGUI/Integrations/CadizTable.svelte";
+	import CadizGraph from "./GreenhouseGasEmissionsStatsGUI/Integrations/CadizGraph.svelte";
+	import OTTTable from "./GreenhouseGasEmissionsStatsGUI/Integrations/OTTTable.svelte";
+	import OTTGraph from "./GreenhouseGasEmissionsStatsGUI/Integrations/OTTGraph.svelte";
+	import PeriodicTableGraph from "./GreenhouseGasEmissionsStatsGUI/Integrations/PeriodicTableGraph.svelte";
 	import FoundsResearchSourcesStats from "./FoundsResearchSourcesStatsGUI/FoundsResearchSourcesStats.svelte";
 	import FoundsResearchSourcesStatsDataEdit from "./FoundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataEdit.svelte"
 	import FoundsResearchSourcesStatsDataMultipleEdit from "./FoundsResearchSourcesStatsGUI/FoundsResearchSourcesStatsDataMultipleEdit.svelte";
