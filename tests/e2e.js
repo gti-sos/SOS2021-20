@@ -68,13 +68,52 @@ await page.screenshot({ path: appDir+'/screenshots/renewable-03.png' });
 console.log("Datos cargados - Foto 3 capturada correctamente");
 
 }else{
-console.log("Error - No se ha cargado 2 datos o mas.");
+//console.log("Error - No se ha cargado 2 datos o mas.");
 }
 
 
 //----- FIN RENEWABLEPOWERCAPACITIES ---
 
+//------------- GREENHOUSE GAS EMISSIONS -------------//
 
+//PRINCIPAL PAGE OF GREENHOUSEGASEMISSIONS//
+
+await page.goto('http://localhost:10000/#/greenhousegasemissions-stats');
+await page.waitForTimeout(1000);
+console.log("Page opened");
+await page.setViewport({width: 1920, height: 1080}), //Ajustar vista de la página
+await page.screenshot({ path: appDir +'/screenshots/greenhouse-gas-01.png', fullPage: true});
+console.log("Screenshot taken");
+
+//DELETE ELEMENT OF DB//
+
+const [responesejes] = await Promise.all([
+  page.waitForNavigation(),
+  console.log("Click on delete data"),
+  page.click(".table > tbody:nth-child(2) > tr:nth-child(2) > td:nth-child(6) > div:nth-child(1) > button:nth-child(2)"),
+  console.log("Confirm deletion of data in pop-up"),
+  page.evaluate('window.confirm = () => true'),
+  await page.setViewport({width: 1920, height: 1080}),
+  await page.waitForTimeout(1000),
+  await page.screenshot({ path: appDir +'/screenshots/greenhouse-gas-02.png', fullPage: true }),
+  console.log("Screenshot taken"),
+]);
+
+
+//CHECK NUMBER OF ROWS IN DATA TABLE//
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------------------------------------------//
  
   await browser.close();
   console.log("Browser closed");
