@@ -87,8 +87,8 @@ req.headers({
 
 req.end(function (res) {
 	ptoe = res.body;
-	console.log(res.body);
-  console.log(ptoe);
+	//console.log(res.body);
+  //console.log(ptoe);
 });
 
 app.get("/v3/integration/periodictable", function (req, res){

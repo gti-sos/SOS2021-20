@@ -139,6 +139,32 @@ const [responesejes] = await Promise.all([
 
 
 //CHECK NUMBER OF ROWS IN DATA TABLE//
+var rowCount1 = (await page.$$(".table > tbody > tr")).length;
+console.log(`Initial row count = ${rowCount1}`);
+
+//DELETE ALL DATA IN DATABASE//
+const [responesejes1] = await Promise.all([
+  console.log("Click on delete all data"),
+  page.click(".elimi"),
+  console.log("Confirm deletion of all data in pop-up"),
+  page.evaluate('window.confirm = () => true'),
+  await page.setViewport({width: 1920, height: 1080}),
+  await page.waitForTimeout(1000),
+  await page.screenshot({ path: appDir +'/screenshots/greenhouse-gas-03.png', fullPage: true }),
+  console.log("Screenshot taken"),
+]);
+
+//LOAD INITIAL DATA//
+const [responesejes3] = await Promise.all([
+  console.log("Click on delete all data"),
+  page.click(".btn-success"),
+  console.log("Confirm load initial data in pop-up"),
+  page.evaluate('window.confirm = () => true'),
+  await page.setViewport({width: 1920, height: 1080}),
+  await page.waitForTimeout(1000),
+  await page.screenshot({ path: appDir +'/screenshots/greenhouse-gas-04.png', fullPage: true }),
+  console.log("Screenshot taken"),
+]);
 
 
 

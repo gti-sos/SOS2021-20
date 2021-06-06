@@ -193,7 +193,7 @@
                 <div id= "initialbuttons"class="col-5">
                     <Button color="success" on:click={loadInitialData}>Cargar Datos</Button>
                     <Button class ="elimi" color="danger" on:click={deleteAllData}>Eliminar Datos</Button>
-                    <Button color="warning"><a href="#/greenhousegasemissions-stats/graph">Grafica</a></Button>
+                    <Button color="warning" on:click={() => push("#/greenhousegasemissions-stats/graph")}>Grafica</Button>
                 </div>
                 
                 <div id = "searchfilter" class="col-7">

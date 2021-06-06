@@ -19,7 +19,7 @@ async function loadGraph(){
         if(res.ok){
             const returnedJson = await res.json();
             dataPTOE = returnedJson;
-            console.log(dataPTOE);
+            
                  
         } else {
             console.log("Error");
@@ -30,7 +30,7 @@ async function loadGraph(){
 			let res2 = [e["AtomicNumber"],e["Year"],e["AtomicMass"]];
             return res2;
 		});
-        console.log(dat);
+        
 
 
 
