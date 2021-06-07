@@ -4,27 +4,27 @@
 
     <div class="row videos">
         <div class="col-4">
-            <h5>Video presentación foundsreserachsources-stats</h5>
+            <h5>Video presentación Fuentes de financiación de la investigación</h5>
             <div class="embed-responsive embed-responsive-16by9 ">
                 <iframe
                     title="v1"
                     class="embed-responsive-item"
                     frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    src="https://www.youtube.com/embed/xbhCPt6PZIU"
+                    src="https://www.youtube.com/embed/jOihvLQB6aM"
                     allowfullscreen
                 />
             </div>
             <p>
-                Contrary to popular belief, Lorem Ipsum is not simply random
-                text. It has roots in a piece of classical <br />
-                Latin literature from 45 BC, making it over 2000 years old. Richard
-                McClintock, a Latin professor at Hampden-Sydney College in Virginia,<br
+                Presentación de la API, Fuentes de Investigación de la Financiación. <br />
+                Se presenta el trabajo realizado, se muestran las integraciones con los datos de otros compañeros de la asignatura y los consumos de apis externas.<br
                 />
+                El código fuente está disponible en este <a href="https://github.com/gti-sos/SOS2021-20">enlace.</a> 
             </p>
+            <h6>Desarrollado por <a href="https://github.com/JorgeMarinC">Jorge Marín Cordero</a></h6>
         </div>
         <div class="col-4">
-            <h5>Video presentación greenhousegasemissions-stats</h5>
+            <h5>Video presentación Emisiones de gases de efecto invernadero</h5>
             <div class="embed-responsive embed-responsive-16by9 ">
                 <iframe
                     title="v1"
@@ -40,10 +40,10 @@
                 Por otra parte también se muestran los usos e integraciones realizadas.<br
                 />
             </p>
-            <h6>Creado por <a href="https://github.com/jesgueada">Jesús Guerra Adame</a></h6>
+            <h6>Desarrollado por <a href="https://github.com/jesgueada">Jesús Guerra Adame</a></h6>
         </div>
         <div class="col-4">
-            <h5>Video presentación renewablepowercapacities-stats</h5>
+            <h5>Video presentación Capacidad de producción de energía renovable</h5>
             <div class="embed-responsive embed-responsive-16by9 ">
                 <iframe
                     title="v1"
@@ -55,12 +55,11 @@
                 />
             </div>
             <p>
-                Contrary to popular belief, Lorem Ipsum is not simply random
-                text. It has roots in a piece of classical <br />
-                Latin literature from 45 BC, making it over 2000 years old. Richard
-                McClintock, a Latin professor at Hampden-Sydney College in Virginia,<br
-                />
+                Presentación de la API y su funcionamiento básico, los datos que se proporcionan son relativos a la capacidad de producción
+               
+                de energía renovable en distintos paises de la Unión Europea
             </p>
+            <h6>Desarrollado por <a href="https://github.com/alvcarjim1">Álvaro Caro Jiménez</a></h6>
         </div>
     </div>
     </div>
