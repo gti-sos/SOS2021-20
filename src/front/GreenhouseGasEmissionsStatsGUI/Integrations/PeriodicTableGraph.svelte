@@ -192,7 +192,7 @@ var chart = new Highcharts.Chart({
 <main>
     <header>
         <h3>USO DE API EXTERNA 3 - Tabla Periódica de los Elementos:</h3>
-        <h5>Representación espacial de los elementos según si número atómico, año de descubrimiento y masa atómica.</h5>
+        <h5>Representación espacial de los elementos según su número atómico, año de descubrimiento y masa atómica.</h5>
         <h6>Datos obtenidos de la API privada <a href="https://rapidapi.com/PappasBrent/api/periodic-table-of-elements/details">Periodic Table of Elements</a></h6>
             <!--
             <div id= "initialbuttons">
