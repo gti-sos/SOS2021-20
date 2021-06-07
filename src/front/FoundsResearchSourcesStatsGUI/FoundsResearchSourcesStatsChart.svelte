@@ -188,18 +188,19 @@
         investigación en el conjunto de los países de la Unión Europea entre
         los años 2014 y 2018
     </p>
-    <div id="container2">
-        <h5> Gráfico con librería escogida (Vis.js)</h5>
-        <div id="visualization2" />
-    </div>
-    
     <figure class="highcharts-figure">
         <h5> Gráfico con Higcharts (Tipo Spline)</h5>
         <div id="container" />
         
     </figure>
+    <div id="container2">
+        <h5> Gráfico con librería escogida (Vis.js)</h5>
+        <div id="visualization2" />
+    </div>
+    
+   
     <p>
-        Estos widgets han sido desarrollado por <a
+        Estos widgets han sido desarrollados por <a
             href="https://github.com/JorgeMarinC">Jorge Marín Cordero</a
         >
     </p>

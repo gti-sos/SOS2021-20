@@ -15,6 +15,7 @@ import Button from "sveltestrap/src/Button.svelte";
         <Button on:click={()=>push("#/info")}>Sobre nosotros</Button>
         <Button on:click={()=>push("#/about")}>Vídeos</Button>
         <Button on:click={()=>push("#/integrations")}>Integraciones</Button>
+        <Button on:click={()=>push("#/analytics")}>Gráfica Conjunta</Button>
         </div>
     </div>
 <style>
