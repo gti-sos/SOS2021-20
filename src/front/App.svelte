@@ -159,7 +159,7 @@
 					<a class="nav-link" href="/#/greenhousegasemissions-stats">Emisiones de gases de efecto invernadero</a>
 				  </li>
 				  <li class="nav-item">
-					<a class="nav-link" href="/#/renewablepowercapacities-stats">Capacidad de producción de energia renovable</a>
+					<a class="nav-link" href="/#/renewablepowercapacities-stats">Capacidad de producción de energía renovable</a>
 				  </li>
 			  </ul>
 			  <a class="navbar-brand mr-sm-2" href="/#">{hours}:{minutes}:{seconds}</a>
