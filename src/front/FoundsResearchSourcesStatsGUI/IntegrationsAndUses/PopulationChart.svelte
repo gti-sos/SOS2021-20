@@ -1,7 +1,7 @@
 <script>
     import { onMount } from "svelte";
 
-    import { pop, push } from "svelte-spa-router";
+    import { pop } from "svelte-spa-router";
     import Button from "sveltestrap/src/Button.svelte";
     const API_PATH = "/api/v3/integrations/spain-population";
     const spanish ={
@@ -17,14 +17,13 @@
         const spainData = await fetch(API_PATH);
 
         let dataAsJson = await spainData.json();
-        console.log(dataAsJson);
         let popData = dataAsJson.map((d) => {
             let res = {
                 name: d.name,
                 lat: d.coordinates.latitude,
                 lon: d.coordinates.longitude,
                 population: d.population,
-            }; //[d.country_code, d.dead];
+            };
             return res;
         });
 

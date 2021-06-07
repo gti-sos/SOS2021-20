@@ -153,7 +153,6 @@
             }
             
         );
-        console.log(chartData2);
         var container = document.getElementById("visualization2");
         var items = chartData2;
 
