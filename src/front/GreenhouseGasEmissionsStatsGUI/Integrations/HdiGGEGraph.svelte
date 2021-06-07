@@ -95,7 +95,7 @@ async function loadGraph(){
 
 <main>
     <header>
-        <h3></h3>INTEGRACIÓN 1 SOS - <a href="https://sos2021-23.herokuapp.com/api/v1/hdi-stats">HDI-stats GRUPO 23</a></h3>
+        <h3>INTEGRACIÓN 1 SOS - <a href="https://sos2021-23.herokuapp.com/api/v1/hdi-stats">HDI-stats GRUPO 23</a></h3>
         <h4>Visualización conjunta de datos</h4>
        
     
