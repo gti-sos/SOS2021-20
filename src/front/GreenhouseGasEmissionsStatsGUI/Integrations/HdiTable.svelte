@@ -47,8 +47,7 @@ onMount(getData);
 <main>
     <header>
             <h3>INTEGRACIÓN 1 SOS - HDI-stats GRUPO 23</h3>
-            <h4>Datos de Estadística HDI</h4>
-            <h6>Datos obtenidos de la API pública <a href="http://api.ctan.es/doc/">Red de Consorcios de Transporte de Andalucía </a></h6>
+            <h4>Datos de <a href="https://sos2021-23.herokuapp.com/api/v1/hdi-stats">Estadística HDI</a></h4>
             <div id= "initialbuttons">
                     <Button on:click={() => push("#/integrations/hdi")}>Representación gráfica</Button>
                     <Button on:click={() => push("#/integrations/hdi/tableData")}>Tabla de datos</Button>
