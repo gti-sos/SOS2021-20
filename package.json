@@ -46,7 +46,7 @@
     "svelte-spa-router": "^3.1.0",
     "sveltestrap": "^3.14.1",
     "unirest": "^0.6.0",
-    "vis-timeline": "^7.4.8",
+    "vis-timeline": "^7.4.9",
     "ws": "^7.4.6",
     "xg-xcharts": "^0.2.2"
   }
