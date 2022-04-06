@@ -42,7 +42,7 @@
     "pupeteer": "0.0.1",
     "puppeteer": "^9.1.1",
     "request": "^2.88.2",
-    "svelte": "^3.38.2",
+    "svelte": "^3.46.5",
     "svelte-spa-router": "^3.1.0",
     "sveltestrap": "^3.14.1",
     "unirest": "^0.6.0",
